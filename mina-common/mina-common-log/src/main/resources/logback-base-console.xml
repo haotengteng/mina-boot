@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<included>
+    <property name="log_pattern_console"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%boldYellow(%thread)] %highlight(%-5level) %boldGreen(%logger{0}) %msg%n"/>
+
+    <!-- 控制台日志输出 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${log_pattern_console}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 同步打印日志输出 -->
+    <appender name="log-appender" class="cn.mina.common.LogConsoleAppender">
+        <encoder>
+            <pattern>${log_pattern_console}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 异步打印日志输出 -->
+    <appender name="async-log-appender" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="log-appender"/>
+    </appender>
+</included>
