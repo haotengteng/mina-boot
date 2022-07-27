@@ -2,32 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
     <parent>
         <groupId>cn.mina</groupId>
         <artifactId>mina-parent</artifactId>
-        <version>0.0.1-SNAPSHOT</version> <!-- lookup parent from repository -->
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>mina-boot</artifactId>
     <name>mina-boot</name>
     <description>mina-boot project</description>
 
-    <dependencies>
-        <dependency>
-            <groupId>cn.mina</groupId>
-            <artifactId>mina-common-log</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.mina</groupId>
-            <artifactId>mina-common-util</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.mina</groupId>
-            <artifactId>mina-common-exception</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-    </dependencies>
+    <modules>
+        <module>mina-boot-starter</module>
+    </modules>
 
 </project>

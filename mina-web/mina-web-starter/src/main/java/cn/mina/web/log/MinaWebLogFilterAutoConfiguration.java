@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableConfigurationProperties({MinaWebLogProperties.class})
 @ConditionalOnWebApplication
-@ConditionalOnProperty(prefix = "mina.web.log", name = "enable", havingValue = "true", matchIfMissing = false)
+@ConditionalOnProperty(prefix = "mina.web.log", name = "enable", havingValue = "true", matchIfMissing = true)
 public class MinaWebLogFilterAutoConfiguration {
 
     @Autowired

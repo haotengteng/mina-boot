@@ -19,7 +19,7 @@ import org.slf4j.LoggerFactory;
 
 public class MinaWebTools {
 
-    private static Logger logger = LoggerFactory.getLogger(MinaWebTools.class);
+    private static final Logger logger = LoggerFactory.getLogger(MinaWebTools.class);
 
     public static class properties {
         public static MinaTokenProperties token;

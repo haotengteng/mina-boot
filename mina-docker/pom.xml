@@ -6,7 +6,6 @@
         <groupId>cn.mina</groupId>
         <artifactId>mina-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath/>
     </parent>
     <artifactId>mina-docker</artifactId>
     <version>0.0.1-SNAPSHOT</version>

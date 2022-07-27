@@ -1,17 +1,15 @@
 package cn.mina.cache.redis;
 
-import cn.hutool.core.util.StrUtil;
 import cn.mina.cache.redis.serializer.FastJson2RedisSerializer;
 import cn.mina.common.exception.GlobalErrorCode;
 import cn.mina.common.exception.MinaGlobalException;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -19,7 +17,6 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
-import javax.annotation.PostConstruct;
 import java.time.Duration;
 
 /**
@@ -36,6 +33,7 @@ public class MinaCacheRedisAutoConfiguration {
 
     /**
      * 默认使用jackson序列化对象
+     *
      * @param connectionFactory
      * @return
      */
@@ -81,7 +79,7 @@ public class MinaCacheRedisAutoConfiguration {
     @ConditionalOnProperty(prefix = "mina.cache.redis", name = "enableTtl", havingValue = "true")
     public RedisCacheConfiguration cacheConfiguration() {
         String duration = properties.getDuration();
-        if (StrUtil.isBlank(duration)) {
+        if (StringUtils.isBlank(duration)) {
             throw new MinaGlobalException(GlobalErrorCode.ERROR_ILLEGAL_CONFIG);
         }
         // 设置缓存过期时间为 duration 秒后

@@ -12,7 +12,7 @@
     <dependencies>
         <dependency>
             <groupId>cn.mina</groupId>
-            <artifactId>mina-boot</artifactId>
+            <artifactId>mina-boot-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>cn.hutool</groupId>
@@ -35,10 +35,6 @@
             <artifactId>spring-webmvc</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.alibaba.fastjson2</groupId>
-            <artifactId>fastjson2</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
@@ -46,6 +42,10 @@
             <groupId>cn.mina</groupId>
             <artifactId>mina-cache-redis-starter</artifactId>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
 

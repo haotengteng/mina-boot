@@ -1,7 +1,7 @@
 package cn.mina.web.log;
 
 
-import com.alibaba.fastjson2.JSON;
+import cn.mina.common.util.JsonUtil;
 import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -80,7 +80,7 @@ public class MinaWebLogFilter implements Filter {
             LoggerModel loggerModel = new LoggerModel();
             loggerModel.setParams(URLDecoder.decode(!StringUtils.hasLength(httpServletRequest.getQueryString()) ? "" : httpServletRequest.getQueryString(), "UTF-8"));
             loggerModel.setUrl(httpServletRequest.getRequestURL().toString());
-            log.info("请求信息：{}", JSON.toJSONString(loggerModel));
+            log.info("请求信息：{}", JsonUtil.toJSONString(loggerModel));
         } else {
             StringBuilder content = new StringBuilder();
             ServletInputStream servletInputStream = multiReadRequest.getInputStream();
@@ -93,7 +93,7 @@ public class MinaWebLogFilter implements Filter {
             LoggerModel loggerModel = new LoggerModel();
             loggerModel.setParams(strcont);
             loggerModel.setUrl(httpServletRequest.getRequestURL().toString());
-            log.info("请求信息：{}", JSON.toJSONString(loggerModel));
+            log.info("请求信息：{}", JsonUtil.toJSONString(loggerModel));
         }
     }
 

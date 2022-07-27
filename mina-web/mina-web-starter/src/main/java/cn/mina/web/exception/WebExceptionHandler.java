@@ -2,8 +2,8 @@ package cn.mina.web.exception;
 
 import cn.mina.common.exception.GlobalErrorCode;
 import cn.mina.common.exception.MinaBaseException;
-import com.alibaba.fastjson2.JSON;
-import com.alibaba.fastjson2.JSONObject;
+import cn.mina.common.util.JsonUtil;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.SneakyThrows;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,7 +21,7 @@ public class WebExceptionHandler implements HandlerExceptionResolver {
     @SneakyThrows(IOException.class)
     @Override
     public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
-        JSONObject result = new JSONObject();
+        ObjectNode result = JsonUtil.getObjectNode();
         ex.printStackTrace();
         if (ex instanceof MinaBaseException) {
             MinaBaseException baseException = (MinaBaseException) ex;
@@ -32,7 +32,7 @@ public class WebExceptionHandler implements HandlerExceptionResolver {
             result.put("message", GlobalErrorCode.ERROR_SYS_ERROR.getMessage());
         }
         response.addHeader("Content-Type", "application/json; charset=UTF-8");
-        response.getWriter().append(JSON.toJSONString(result)).flush();
+        response.getWriter().append(JsonUtil.toJSONString(result)).flush();
         return new ModelAndView();
     }
 }
