@@ -1,6 +1,6 @@
 package cn.mina.example.web.context;
 
-import cn.mina.web.context.MinaWebContext;
+import cn.mina.web.common.context.MinaWebContext;
 import lombok.Data;
 
 /**

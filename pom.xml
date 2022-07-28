@@ -14,7 +14,7 @@
         <fastjson.version>2.0.4</fastjson.version>
         <skywalking.version>8.6.0</skywalking.version>
         <hutool.version>5.7.2</hutool.version>
-        <knife4j.version>3.0.2</knife4j.version>
+        <knife4j.version>3.0.3</knife4j.version>
     </properties>
     <modules>
         <module>mina-docker</module>
@@ -110,7 +110,17 @@
             </dependency>
             <dependency>
                 <groupId>cn.mina</groupId>
+                <artifactId>mina-web-auth-starter</artifactId>
+                <version>${mina.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.mina</groupId>
                 <artifactId>mina-web-starter</artifactId>
+                <version>${mina.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.mina</groupId>
+                <artifactId>mina-web-doc-starter</artifactId>
                 <version>${mina.version}</version>
             </dependency>
             <dependency>

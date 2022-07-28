@@ -4,10 +4,11 @@ import cn.mina.cache.redis.MinaCacheRedisUtil;
 import cn.mina.example.web.context.ExampleWebContext;
 import cn.mina.example.web.exception.ExampleErrorCode;
 import cn.mina.example.web.exception.ExampleException;
-import cn.mina.web.context.ClientResult;
-import cn.mina.web.context.MinaWebContextOperator;
-import cn.mina.web.context.MinaWebTools;
-import cn.mina.web.token.Login;
+import cn.mina.web.auth.MinaWebAuthTools;
+import cn.mina.web.common.context.ClientResult;
+import cn.mina.web.common.context.MinaWebContextOperator;
+import cn.mina.web.common.context.MinaWebTools;
+import cn.mina.web.auth.Login;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,7 +68,7 @@ public class FooController {
     public ClientResult testTokenGenerate() {
         ExampleWebContext context = new ExampleWebContext();
         context.setName("example");
-        String generate = MinaWebTools.token.generate(context);
+        String generate = MinaWebAuthTools.token.generate(context);
         System.out.println("generate:" + generate);
         return MinaWebTools.response.success(generate);
     }
@@ -100,7 +101,7 @@ public class FooController {
     private static void testJetToken() {
         ExampleWebContext context = new ExampleWebContext();
         context.setName("example");
-        String generate = MinaWebTools.token.generate(context);
+        String generate = MinaWebAuthTools.token.generate(context);
         System.out.println("generate:" + generate);
 //        String encode = JwtTokenHelper.encode(context,1,"");
 //        System.out.println("encode:" + encode);

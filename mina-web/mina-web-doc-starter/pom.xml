@@ -4,28 +4,21 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cn.mina</groupId>
-        <artifactId>mina-example</artifactId>
+        <artifactId>mina-web</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>mina-example-web</artifactId>
-    <name>mina-example-web</name>
+    <artifactId>mina-web-doc-starter</artifactId>
+    <name>mina-web-doc-starter</name>
 
     <dependencies>
         <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
             <groupId>cn.mina</groupId>
             <artifactId>mina-web-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.mina</groupId>
-            <artifactId>mina-cache-redis-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.mina</groupId>
-            <artifactId>mina-web-doc-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.mina</groupId>
-            <artifactId>mina-web-auth-starter</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

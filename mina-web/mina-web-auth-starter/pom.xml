@@ -4,29 +4,26 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cn.mina</groupId>
-        <artifactId>mina-example</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <artifactId>mina-web</artifactId>
+        <version>0.0.1-SNAPSHOT</version> <!-- lookup parent from repository -->
     </parent>
-    <artifactId>mina-example-web</artifactId>
-    <name>mina-example-web</name>
-
+    <artifactId>mina-web-auth-starter</artifactId>
+    <name>mina-web-auth-starter</name>
     <dependencies>
         <dependency>
             <groupId>cn.mina</groupId>
             <artifactId>mina-web-starter</artifactId>
         </dependency>
         <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-jwt</artifactId>
+        </dependency>
+        <dependency>
             <groupId>cn.mina</groupId>
             <artifactId>mina-cache-redis-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.mina</groupId>
-            <artifactId>mina-web-doc-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.mina</groupId>
-            <artifactId>mina-web-auth-starter</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
+
 
 </project>
