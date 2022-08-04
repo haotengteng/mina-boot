@@ -4,28 +4,28 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cn.mina.boot</groupId>
-        <artifactId>mina-boot</artifactId>
+        <artifactId>mina-boot-example</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>mina-boot-starter</artifactId>
-    <name>mina-boot-starter</name>
-    <description>Demo project for Spring Boot</description>
+    <artifactId>mina-boot-example-web</artifactId>
+    <name>mina-boot-example-web</name>
+
     <dependencies>
         <dependency>
             <groupId>cn.mina.boot</groupId>
-            <artifactId>mina-boot-common-log</artifactId>
+            <artifactId>mina-boot-web-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>cn.mina.boot</groupId>
-            <artifactId>mina-boot-common-util</artifactId>
+            <artifactId>mina-boot-cache-redis-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>cn.mina.boot</groupId>
-            <artifactId>mina-boot-common-exception</artifactId>
+            <artifactId>mina-boot-web-doc-starter</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <groupId>cn.mina.boot</groupId>
+            <artifactId>mina-boot-web-auth-starter</artifactId>
         </dependency>
     </dependencies>
 

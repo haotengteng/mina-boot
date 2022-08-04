@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <packaging>pom</packaging>
     <parent>
-        <groupId>cn.mina.boot</groupId>
         <artifactId>mina-parent</artifactId>
+        <groupId>cn.mina.boot</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>mina-boot</artifactId>
-    <name>mina-boot</name>
-    <description>mina-boot project</description>
-
+    <artifactId>mina-boot-cache</artifactId>
+    <name>mina-boot-cache</name>
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
     <modules>
-        <module>mina-boot-starter</module>
+        <module>mina-boot-cache-redis-starter</module>
     </modules>
-
 </project>

@@ -1,0 +1,11 @@
+mina:
+  web:
+    log:
+      enable: true
+spring:
+  datasource:
+    username: root
+    password: abcd.1234
+    url: jdbc:mysql://localhost:3306/mina?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+
+

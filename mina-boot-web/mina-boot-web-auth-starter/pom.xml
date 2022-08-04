@@ -4,29 +4,26 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cn.mina.boot</groupId>
-        <artifactId>mina-boot</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <artifactId>mina-boot-web</artifactId>
+        <version>0.0.1-SNAPSHOT</version> <!-- lookup parent from repository -->
     </parent>
-    <artifactId>mina-boot-starter</artifactId>
-    <name>mina-boot-starter</name>
-    <description>Demo project for Spring Boot</description>
+    <artifactId>mina-boot-web-auth-starter</artifactId>
+    <name>mina-boot-web-auth-starter</name>
     <dependencies>
         <dependency>
             <groupId>cn.mina.boot</groupId>
-            <artifactId>mina-boot-common-log</artifactId>
+            <artifactId>mina-boot-web-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-jwt</artifactId>
         </dependency>
         <dependency>
             <groupId>cn.mina.boot</groupId>
-            <artifactId>mina-boot-common-util</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.mina.boot</groupId>
-            <artifactId>mina-boot-common-exception</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>mina-boot-cache-redis-starter</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
+
 
 </project>

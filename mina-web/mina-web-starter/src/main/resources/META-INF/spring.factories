@@ -1,4 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-cn.mina.web.common.server.MinaWebUndertowAutoConfiguration,\
-cn.mina.web.common.log.MinaWebLogFilterAutoConfiguration,\
-cn.mina.web.common.exception.MinaWebExceptionHandlerAutoConfiguration

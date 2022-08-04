@@ -2,38 +2,40 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>cn.mina</groupId>
+    <groupId>cn.mina.boot</groupId>
     <artifactId>mina-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>mina-parent</name>
     <description>mina-parent</description>
-    <properties>
-        <java.version>1.8</java.version>
-        <mina.version>0.0.1-SNAPSHOT</mina.version>
-        <fastjson.version>2.0.4</fastjson.version>
-        <skywalking.version>8.6.0</skywalking.version>
-        <hutool.version>5.7.2</hutool.version>
-        <knife4j.version>3.0.3</knife4j.version>
-    </properties>
+
     <modules>
-        <module>mina-docker</module>
-        <module>mina-example</module>
-        <module>mina-common</module>
-        <module>mina-oauth2</module>
-        <module>mina-gateway</module>
-        <module>mina-database</module>
-        <module>mina-web</module>
-        <module>mina-cache</module>
-        <module>mina-config</module>
-        <module>mina-message</module>
-        <module>mina-oss</module>
+        <module>mina-boot-docker</module>
+        <module>mina-boot-example</module>
+        <module>mina-boot-common</module>
+        <module>mina-boot-oauth2</module>
+        <module>mina-boot-gateway</module>
+        <module>mina-boot-data</module>
+        <module>mina-boot-web</module>
+        <module>mina-boot-cache</module>
+        <module>mina-boot-config</module>
+        <module>mina-boot-message</module>
+        <module>mina-boot-oss</module>
         <module>mina-boot</module>
+        <module>mina-boot-dependencies</module>
     </modules>
 
 
     <dependencyManagement>
         <dependencies>
+
+            <dependency>
+                <groupId>cn.mina.boot</groupId>
+                <artifactId>mina-boot-dependencies</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -56,108 +58,13 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-<!--            <dependency>-->
-<!--                <groupId>cn.hutool</groupId>-->
-<!--                <artifactId>hutool-bom</artifactId>-->
-<!--                <version>5.7.2</version>-->
-<!--                <type>pom</type>-->
-<!--                <scope>import</scope>-->
-<!--            </dependency>-->
-            <dependency>
-                <groupId>cn.mina</groupId>
-                <artifactId>mina-docker</artifactId>
-                <version>${mina.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.mina</groupId>
-                <artifactId>mina-common-log</artifactId>
-                <version>${mina.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.mina</groupId>
-                <artifactId>mina-oauth2</artifactId>
-                <version>${mina.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.mina</groupId>
-                <artifactId>mina-config</artifactId>
-                <version>${mina.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.mina</groupId>
-                <artifactId>mina-boot-starter</artifactId>
-                <version>${mina.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.mina</groupId>
-                <artifactId>mina-web</artifactId>
-                <version>${mina.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.mina</groupId>
-                <artifactId>mina-common-util</artifactId>
-                <version>${mina.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.mina</groupId>
-                <artifactId>mina-common-core</artifactId>
-                <version>${mina.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.mina</groupId>
-                <artifactId>mina-common-exception</artifactId>
-                <version>${mina.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.mina</groupId>
-                <artifactId>mina-web-auth-starter</artifactId>
-                <version>${mina.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.mina</groupId>
-                <artifactId>mina-web-starter</artifactId>
-                <version>${mina.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.mina</groupId>
-                <artifactId>mina-web-doc-starter</artifactId>
-                <version>${mina.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.mina</groupId>
-                <artifactId>mina-cache-redis-starter</artifactId>
-                <version>${mina.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.skywalking</groupId>
-                <artifactId>apm-toolkit-logback-1.x</artifactId>
-                <version>${skywalking.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.alibaba.fastjson2</groupId>
-                <artifactId>fastjson2</artifactId>
-                <version>${fastjson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.alibaba.fastjson2</groupId>
-                <artifactId>fastjson2-extension</artifactId>
-                <version>${fastjson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.hutool</groupId>
-                <artifactId>hutool-core</artifactId>
-                <version>${hutool.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.hutool</groupId>
-                <artifactId>hutool-jwt</artifactId>
-                <version>${hutool.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.xiaoymin</groupId>
-                <artifactId>knife4j-spring-boot-starter</artifactId>
-                <version>${knife4j.version}</version>
-            </dependency>
+            <!--            <dependency>-->
+            <!--                <groupId>cn.hutool</groupId>-->
+            <!--                <artifactId>hutool-bom</artifactId>-->
+            <!--                <version>5.7.2</version>-->
+            <!--                <type>pom</type>-->
+            <!--                <scope>import</scope>-->
+            <!--            </dependency>-->
         </dependencies>
     </dependencyManagement>
 
@@ -179,17 +86,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>2.8.2</version>
             </plugin>
-
         </plugins>
         <pluginManagement>
             <plugins>
