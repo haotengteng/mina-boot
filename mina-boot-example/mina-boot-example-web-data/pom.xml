@@ -15,9 +15,14 @@
             <groupId>cn.mina.boot</groupId>
             <artifactId>mina-boot-web-starter</artifactId>
         </dependency>
+        <!--jpa 与 mybatis 若要同时应用，各自的配置需要在应用项目中设置-->
         <dependency>
             <groupId>cn.mina.boot</groupId>
             <artifactId>mina-boot-data-mybatis-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.mina.boot</groupId>
+            <artifactId>mina-boot-data-jpa-starter</artifactId>
         </dependency>
     </dependencies>
 

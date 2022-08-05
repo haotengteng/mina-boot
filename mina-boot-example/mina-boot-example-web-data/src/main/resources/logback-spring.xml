@@ -13,7 +13,7 @@
     <include resource="logback-base-console.xml"/>
 
     <!--    sql日志控制-->
-    <logger name="cn.mina.boot.example.web.data.dao">
+    <logger name="cn.mina.boot.example.web.data.mybatis.dao">
         <level value="trace"/>
     </logger>
 

@@ -66,7 +66,6 @@ public class PageInterceptor implements Interceptor {
             String originSql = boundSql.getSql().trim();
             long rowCount = getRowCount(originSql, boundSql, mappedStatement, parameterObject);
             countStorage.set(rowCount);
-            System.out.println("==============:" + rowCount);
         }
     }
 

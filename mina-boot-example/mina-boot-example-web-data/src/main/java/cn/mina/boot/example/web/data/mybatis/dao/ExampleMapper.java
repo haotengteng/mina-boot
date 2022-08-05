@@ -1,6 +1,6 @@
-package cn.mina.boot.example.web.data.dao;
+package cn.mina.boot.example.web.data.mybatis.dao;
 
-import cn.mina.boot.example.web.data.entity.ExampleDO;
+import cn.mina.boot.example.web.data.mybatis.entity.ExampleDO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

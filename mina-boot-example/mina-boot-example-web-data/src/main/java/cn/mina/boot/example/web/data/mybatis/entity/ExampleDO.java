@@ -1,4 +1,4 @@
-package cn.mina.boot.example.web.data.entity;
+package cn.mina.boot.example.web.data.mybatis.entity;
 
 import lombok.Data;
 

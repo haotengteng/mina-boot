@@ -1,9 +1,9 @@
-package cn.mina.boot.example.web.data.controller;
+package cn.mina.boot.example.web.data.mybatis.controller;
 
 import cn.mina.boot.data.mybatis.MinaPage;
 import cn.mina.boot.data.mybatis.Page;
-import cn.mina.boot.example.web.data.dao.ExampleMapper;
-import cn.mina.boot.example.web.data.entity.ExampleDO;
+import cn.mina.boot.example.web.data.mybatis.dao.ExampleMapper;
+import cn.mina.boot.example.web.data.mybatis.entity.ExampleDO;
 import cn.mina.boot.web.common.context.ClientResult;
 import cn.mina.boot.web.common.context.MinaWebTools;
 import lombok.extern.slf4j.Slf4j;

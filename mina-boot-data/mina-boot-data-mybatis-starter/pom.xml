@@ -13,7 +13,7 @@
     <dependencies>
         <dependency>
             <groupId>cn.mina.boot</groupId>
-            <artifactId>mina-boot-starter</artifactId>
+            <artifactId>mina-boot-common-util</artifactId>
         </dependency>
         <!-- MyBatis-->
         <dependency>
