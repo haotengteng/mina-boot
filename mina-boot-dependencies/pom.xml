@@ -11,13 +11,18 @@
 
     <properties>
         <mina.version>0.0.1-SNAPSHOT</mina.version>
-        <fastjson.version>2.0.4</fastjson.version>
+        <fastjson2.version>2.0.4</fastjson2.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <skywalking.version>8.6.0</skywalking.version>
         <hutool.version>5.7.2</hutool.version>
         <knife4j.version>3.0.3</knife4j.version>
         <mybatis.version>2.2.2</mybatis.version>
         <mysql.version>8.0.30</mysql.version>
         <druid.version>1.2.11</druid.version>
+        <rocketmq.starter.version>2.2.2</rocketmq.starter.version>
+        <version>1.2.83</version>
+        <commons-collections.version>3.2.2</commons-collections.version>
+        <commons-collections4.version>4.4</commons-collections4.version>
     </properties>
 
     <dependencyManagement>
@@ -79,6 +84,12 @@
             </dependency>
             <dependency>
                 <groupId>cn.mina.boot</groupId>
+                <artifactId>mina-boot-message-rocketmq-starter</artifactId>
+                <version>${mina.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-data-mybatis-starter</artifactId>
                 <version>${mina.version}</version>
             </dependency>
@@ -95,13 +106,29 @@
             <dependency>
                 <groupId>com.alibaba.fastjson2</groupId>
                 <artifactId>fastjson2</artifactId>
-                <version>${fastjson.version}</version>
+                <version>${fastjson2.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.alibaba.fastjson2</groupId>
                 <artifactId>fastjson2-extension</artifactId>
+                <version>${fastjson2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>${commons-collections.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${commons-collections4.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-core</artifactId>
@@ -134,6 +161,12 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-spring-boot-starter</artifactId>
+                <version>${rocketmq.starter.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

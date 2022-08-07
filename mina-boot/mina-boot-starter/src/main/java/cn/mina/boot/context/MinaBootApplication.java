@@ -13,5 +13,4 @@ public class MinaBootApplication {
         logger.info("Mina project start succeeded !!!");
         return applicationContext;
     }
-
 }

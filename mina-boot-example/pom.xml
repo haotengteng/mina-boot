@@ -19,5 +19,6 @@
         <module>mina-boot-example-web</module>
         <module>mina-boot-example-web-config</module>
         <module>mina-boot-example-web-data</module>
+        <module>mina-boot-example-message</module>
     </modules>
 </project>

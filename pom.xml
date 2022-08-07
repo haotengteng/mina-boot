@@ -14,7 +14,6 @@
         <module>mina-boot-example</module>
         <module>mina-boot-common</module>
         <module>mina-boot-oauth2</module>
-        <module>mina-boot-gateway</module>
         <module>mina-boot-data</module>
         <module>mina-boot-web</module>
         <module>mina-boot-cache</module>

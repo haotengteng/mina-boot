@@ -2,7 +2,7 @@
 
 <included>
     <property name="log_pattern_console"
-              value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%boldYellow(%thread)] %highlight(%-5level) %boldGreen(%logger{0}) %msg%n"/>
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%boldYellow(%thread)] %highlight(%-5level) %boldGreen(%logger) %msg%n"/>
 
     <!-- 控制台日志输出 -->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
