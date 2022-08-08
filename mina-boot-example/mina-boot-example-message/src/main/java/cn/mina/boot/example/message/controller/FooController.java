@@ -51,11 +51,12 @@ public class FooController {
 
 
     @Component
-    @RocketMQMessageListener(consumerGroup = "MinaConsumerGroup", topic = "test-topic-1")
+    @RocketMQMessageListener(consumerGroup = "MinaConsumerGroup", topic = "test-topic-1",maxReconsumeTimes=3)
     public class SpringConsumer implements RocketMQListener<String> {
         @Override
         public void onMessage(String message) {
             log.info("Recived message: {}", message);
+//            throw new MinaGlobalException(GlobalErrorCode.ERROR_SYS_ERROR);
         }
     }
 

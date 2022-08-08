@@ -23,6 +23,7 @@
         <version>1.2.83</version>
         <commons-collections.version>3.2.2</commons-collections.version>
         <commons-collections4.version>4.4</commons-collections4.version>
+        <nacos-config.starter.version>0.2.12</nacos-config.starter.version>
     </properties>
 
     <dependencyManagement>
@@ -87,7 +88,11 @@
                 <artifactId>mina-boot-message-rocketmq-starter</artifactId>
                 <version>${mina.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>cn.mina.boot</groupId>
+                <artifactId>mina-boot-config-nacos-starter</artifactId>
+                <version>${mina.version}</version>
+            </dependency>
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-data-mybatis-starter</artifactId>
@@ -156,18 +161,23 @@
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.apache.rocketmq</groupId>
                 <artifactId>rocketmq-spring-boot-starter</artifactId>
                 <version>${rocketmq.starter.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.boot</groupId>
+                <artifactId>nacos-config-spring-boot-starter</artifactId>
+                <version>${nacos-config.starter.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

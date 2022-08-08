@@ -1,0 +1,11 @@
+logging:
+  file:
+    path: ./
+    name: mina-example-web-config.log
+spring:
+  application:
+    name: mina-config
+nacos:
+  config:
+    server-addr: 127.0.0.1:8848
+    namespace: 52e671fa-26ea-48b5-938b-865e935f527f
