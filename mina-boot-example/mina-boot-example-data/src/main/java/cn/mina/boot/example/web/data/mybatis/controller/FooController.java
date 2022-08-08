@@ -35,8 +35,8 @@ public class FooController {
      * @throws UnknownHostException
      */
     @GetMapping(path = "mysql/page")
-    public ClientResult<List<ExampleDO>> sayHelloPage() throws UnknownHostException {
-        Page<ExampleDO> page = MinaPage.cover(exampleMapper.findListByPage(1, 1));
+    public ClientResult<Page<ExampleDO>> sayHelloPage() throws UnknownHostException {
+        Page<ExampleDO> page = MinaPage.cover(exampleMapper.findListByPage(1, 2));
         return MinaWebTools.response.success(page);
     }
 }

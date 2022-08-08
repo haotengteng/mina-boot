@@ -14,8 +14,8 @@ public class MinaPage {
      */
     public static <E> Page<E> cover(Collection<E> collection) {
         Page<E> page = new Page<>();
-        page.addAll(collection);
-        page.setTotalCount(PageInterceptor.countStorage.get());
+        page.setList(collection);
+        page.setCount(PageInterceptor.countStorage.get());
         // 获取完后及时清空
         PageInterceptor.countStorage.remove();
         return page;

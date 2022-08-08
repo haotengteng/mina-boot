@@ -14,7 +14,6 @@ public interface ExampleMapper {
 
     ExampleDO findById(Integer id);
 
-
     List<ExampleDO> findListByPage(@Param("page") Integer page, @Param("pageSize") Integer pageSize);
 
 }

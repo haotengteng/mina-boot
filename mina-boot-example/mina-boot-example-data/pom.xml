@@ -7,23 +7,27 @@
         <artifactId>mina-boot-example</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>mina-boot-example-web-data</artifactId>
-    <name>mina-boot-example-web-data</name>
+    <artifactId>mina-boot-example-data</artifactId>
+    <name>mina-boot-example-data</name>
 
     <dependencies>
         <dependency>
             <groupId>cn.mina.boot</groupId>
             <artifactId>mina-boot-web-starter</artifactId>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-web</artifactId>-->
+<!--        </dependency>-->
         <!--jpa 与 mybatis 若要同时应用，各自的配置需要在应用项目中设置-->
         <dependency>
             <groupId>cn.mina.boot</groupId>
             <artifactId>mina-boot-data-mybatis-starter</artifactId>
         </dependency>
-        <dependency>
-            <groupId>cn.mina.boot</groupId>
-            <artifactId>mina-boot-data-jpa-starter</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>cn.mina.boot</groupId>-->
+<!--            <artifactId>mina-boot-data-jpa-starter</artifactId>-->
+<!--        </dependency>-->
     </dependencies>
 
 </project>

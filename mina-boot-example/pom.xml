@@ -18,7 +18,7 @@
         <module>mina-boot-example-common-log</module>
         <module>mina-boot-example-web</module>
         <module>mina-boot-example-config</module>
-        <module>mina-boot-example-web-data</module>
+        <module>mina-boot-example-data</module>
         <module>mina-boot-example-message</module>
     </modules>
 </project>
