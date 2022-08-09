@@ -3,6 +3,7 @@ package cn.mina.boot.example.web.data.mybatis.controller;
 import cn.mina.boot.data.mybatis.MinaPage;
 import cn.mina.boot.data.mybatis.Page;
 import cn.mina.boot.example.web.data.mybatis.dao.ExampleMapper;
+import cn.mina.boot.example.web.data.mybatis.dto.QueryDto;
 import cn.mina.boot.example.web.data.mybatis.entity.ExampleDO;
 import cn.mina.boot.web.common.context.ClientResult;
 import cn.mina.boot.web.common.context.MinaWebTools;
@@ -30,13 +31,27 @@ public class FooController {
     }
 
     /**
-     * 分页查询
+     * 分页查询(以.ByPage结尾)
      * @return
      * @throws UnknownHostException
      */
     @GetMapping(path = "mysql/page")
     public ClientResult<Page<ExampleDO>> sayHelloPage() throws UnknownHostException {
         Page<ExampleDO> page = MinaPage.cover(exampleMapper.findListByPage(1, 2));
+        return MinaWebTools.response.success(page);
+    }
+
+    /**
+     * 分页查询(以.ByPage结尾)
+     * @return
+     * @throws UnknownHostException
+     */
+    @GetMapping(path = "mysql/page/dto")
+    public ClientResult<Page<ExampleDO>> sayPage() throws UnknownHostException {
+        QueryDto query = new QueryDto();
+        query.setPage(1);
+        query.setPageSize(2);
+        Page<ExampleDO> page = MinaPage.cover(exampleMapper.findByPage(query));
         return MinaWebTools.response.success(page);
     }
 }

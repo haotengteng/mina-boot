@@ -27,6 +27,8 @@ public enum GlobalErrorCode implements ErrorCode {
     ERROR_NO_DATA(100110, "没有数据"),
 
     ERROR_ILLEGAL_CONFIG(100112, "缺少必要配置信息或配置信息有误"),
+
+    ERROR_ILLEGAL_PAGE_PARAMETER(100113, "缺少必要的分页参数参数"),
     ;
 
     private int code;

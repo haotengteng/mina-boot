@@ -15,6 +15,10 @@
             <groupId>cn.mina.boot</groupId>
             <artifactId>mina-boot-common-util</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cn.mina.boot</groupId>
+            <artifactId>mina-boot-common-exception</artifactId>
+        </dependency>
         <!-- MyBatis-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>

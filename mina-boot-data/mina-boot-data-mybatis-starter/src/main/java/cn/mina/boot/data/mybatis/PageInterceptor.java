@@ -1,6 +1,9 @@
 package cn.mina.boot.data.mybatis;
 
+import cn.mina.boot.common.exception.GlobalErrorCode;
+import cn.mina.boot.common.exception.MinaGlobalException;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.ibatis.binding.MapperMethod;
 import org.apache.ibatis.executor.ErrorContext;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.executor.ExecutorException;
@@ -21,10 +24,12 @@ import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.type.TypeHandler;
 import org.apache.ibatis.type.TypeHandlerRegistry;
 
+import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -96,11 +101,29 @@ public class PageInterceptor implements Interceptor {
                 //获取进行数据库操作时管理参数的handler
                 ParameterHandler parameterHandler = (ParameterHandler) MetaObjectHandler.getValue("delegate.parameterHandler");
                 //获取请求时的参数
-                Map<String, Object> paraObject = (Map<String, Object>) parameterHandler.getParameterObject();
+                if (parameterHandler.getParameterObject() instanceof MapperMethod.ParamMap) {
+                    Map<String, Object> paraObject = (Map<String, Object>) parameterHandler.getParameterObject();
+                    //参数名称和在dao中@Param设置的名称一致
+                    page = (int) paraObject.get("page");
+                    pageSize = (int) paraObject.get("pageSize");
+                } else {
+                    // 通过反射获取分页参数
+                    Object param = parameterHandler.getParameterObject();
+                    Class<?> paramClass = param.getClass();
+                    try {
+                        Field pageField = paramClass.getDeclaredField("page");
+                        pageField.setAccessible(true);
+                        page = (int) pageField.get(param);
+                        Field pageSizeField = paramClass.getDeclaredField("pageSize");
+                        pageSizeField.setAccessible(true);
+                        pageSize = (int) pageSizeField.get(param);
+                    } catch (IllegalAccessException e) {
+                        throw new RuntimeException(e);
+                    } catch (NoSuchFieldException e) {
+                        throw new MinaGlobalException(GlobalErrorCode.ERROR_ILLEGAL_PAGE_PARAMETER);
+                    }
+                }
 
-                //参数名称和在dao中@Param设置的名称一致
-                page = (int) paraObject.get("page");
-                pageSize = (int) paraObject.get("pageSize");
 
                 String sql = (String) MetaObjectHandler.getValue("delegate.boundSql.sql");
                 //也可以通过statementHandler直接获取
