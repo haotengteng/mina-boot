@@ -17,7 +17,7 @@
         </dependency>
         <dependency>
             <groupId>cn.mina.boot</groupId>
-            <artifactId>mina-boot-common-log</artifactId>
+            <artifactId>mina-boot-common-logging</artifactId>
         </dependency>
         <dependency>
             <groupId>cn.mina.boot</groupId>

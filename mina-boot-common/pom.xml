@@ -14,7 +14,7 @@
 
     <name>mina-boot-common</name>
     <modules>
-        <module>mina-boot-common-log</module>
+        <module>mina-boot-common-logging</module>
         <module>mina-boot-common-util</module>
         <module>mina-boot-common-exception</module>
         <module>mina-boot-common-core</module>

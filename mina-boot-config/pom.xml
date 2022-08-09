@@ -15,12 +15,5 @@
     <name>mina-boot-config</name>
 
 
-    <dependencies>
-        <dependency>
-            <groupId>com.alibaba.boot</groupId>
-            <artifactId>nacos-config-spring-boot-starter</artifactId>
-        </dependency>
-    </dependencies>
-
 
 </project>

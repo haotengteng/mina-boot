@@ -7,8 +7,8 @@
         <artifactId>mina-boot-common</artifactId>
         <version>0.0.1-SNAPSHOT</version> <!-- lookup parent from repository -->
     </parent>
-    <artifactId>mina-boot-common-log</artifactId>
-    <name>mina-boot-common-log</name>
+    <artifactId>mina-boot-common-logging</artifactId>
+    <name>mina-boot-common-logging</name>
     <dependencies>
 
         <dependency>
