@@ -1,7 +1,5 @@
 package cn.mina.boot.common.util;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.SneakyThrows;
@@ -20,7 +18,7 @@ import java.util.Map;
  * @author Created by haoteng on 2022/7/27.
  */
 public class JsonUtil {
-    private static ObjectMapper mapper = new ObjectMapper();
+    private final static ObjectMapper MAPPER = new ObjectMapper();
 
 
     /**
@@ -34,7 +32,7 @@ public class JsonUtil {
         if (obj == null) {
             return null;
         }
-        return mapper.writeValueAsString(obj);
+        return MAPPER.writeValueAsString(obj);
     }
 
 
@@ -51,7 +49,7 @@ public class JsonUtil {
         if (StringUtils.isBlank(jsonStr) || clazz == null) {
             return null;
         }
-        return mapper.readValue(jsonStr, clazz);
+        return MAPPER.readValue(jsonStr, clazz);
     }
 
     /**
@@ -60,7 +58,7 @@ public class JsonUtil {
      * @return {@link ObjectNode}
      */
     public static ObjectNode getObjectNode() {
-        return mapper.createObjectNode();
+        return MAPPER.createObjectNode();
     }
 
 
@@ -77,7 +75,7 @@ public class JsonUtil {
         if (StringUtils.isBlank(listJsonStr) || clazz == null) {
             return Collections.emptyList();
         }
-        return mapper.readValue(listJsonStr, List.class);
+        return MAPPER.readValue(listJsonStr, List.class);
     }
 
 
@@ -95,7 +93,7 @@ public class JsonUtil {
         if (StringUtils.isBlank(mapJsonStr) || kClazz == null || vClazz == null) {
             return Collections.emptyMap();
         }
-        return mapper.readValue(mapJsonStr, mapper.getTypeFactory().constructParametricType(Map.class, kClazz, vClazz));
+        return MAPPER.readValue(mapJsonStr, MAPPER.getTypeFactory().constructParametricType(Map.class, kClazz, vClazz));
     }
 
 

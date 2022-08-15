@@ -112,7 +112,7 @@ public class MinaWebTools {
         public static <T> ClientResult<T> success(T t) {
 
             ClientResult<T> clientResult = new ClientResult();
-            clientResult.setCode(1);
+            clientResult.setCode(0000);
             clientResult.setMessage("请求成功");
             clientResult.setData(t);
             return clientResult;
@@ -120,7 +120,7 @@ public class MinaWebTools {
 
         public static ClientResult success() {
             ClientResult clientResult = new ClientResult();
-            clientResult.setCode(1);
+            clientResult.setCode(0000);
             clientResult.setMessage("请求成功");
             return clientResult;
         }
@@ -129,7 +129,7 @@ public class MinaWebTools {
         public static ClientResult about() {
             ClientResult clientResult = new ClientResult();
             // 订单模块常规异常码
-            clientResult.setCode(601000200);
+            clientResult.setCode(9999);
             clientResult.setMessage("请求失败");
             return clientResult;
         }
@@ -137,7 +137,7 @@ public class MinaWebTools {
         public static ClientResult about(String errorMessage) {
             ClientResult clientResult = new ClientResult();
             // 订单模块常规异常码
-            clientResult.setCode(601000200);
+            clientResult.setCode(9999);
             clientResult.setMessage(errorMessage);
             return clientResult;
         }
