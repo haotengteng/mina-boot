@@ -1,0 +1,5 @@
+mina:
+  web:
+    log:
+      enable: false
+

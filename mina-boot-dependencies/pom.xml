@@ -24,6 +24,7 @@
         <commons-collections.version>3.2.2</commons-collections.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <nacos-config.starter.version>0.2.12</nacos-config.starter.version>
+        <boot-admin.version>2.7.3</boot-admin.version>
     </properties>
 
     <dependencyManagement>
@@ -104,6 +105,16 @@
                 <version>${mina.version}</version>
             </dependency>
             <dependency>
+                <groupId>cn.mina.boot</groupId>
+                <artifactId>mina-boot-admin-server-starter</artifactId>
+                <version>${mina.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.mina.boot</groupId>
+                <artifactId>mina-boot-admin-client-starter</artifactId>
+                <version>${mina.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.skywalking</groupId>
                 <artifactId>apm-toolkit-logback-1.x</artifactId>
                 <version>${skywalking.version}</version>
@@ -176,6 +187,18 @@
                 <groupId>com.alibaba.boot</groupId>
                 <artifactId>nacos-config-spring-boot-starter</artifactId>
                 <version>${nacos-config.starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-server</artifactId>
+                <version>${boot-admin.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-client</artifactId>
+                <version>${boot-admin.version}</version>
             </dependency>
 
         </dependencies>

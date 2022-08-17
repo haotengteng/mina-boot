@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cn.mina.boot</groupId>
+        <artifactId>mina-boot-admin</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <artifactId>mina-boot-admin-server-starter</artifactId>
+    <name>mina-boot-admin-server-starter</name>
+    <dependencies>
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-server</artifactId>
+        </dependency>
+    </dependencies>
+  <build>
+          <resources>
+              <resource>
+                  <directory>src/main/resources</directory>
+                  <includes>
+                      <include>**/*.yml</include>
+                      <include>**/*.xml</include>
+                      <include>**/*.properties</include>
+                      <!--加载模板文件-->
+                      <include>**/*.html</include>
+                      <!--加载静态文件-->
+                      <include>/static/</include>
+                  </includes>
+
+              </resource>
+          </resources>
+  </build>
+
+</project>

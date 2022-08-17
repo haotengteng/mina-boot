@@ -3,9 +3,9 @@
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
 
     <!--    指定文件目录位置、名称，未使用到*-file-appender可省略-->
-    <springProperty scope="context" name="log_path" source="logging.file.path"
+    <springProperty scope="context" name="log_path" source="mina.logging.file.path"
                     defaultValue="./"/>
-    <springProperty scope="context" name="file_name" source="logging.file.name"
+    <springProperty scope="context" name="file_name" source="mina.logging.file.name"
                     defaultValue="./"/>
 
     <!--    logback-base-file.xml 与logback-skywalking.xml 同时只能引用一个，

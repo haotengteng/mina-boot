@@ -1,0 +1,16 @@
+mina:
+  web:
+    log:
+      enable: false
+spring:
+  application:
+    name: mina-boot-example-admin-client
+  boot:
+    admin:
+      client:
+        url: http://localhost:8000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

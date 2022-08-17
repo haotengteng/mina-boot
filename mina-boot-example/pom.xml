@@ -20,5 +20,7 @@
         <module>mina-boot-example-config</module>
         <module>mina-boot-example-data</module>
         <module>mina-boot-example-message</module>
+        <module>mina-boot-example-admin-server</module>
+        <module>mina-boot-example-admin-client</module>
     </modules>
 </project>
