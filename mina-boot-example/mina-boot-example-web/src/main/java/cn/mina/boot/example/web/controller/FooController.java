@@ -38,7 +38,7 @@ public class FooController {
     public ClientResult<String> sayHelloClientResult() throws UnknownHostException {
         log.info("Hello docker !!!!");
         String ip = getLocalIP();
-        return MinaWebTools.response.success(ip + ": Hello docker!");
+        return MinaWebTools.response.success(ip + ": Hello docker!!");
     }
 
 

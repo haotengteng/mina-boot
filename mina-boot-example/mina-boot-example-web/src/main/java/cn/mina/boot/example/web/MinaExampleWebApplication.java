@@ -4,8 +4,11 @@ import cn.mina.boot.context.MinaBootApplication;
 import cn.mina.boot.example.web.context.ExampleWebContext;
 import cn.mina.boot.web.common.context.MinaWebContextOperator;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 
 @SpringBootApplication
+// 开启@WebServlet、@WebFilter、@WebListener注解支持
+@ServletComponentScan
 public class MinaExampleWebApplication {
 
     public static void main(String[] args) {
