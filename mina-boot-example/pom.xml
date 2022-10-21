@@ -22,5 +22,6 @@
         <module>mina-boot-example-message</module>
         <module>mina-boot-example-admin-server</module>
         <module>mina-boot-example-admin-client</module>
+        <module>mina-boot-example-oss</module>
     </modules>
 </project>

@@ -109,44 +109,44 @@ public class MinaWebTools {
         /**
          * 统一返回包装
          */
-        public static <T> ClientResult<T> success(T t) {
+        public static <T> MinaWebResult<T> success(T t) {
 
-            ClientResult<T> clientResult = new ClientResult();
-            clientResult.setCode(0000);
-            clientResult.setMessage("请求成功");
-            clientResult.setData(t);
-            return clientResult;
+            MinaWebResult<T> minaWebResult = new MinaWebResult();
+            minaWebResult.setCode(0000);
+            minaWebResult.setMessage("请求成功");
+            minaWebResult.setData(t);
+            return minaWebResult;
         }
 
-        public static ClientResult success() {
-            ClientResult clientResult = new ClientResult();
-            clientResult.setCode(0000);
-            clientResult.setMessage("请求成功");
-            return clientResult;
+        public static MinaWebResult success() {
+            MinaWebResult minaWebResult = new MinaWebResult();
+            minaWebResult.setCode(0000);
+            minaWebResult.setMessage("请求成功");
+            return minaWebResult;
         }
 
 
-        public static ClientResult about() {
-            ClientResult clientResult = new ClientResult();
+        public static MinaWebResult about() {
+            MinaWebResult minaWebResult = new MinaWebResult();
             // 订单模块常规异常码
-            clientResult.setCode(9999);
-            clientResult.setMessage("请求失败");
-            return clientResult;
+            minaWebResult.setCode(9999);
+            minaWebResult.setMessage("请求失败");
+            return minaWebResult;
         }
 
-        public static ClientResult about(String errorMessage) {
-            ClientResult clientResult = new ClientResult();
+        public static MinaWebResult about(String errorMessage) {
+            MinaWebResult minaWebResult = new MinaWebResult();
             // 订单模块常规异常码
-            clientResult.setCode(9999);
-            clientResult.setMessage(errorMessage);
-            return clientResult;
+            minaWebResult.setCode(9999);
+            minaWebResult.setMessage(errorMessage);
+            return minaWebResult;
         }
 
-        public static ClientResult about(ErrorCode errorCode) {
-            ClientResult clientResult = new ClientResult();
-            clientResult.setCode(errorCode.getCode());
-            clientResult.setMessage(errorCode.getMessage());
-            return clientResult;
+        public static MinaWebResult about(ErrorCode errorCode) {
+            MinaWebResult minaWebResult = new MinaWebResult();
+            minaWebResult.setCode(errorCode.getCode());
+            minaWebResult.setMessage(errorCode.getMessage());
+            return minaWebResult;
         }
     }
 

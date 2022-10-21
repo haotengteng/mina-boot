@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * @author Created by haoteng on 2022/7/19.
  */
-public class ClientResult<T> implements Serializable {
+public class MinaWebResult<T> implements Serializable {
     private static final long serialVersionUID = 7276088992244197729L;
     private Integer code;
     private String message;

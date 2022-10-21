@@ -8,7 +8,7 @@ import java.util.Collection;
 public class MinaPage {
     /**
      * 将集合数据转为分页数据，每次分页查询只可以调用一次
-     * @param collection
+     * @param collection 约定只能通过 xxByPage结尾的方法名获得
      * @return
      * @param <E>
      */

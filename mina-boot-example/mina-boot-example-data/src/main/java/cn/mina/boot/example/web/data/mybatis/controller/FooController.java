@@ -5,7 +5,7 @@ import cn.mina.boot.data.mybatis.Page;
 import cn.mina.boot.example.web.data.mybatis.dao.ExampleMapper;
 import cn.mina.boot.example.web.data.mybatis.dto.QueryDto;
 import cn.mina.boot.example.web.data.mybatis.entity.ExampleDO;
-import cn.mina.boot.web.common.context.ClientResult;
+import cn.mina.boot.web.common.context.MinaWebResult;
 import cn.mina.boot.web.common.context.MinaWebTools;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.UnknownHostException;
-import java.util.List;
 
 @RestController
 @RequestMapping("/foo")
@@ -25,7 +24,7 @@ public class FooController {
     private ExampleMapper exampleMapper;
 
     @GetMapping(path = "mysql")
-    public ClientResult<ExampleDO> sayHello() throws UnknownHostException {
+    public MinaWebResult<ExampleDO> sayHello() throws UnknownHostException {
         ExampleDO aDo = exampleMapper.findById(1);
         return MinaWebTools.response.success(aDo);
     }
@@ -36,7 +35,7 @@ public class FooController {
      * @throws UnknownHostException
      */
     @GetMapping(path = "mysql/page")
-    public ClientResult<Page<ExampleDO>> sayHelloPage() throws UnknownHostException {
+    public MinaWebResult<Page<ExampleDO>> sayHelloPage() throws UnknownHostException {
         Page<ExampleDO> page = MinaPage.cover(exampleMapper.findListByPage(1, 2));
         return MinaWebTools.response.success(page);
     }
@@ -47,7 +46,7 @@ public class FooController {
      * @throws UnknownHostException
      */
     @GetMapping(path = "mysql/page/dto")
-    public ClientResult<Page<ExampleDO>> sayPage() throws UnknownHostException {
+    public MinaWebResult<Page<ExampleDO>> sayPage() throws UnknownHostException {
         QueryDto query = new QueryDto();
         query.setPage(1);
         query.setPageSize(2);

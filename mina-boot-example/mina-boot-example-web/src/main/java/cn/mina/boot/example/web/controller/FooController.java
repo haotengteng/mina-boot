@@ -5,7 +5,7 @@ import cn.mina.boot.example.web.exception.ExampleErrorCode;
 import cn.mina.boot.example.web.exception.ExampleException;
 import cn.mina.boot.cache.redis.MinaCacheRedisUtil;
 import cn.mina.boot.web.auth.MinaWebAuthTools;
-import cn.mina.boot.web.common.context.ClientResult;
+import cn.mina.boot.web.common.context.MinaWebResult;
 import cn.mina.boot.web.common.context.MinaWebContextOperator;
 import cn.mina.boot.web.common.context.MinaWebTools;
 import cn.mina.boot.web.auth.Login;
@@ -35,7 +35,7 @@ public class FooController {
     }
 
     @GetMapping(path = "hello/client")
-    public ClientResult<String> sayHelloClientResult() throws UnknownHostException {
+    public MinaWebResult<String> sayHelloClientResult() throws UnknownHostException {
         log.info("Hello docker !!!!");
         String ip = getLocalIP();
         return MinaWebTools.response.success(ip + ": Hello docker!!");
@@ -43,7 +43,7 @@ public class FooController {
 
 
     @GetMapping(path = "hello/context")
-    public ClientResult sayHelloContext() {
+    public MinaWebResult sayHelloContext() {
         ExampleWebContext context = new ExampleWebContext();
         context.setName("example");
         MinaWebContextOperator.addContext(context);
@@ -54,7 +54,7 @@ public class FooController {
 
     @GetMapping(path = "hello/login")
     @Login
-    public ClientResult testLoginToken() {
+    public MinaWebResult testLoginToken() {
         ExampleWebContext context = new ExampleWebContext();
         context.setName("example");
 
@@ -65,7 +65,7 @@ public class FooController {
     }
 
     @GetMapping(path = "hello/token/generate")
-    public ClientResult testTokenGenerate() {
+    public MinaWebResult testTokenGenerate() {
         ExampleWebContext context = new ExampleWebContext();
         context.setName("example");
         String generate = MinaWebAuthTools.token.generate(context);
@@ -74,7 +74,7 @@ public class FooController {
     }
 
     @GetMapping(path = "hello/cache/redis")
-    public ClientResult testCacheRedis() {
+    public MinaWebResult testCacheRedis() {
         MinaCacheRedisUtil.put("mina","a simple 框架");
         log.info("redis数据:{}",MinaCacheRedisUtil.get("mina",String.class));
         return MinaWebTools.response.success(MinaCacheRedisUtil.get("mina",String.class));
