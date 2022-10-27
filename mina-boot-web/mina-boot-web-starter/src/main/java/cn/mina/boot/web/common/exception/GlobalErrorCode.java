@@ -1,4 +1,6 @@
-package cn.mina.boot.common.exception;
+package cn.mina.boot.web.common.exception;
+
+import cn.mina.boot.common.exception.ErrorCode;
 
 /**
  * @author Created by haoteng on 2022/7/19.

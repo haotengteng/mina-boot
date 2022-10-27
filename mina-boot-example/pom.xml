@@ -23,5 +23,6 @@
         <module>mina-boot-example-admin-server</module>
         <module>mina-boot-example-admin-client</module>
         <module>mina-boot-example-oss</module>
+        <module>mina-boot-example-job</module>
     </modules>
 </project>

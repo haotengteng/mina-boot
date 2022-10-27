@@ -1,6 +1,5 @@
 package cn.mina.boot.web.common.exception;
 
-import cn.mina.boot.common.exception.GlobalErrorCode;
 import cn.mina.boot.common.exception.MinaBaseException;
 import cn.mina.boot.common.util.JsonUtil;
 import com.fasterxml.jackson.databind.node.ObjectNode;

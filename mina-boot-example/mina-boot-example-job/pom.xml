@@ -7,11 +7,9 @@
         <artifactId>mina-boot-example</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>mina-boot-example-message</artifactId>
-    <name>mina-boot-example-message</name>
-    <properties>
-        <java.version>11</java.version>
-    </properties>
+    <artifactId>mina-boot-example-job</artifactId>
+    <name>mina-boot-example-job</name>
+
     <dependencies>
         <dependency>
             <groupId>cn.mina.boot</groupId>
@@ -19,13 +17,8 @@
         </dependency>
         <dependency>
             <groupId>cn.mina.boot</groupId>
-            <artifactId>mina-boot-common-logging</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.mina.boot</groupId>
-            <artifactId>mina-boot-message-rocketmq-starter</artifactId>
+            <artifactId>mina-boot-job-xxl-starter</artifactId>
         </dependency>
     </dependencies>
-
 
 </project>

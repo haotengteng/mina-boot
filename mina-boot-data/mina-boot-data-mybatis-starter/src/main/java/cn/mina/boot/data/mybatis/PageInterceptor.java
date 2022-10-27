@@ -2,7 +2,6 @@ package cn.mina.boot.data.mybatis;
 
 import cn.mina.boot.common.exception.GlobalErrorCode;
 import cn.mina.boot.common.exception.MinaGlobalException;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.binding.MapperMethod;
 import org.apache.ibatis.executor.ErrorContext;
 import org.apache.ibatis.executor.Executor;
@@ -29,7 +28,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;

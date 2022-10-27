@@ -15,6 +15,8 @@ package cn.mina.boot.common.exception;
  */
 public interface ErrorCode {
 
+    public static final Integer BASE_ERROR_CODE = 999999;
+
 
     int getCode();
 

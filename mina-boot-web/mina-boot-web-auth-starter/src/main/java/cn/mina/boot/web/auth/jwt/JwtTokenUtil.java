@@ -4,8 +4,8 @@ import cn.hutool.core.date.DateField;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.jwt.JWT;
 import cn.hutool.jwt.JWTException;
-import cn.mina.boot.common.exception.GlobalErrorCode;
-import cn.mina.boot.common.exception.MinaGlobalException;
+import cn.mina.boot.web.common.exception.GlobalErrorCode;
+import cn.mina.boot.web.common.exception.MinaGlobalException;
 import cn.mina.boot.common.util.JsonUtil;
 import cn.mina.boot.web.common.context.MinaWebContext;
 

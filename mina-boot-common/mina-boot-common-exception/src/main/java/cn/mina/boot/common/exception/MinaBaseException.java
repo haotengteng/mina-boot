@@ -17,6 +17,11 @@ public class MinaBaseException extends RuntimeException {
         this.message = errorCode.getMessage();
     }
 
+    public MinaBaseException(String message) {
+        this.code = ErrorCode.BASE_ERROR_CODE;
+        this.message = message;
+    }
+
     public Integer getCode() {
         return this.code;
     }

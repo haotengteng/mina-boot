@@ -1,7 +1,6 @@
 package cn.mina.boot.web.common.response;
 
-import cn.mina.boot.common.exception.MinaGlobalException;
-import cn.mina.boot.common.util.JsonUtil;
+import cn.mina.boot.web.common.exception.MinaGlobalException;
 import cn.mina.boot.web.common.context.MinaWebResult;
 import cn.mina.boot.web.common.context.MinaWebTools;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -11,11 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author Created by haoteng on 2022/10/19.

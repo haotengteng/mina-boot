@@ -1,13 +1,22 @@
 package cn.mina.boot.common.util;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.SneakyThrows;
 import org.apache.commons.lang3.StringUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+
+import static org.apache.commons.lang3.StringUtils.isEmpty;
 
 /**
  * json 工具类
@@ -20,6 +29,22 @@ import java.util.Map;
 public class JsonUtil {
     private final static ObjectMapper MAPPER = new ObjectMapper();
 
+    // 日起格式化
+    private static final String STANDARD_FORMAT = "yyyy-MM-dd HH:mm:ss";
+
+    static {
+        //对象的所有字段全部列入
+        MAPPER.setSerializationInclusion(JsonInclude.Include.ALWAYS);
+        //取消默认转换timestamps形式
+        MAPPER.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+        //忽略空Bean转json的错误
+        MAPPER.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+        //所有的日期格式都统一为以下的样式，即yyyy-MM-dd HH:mm:ss
+        // todo 线程安全
+//        MAPPER.setDateFormat(new SimpleDateFormat(STANDARD_FORMAT));
+        //忽略 在json字符串中存在，但是在java对象中不存在对应属性的情况。防止错误
+        MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    }
 
     /**
      * 序列化为JSON字符串
@@ -45,22 +70,29 @@ public class JsonUtil {
      * @return {@link T}
      */
     @SneakyThrows
-    public static <T> T parseObject(String jsonStr, Class<T> clazz) {
+    public static <T> T toBean(String jsonStr, Class<T> clazz) {
         if (StringUtils.isBlank(jsonStr) || clazz == null) {
             return null;
         }
         return MAPPER.readValue(jsonStr, clazz);
     }
 
-    /**
-     * 获取jsonNode对象
-     *
-     * @return {@link ObjectNode}
-     */
-    public static ObjectNode getObjectNode() {
-        return MAPPER.createObjectNode();
-    }
 
+    /**
+     * 解析对象
+     * 反序列化为Object
+     *
+     * @param reference reference
+     * @param jsonStr   json str
+     * @return {@link T}
+     */
+    @SneakyThrows
+    public static <T> T toBean(String jsonStr, TypeReference<T> reference) {
+        if (StringUtils.isBlank(jsonStr) || reference == null) {
+            return null;
+        }
+        return MAPPER.readValue(jsonStr, reference);
+    }
 
     /**
      * 解析List
@@ -71,7 +103,7 @@ public class JsonUtil {
      * @return {@link List}<{@link T}>
      */
     @SneakyThrows
-    public static <T> List<T> parseList(String listJsonStr, Class<T> clazz) {
+    public static <T> List<T> toList(String listJsonStr, Class<T> clazz) {
         if (StringUtils.isBlank(listJsonStr) || clazz == null) {
             return Collections.emptyList();
         }
@@ -89,12 +121,64 @@ public class JsonUtil {
      * @return {@link Map}<{@link K}, {@link V}>
      */
     @SneakyThrows
-    public static <K, V> Map<K, V> parseMap(String mapJsonStr, Class<K> kClazz, Class<V> vClazz) {
+    public static <K, V> Map<K, V> toMap(String mapJsonStr, Class<K> kClazz, Class<V> vClazz) {
         if (StringUtils.isBlank(mapJsonStr) || kClazz == null || vClazz == null) {
             return Collections.emptyMap();
         }
         return MAPPER.readValue(mapJsonStr, MAPPER.getTypeFactory().constructParametricType(Map.class, kClazz, vClazz));
     }
 
+
+    /**
+     * 获取jsonNode对象
+     *
+     * @return {@link ObjectNode}
+     */
+    public static ObjectNode getObjectNode() {
+        return MAPPER.createObjectNode();
+    }
+
+    /*
+     * jsonstr 转换成转换成JsonNode
+     */
+    @SneakyThrows
+    public static JsonNode toJsonNode(String jsonString) {
+        if (isEmpty(jsonString)) {
+            return null;
+        }
+        return MAPPER.readTree(jsonString);
+    }
+
+    /*
+     * jsonNode 转换成转换成bean
+     */
+    @SneakyThrows
+    public static <T> T toBean(JsonNode jsonNode, Class<T> t) {
+        if (jsonNode == null) {
+            return null;
+        }
+        return (T) MAPPER.convertValue(jsonNode, t);
+    }
+
+    /**
+     * @param jsonNode
+     * @param t
+     * @param <T>
+     * @return
+     */
+    @SneakyThrows
+    public static <T> JsonNode toJsonNode(T t, JsonNode jsonNode) {
+        if (t == null) {
+            return null;
+        }
+        return MAPPER.convertValue(t, JsonNode.class);
+    }
+
+
+    public static void main(String[] args) {
+        String str = "{\"1\":{\"id\":1,\"name\":\"德玛西亚\",\"time\":\"2022-05-06 17:53:01\",\"map\":{\"第2组\":[{\"id\":21,\"name\":\"德玛西亚21\",\"time\":\"2022-05-06 17:53:01\"},{\"id\":22,\"name\":\"德玛西亚22\",\"time\":\"2022-05-06 17:53:01\"},{\"id\":23,\"name\":\"德玛西亚23\",\"time\":\"2022-05-06 17:53:01\"}],\"第1组\":[{\"id\":11,\"name\":\"德玛西亚11\",\"time\":\"2022-05-06 17:53:01\"},{\"id\":12,\"name\":\"德玛西亚12\",\"time\":\"2022-05-06 17:53:01\"},{\"id\":13,\"name\":\"德玛西亚13\",\"time\":\"2022-05-06 17:53:01\"}]}},\"2\":{\"id\":2,\"name\":\"德玛西亚\",\"time\":\"2022-05-06 17:53:01\",\"map\":{\"第2组\":[{\"id\":21,\"name\":\"德玛西亚21\",\"time\":\"2022-05-06 17:53:01\"},{\"id\":22,\"name\":\"德玛西亚22\",\"time\":\"2022-05-06 17:53:01\"},{\"id\":23,\"name\":\"德玛西亚23\",\"time\":\"2022-05-06 17:53:01\"}],\"第1组\":[{\"id\":11,\"name\":\"德玛西亚11\",\"time\":\"2022-05-06 17:53:01\"},{\"id\":12,\"name\":\"德玛西亚12\",\"time\":\"2022-05-06 17:53:01\"},{\"id\":13,\"name\":\"德玛西亚13\",\"time\":\"2022-05-06 17:53:01\"}]}}}\n";
+        JsonNode jsonNode = toJsonNode(str);
+        System.out.println(11);
+    }
 
 }

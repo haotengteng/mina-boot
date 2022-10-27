@@ -1,10 +1,8 @@
 package cn.mina.boot.example.oss.controller;
 
-import cn.mina.boot.common.exception.GlobalErrorCode;
-import cn.mina.boot.common.exception.MinaGlobalException;
+import cn.mina.boot.web.common.exception.GlobalErrorCode;
+import cn.mina.boot.web.common.exception.MinaGlobalException;
 import cn.mina.boot.oss.minio.MinaOssMinioUtil;
-import cn.mina.boot.web.common.context.MinaWebResult;
-import cn.mina.boot.web.common.context.MinaWebTools;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

@@ -1,7 +1,7 @@
 package cn.mina.boot.web.auth;
 
-import cn.mina.boot.common.exception.GlobalErrorCode;
-import cn.mina.boot.common.exception.MinaGlobalException;
+import cn.mina.boot.web.common.exception.GlobalErrorCode;
+import cn.mina.boot.web.common.exception.MinaGlobalException;
 
 import cn.mina.boot.web.common.context.MinaWebContext;
 import cn.mina.boot.web.common.context.MinaWebContextOperator;

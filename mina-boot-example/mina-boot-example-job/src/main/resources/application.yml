@@ -1,0 +1,47 @@
+mina:
+  web:
+    log:
+      enable: true
+      excludeUrls:
+        - /foo/*
+        - /v3/api-docs
+        - /swagger-resources
+      groupName: "aaa"
+    auth:
+      enable: true
+      type: cache
+      key: token
+      secret: uahsdahsdkjjeriuh
+      expireTime: 12
+    doc:
+      enable: true
+  cache:
+    redis:
+      enable: false
+  oss:
+    minio:
+      enable: true
+      endpoint: http://localhost:9000
+      accessKey: root
+      secretKey: 12345678
+      bucketName: minio-demo
+---
+xxl:
+  job:
+    admin:
+      addresses: http://127.0.0.1:9090/xxl-job-admin
+    executor:
+      appname: mina-boot-xxl-job-executor-sample
+      address:
+      logpath: job-log
+      logretentiondays: 30
+mina:
+  job:
+    xxl:
+      admin:
+        username: admin
+        password: 123456
+      executor:
+        title: mina-title
+
+

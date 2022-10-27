@@ -2,8 +2,8 @@ package cn.mina.boot.web.common.context;
 
 
 import cn.mina.boot.common.exception.ErrorCode;
-import cn.mina.boot.common.exception.GlobalErrorCode;
-import cn.mina.boot.common.exception.MinaGlobalException;
+import cn.mina.boot.web.common.exception.GlobalErrorCode;
+import cn.mina.boot.web.common.exception.MinaGlobalException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
