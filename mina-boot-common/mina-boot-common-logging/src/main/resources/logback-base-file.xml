@@ -12,16 +12,4 @@
         </encoder>
     </appender>
 
-    <appender name="time-file-appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>debug</level>
-        </filter>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${log_path}/${file_name}_%d{yyyy-MM-dd}.log</fileNamePattern>
-            <maxHistory>15</maxHistory>
-        </rollingPolicy>
-        <encoder>
-            <pattern>${log_pattern_file}</pattern>
-        </encoder>
-    </appender>
 </included>

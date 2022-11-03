@@ -19,7 +19,7 @@ public class FooJobHandler {
     }
 
     @XxlJob("mina-boot-example-test-job1")
-    @JobAutoRegister(cron = "0 0 0 * * ? *")
+    @JobAutoRegister(cron = "* * * * * ?")
     public void execute1(String param) throws Exception {
 // 接收参数代码
         String param1 = XxlJobHelper.getJobParam();

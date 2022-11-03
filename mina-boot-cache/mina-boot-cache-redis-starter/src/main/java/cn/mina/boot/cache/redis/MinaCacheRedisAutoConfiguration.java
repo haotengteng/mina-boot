@@ -1,8 +1,7 @@
 package cn.mina.boot.cache.redis;
 
 import cn.mina.boot.cache.redis.serializer.FastJson2RedisSerializer;
-import cn.mina.boot.common.exception.GlobalErrorCode;
-import cn.mina.boot.common.exception.MinaGlobalException;
+import cn.mina.boot.common.exception.MinaBaseException;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -80,7 +79,7 @@ public class MinaCacheRedisAutoConfiguration {
     public RedisCacheConfiguration cacheConfiguration() {
         String duration = properties.getDuration();
         if (StringUtils.isBlank(duration)) {
-            throw new MinaGlobalException(GlobalErrorCode.ERROR_ILLEGAL_CONFIG);
+            throw new MinaBaseException("mina cache redis config 'duration' must not be null ");
         }
         // 设置缓存过期时间为 duration 秒后
         return RedisCacheConfiguration.defaultCacheConfig()

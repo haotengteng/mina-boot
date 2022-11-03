@@ -12,9 +12,9 @@ public class MinaExampleCommonLogApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MinaExampleCommonLogApplication.class, args);
-		logger.info("This is a info message1.");
+		logger.debug("This is a info message1.");
 		logger.info("This is a info message2.");
-		logger.info("This is a info message3.");
+		logger.error("This is a info message3.");
 	}
 
 

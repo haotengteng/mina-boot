@@ -1,7 +1,6 @@
 package cn.mina.boot.data.mybatis;
 
-import cn.mina.boot.common.exception.GlobalErrorCode;
-import cn.mina.boot.common.exception.MinaGlobalException;
+import cn.mina.boot.common.exception.MinaBaseException;
 import org.apache.ibatis.binding.MapperMethod;
 import org.apache.ibatis.executor.ErrorContext;
 import org.apache.ibatis.executor.Executor;
@@ -118,7 +117,7 @@ public class PageInterceptor implements Interceptor {
                     } catch (IllegalAccessException e) {
                         throw new RuntimeException(e);
                     } catch (NoSuchFieldException e) {
-                        throw new MinaGlobalException(GlobalErrorCode.ERROR_ILLEGAL_PAGE_PARAMETER);
+                        throw new MinaBaseException("mina data mybatis page params error");
                     }
                 }
 

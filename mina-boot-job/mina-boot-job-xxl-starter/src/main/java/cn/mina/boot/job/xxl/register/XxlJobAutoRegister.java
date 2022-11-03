@@ -41,6 +41,12 @@ public class XxlJobAutoRegister implements ApplicationListener<ApplicationReadyE
         this.applicationContext = applicationContext;
     }
 
+    // todo 待实现功能
+    /**
+     * 新增job后自动 启动job
+     * 重启项目的时候，job 删除重新创建
+     */
+
     @Override
     public void onApplicationEvent(ApplicationReadyEvent event) {
         //注册执行器
