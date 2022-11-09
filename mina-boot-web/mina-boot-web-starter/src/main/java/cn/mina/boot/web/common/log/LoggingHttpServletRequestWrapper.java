@@ -1,6 +1,6 @@
 package cn.mina.boot.web.common.log;
 
-import cn.mina.boot.common.util.IOUtils;
+import org.springframework.util.StreamUtils;
 
 import javax.servlet.ReadListener;
 import javax.servlet.ServletInputStream;
@@ -34,7 +34,7 @@ public class LoggingHttpServletRequestWrapper extends HttpServletRequestWrapper 
     private void cacheInputStream() throws IOException {
 
         cachedBytes = new ByteArrayOutputStream();
-        IOUtils.copy(super.getInputStream(), cachedBytes);
+        StreamUtils.copy(super.getInputStream(), cachedBytes);
     }
 
     public class CachedServletInputStream extends ServletInputStream {

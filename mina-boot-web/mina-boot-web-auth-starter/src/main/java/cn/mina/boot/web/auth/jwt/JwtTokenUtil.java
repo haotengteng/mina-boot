@@ -27,7 +27,7 @@ public class JwtTokenUtil {
     public static <T extends MinaWebContext> T decode(String token, Class<T> clazz) {
         JWT jwt = JWT.of(token);
         String context = (String) jwt.getPayload("context");
-        return JsonUtil.parseObject(context, clazz);
+        return JsonUtil.toBean(context, clazz);
     }
 
     public static Date getExpire(String token) {

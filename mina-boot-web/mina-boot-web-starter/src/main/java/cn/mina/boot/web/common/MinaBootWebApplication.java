@@ -11,7 +11,7 @@ public class MinaBootWebApplication {
     private static final Logger logger = LoggerFactory.getLogger(MinaBootWebApplication.class);
 
     public static ConfigurableApplicationContext run(Class<?> primarySource, String[] args, Class<? extends MinaWebContext> context) {
-        ConfigurableApplicationContext applicationContext = MinaBootApplication.run(MinaBootWebApplication.class, args);
+        ConfigurableApplicationContext applicationContext = MinaBootApplication.run(primarySource, args);
         // 设置自定义上下文
         MinaWebContextOperator.initCustomContext(context);
         return applicationContext;

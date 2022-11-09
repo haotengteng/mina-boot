@@ -2,6 +2,7 @@ package cn.mina.boot.example.web;
 
 import cn.mina.boot.context.MinaBootApplication;
 import cn.mina.boot.example.web.context.ExampleWebContext;
+import cn.mina.boot.web.common.MinaBootWebApplication;
 import cn.mina.boot.web.common.context.MinaWebContextOperator;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
@@ -12,9 +13,9 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 public class MinaExampleWebApplication {
 
     public static void main(String[] args) {
-        MinaBootApplication.run(MinaExampleWebApplication.class, args);
+        MinaBootWebApplication.run(MinaExampleWebApplication.class, args,ExampleWebContext.class);
         // 设置自定义上下文
-        MinaWebContextOperator.initCustomContext(ExampleWebContext.class);
+//        MinaWebContextOperator.initCustomContext(ExampleWebContext.class);
     }
 
 }

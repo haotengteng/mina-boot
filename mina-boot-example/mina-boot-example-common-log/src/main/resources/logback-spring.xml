@@ -18,7 +18,7 @@
         <!--        <appender-ref ref="file-appender-skywalking"/>-->
         <!--        <appender-ref ref="log-appender-skywalking"/>-->
         <appender-ref ref="console"/>
-        <appender-ref ref="time-file-appender"/>
+<!--        <appender-ref ref="time-file-appender"/>-->
     </root>
 
 </configuration>
