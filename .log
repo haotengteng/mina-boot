@@ -1,0 +1,68 @@
+2022-11-17 13:39:37.018 [main] INFO  c.m.b.e.w.MinaExampleWebApplication - [TID:N/A] - Starting MinaExampleWebApplication using Java 11.0.17 on haotengdeMacBook-Pro.local with PID 95888 (/Users/haoteng/work/code/mina-boot/mina-boot-example/mina-boot-example-web/target/classes started by haoteng in /Users/haoteng/work/code/mina-boot)
+2022-11-17 13:39:37.022 [main] INFO  c.m.b.e.w.MinaExampleWebApplication - [TID:N/A] - No active profile set, falling back to 1 default profile: "default"
+2022-11-17 13:39:39.396 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - [TID:N/A] - Multiple Spring Data modules found, entering strict repository configuration mode
+2022-11-17 13:39:39.408 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - [TID:N/A] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-11-17 13:39:39.479 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - [TID:N/A] - Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces.
+2022-11-17 13:39:41.330 [main] INFO  io.undertow.servlet - [TID:N/A] - Initializing Spring embedded WebApplicationContext
+2022-11-17 13:39:41.331 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - [TID:N/A] - Root WebApplicationContext: initialization completed in 4187 ms
+2022-11-17 13:39:48.733 [main] INFO  io.undertow - [TID:N/A] - starting server: Undertow - 2.2.18.Final
+2022-11-17 13:39:48.767 [main] INFO  org.xnio - [TID:N/A] - XNIO version 3.8.7.Final
+2022-11-17 13:39:48.796 [main] INFO  org.xnio.nio - [TID:N/A] - XNIO NIO Implementation Version 3.8.7.Final
+2022-11-17 13:39:48.953 [main] INFO  org.jboss.threads - [TID:N/A] - JBoss Threads version 3.1.0.Final
+2022-11-17 13:39:49.071 [main] INFO  io.undertow - [TID:N/A] - stopping server: Undertow - 2.2.18.Final
+2022-11-17 13:39:49.075 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - [TID:N/A] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+2022-11-17 13:39:49.147 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - [TID:N/A] - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-11-17 13:39:49.411 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - [TID:N/A] - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2022-11-17 13:40:08.277 [main] INFO  c.m.b.e.w.MinaExampleWebApplication - [TID:N/A] - Starting MinaExampleWebApplication using Java 11.0.17 on haotengdeMacBook-Pro.local with PID 95930 (/Users/haoteng/work/code/mina-boot/mina-boot-example/mina-boot-example-web/target/classes started by haoteng in /Users/haoteng/work/code/mina-boot)
+2022-11-17 13:40:08.283 [main] INFO  c.m.b.e.w.MinaExampleWebApplication - [TID:N/A] - No active profile set, falling back to 1 default profile: "default"
+2022-11-17 13:40:12.015 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - [TID:N/A] - Multiple Spring Data modules found, entering strict repository configuration mode
+2022-11-17 13:40:12.028 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - [TID:N/A] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-11-17 13:40:12.159 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - [TID:N/A] - Finished Spring Data repository scanning in 38 ms. Found 0 Redis repository interfaces.
+2022-11-17 13:40:14.153 [main] INFO  io.undertow.servlet - [TID:N/A] - Initializing Spring embedded WebApplicationContext
+2022-11-17 13:40:14.153 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - [TID:N/A] - Root WebApplicationContext: initialization completed in 5717 ms
+2022-11-17 13:40:18.046 [main] INFO  io.undertow - [TID:N/A] - starting server: Undertow - 2.2.18.Final
+2022-11-17 13:40:18.065 [main] INFO  org.xnio - [TID:N/A] - XNIO version 3.8.7.Final
+2022-11-17 13:40:18.082 [main] INFO  org.xnio.nio - [TID:N/A] - XNIO NIO Implementation Version 3.8.7.Final
+2022-11-17 13:40:18.154 [main] INFO  org.jboss.threads - [TID:N/A] - JBoss Threads version 3.1.0.Final
+2022-11-17 13:40:18.231 [main] INFO  io.undertow - [TID:N/A] - stopping server: Undertow - 2.2.18.Final
+2022-11-17 13:40:18.233 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - [TID:N/A] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+2022-11-17 13:40:32.027 [main] INFO  c.m.b.e.w.MinaExampleWebApplication - [TID:N/A] - Starting MinaExampleWebApplication using Java 11.0.17 on haotengdeMacBook-Pro.local with PID 95960 (/Users/haoteng/work/code/mina-boot/mina-boot-example/mina-boot-example-web/target/classes started by haoteng in /Users/haoteng/work/code/mina-boot)
+2022-11-17 13:40:32.031 [main] INFO  c.m.b.e.w.MinaExampleWebApplication - [TID:N/A] - No active profile set, falling back to 1 default profile: "default"
+2022-11-17 13:40:34.648 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - [TID:N/A] - Multiple Spring Data modules found, entering strict repository configuration mode
+2022-11-17 13:40:34.658 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - [TID:N/A] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-11-17 13:40:34.732 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - [TID:N/A] - Finished Spring Data repository scanning in 17 ms. Found 0 Redis repository interfaces.
+2022-11-17 13:40:36.067 [main] INFO  io.undertow.servlet - [TID:N/A] - Initializing Spring embedded WebApplicationContext
+2022-11-17 13:40:36.067 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - [TID:N/A] - Root WebApplicationContext: initialization completed in 3907 ms
+2022-11-17 13:40:38.586 [main] INFO  io.undertow - [TID:N/A] - starting server: Undertow - 2.2.18.Final
+2022-11-17 13:40:38.598 [main] INFO  org.xnio - [TID:N/A] - XNIO version 3.8.7.Final
+2022-11-17 13:40:38.613 [main] INFO  org.xnio.nio - [TID:N/A] - XNIO NIO Implementation Version 3.8.7.Final
+2022-11-17 13:40:38.681 [main] INFO  org.jboss.threads - [TID:N/A] - JBoss Threads version 3.1.0.Final
+2022-11-17 13:40:38.769 [main] INFO  o.s.b.w.e.undertow.UndertowWebServer - [TID:N/A] - Undertow started on port(s) 8088 (http)
+2022-11-17 13:40:39.114 [main] INFO  c.m.b.e.w.MinaExampleWebApplication - [TID:N/A] - Started MinaExampleWebApplication in 9.6 seconds (JVM running for 17.862)
+2022-11-17 13:40:39.120 [main] INFO  c.m.boot.context.MinaBootApplication - [TID:N/A] - Mina project start succeeded !!!
+2022-11-17 13:40:42.392 [XNIO-1 task-1] INFO  io.undertow.servlet - [TID:3a51e412440f47098984eded9bd8bcee.65.16686636422380001] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-17 13:40:42.393 [XNIO-1 task-1] INFO  o.s.web.servlet.DispatcherServlet - [TID:3a51e412440f47098984eded9bd8bcee.65.16686636422380001] - Initializing Servlet 'dispatcherServlet'
+2022-11-17 13:40:42.397 [XNIO-1 task-1] INFO  o.s.web.servlet.DispatcherServlet - [TID:3a51e412440f47098984eded9bd8bcee.65.16686636422380001] - Completed initialization in 3 ms
+2022-11-17 13:40:42.590 [XNIO-1 task-1] INFO  c.m.b.w.common.log.MinaWebLogFilter - [TID:3a51e412440f47098984eded9bd8bcee.65.16686636422380001] - 请求信息：{"url":"http://localhost:8088/foo/hello","params":""}
+2022-11-17 13:40:42.778 [XNIO-1 task-1] INFO  c.m.b.e.web.controller.FooController - [TID:3a51e412440f47098984eded9bd8bcee.65.16686636422380001] - haotengdeMacBook-Pro.local-127.0.0.1: Hello docker!
+2022-11-17 13:40:42.877 [XNIO-1 task-1] INFO  c.m.b.w.common.log.MinaWebLogFilter - [TID:3a51e412440f47098984eded9bd8bcee.65.16686636422380001] - 响应信息：{"code":0,"message":"请求成功","data":"haotengdeMacBook-Pro.local-127.0.0.1: Hello docker!"}，请求耗时:466ms
+2022-11-17 13:40:52.730 [XNIO-1 task-1] INFO  c.m.b.w.common.log.MinaWebLogFilter - [TID:3a51e412440f47098984eded9bd8bcee.63.16686636527290001] - 请求信息：{"url":"http://localhost:8088/foo/hello","params":""}
+2022-11-17 13:40:52.732 [XNIO-1 task-1] INFO  c.m.b.e.web.controller.FooController - [TID:3a51e412440f47098984eded9bd8bcee.63.16686636527290001] - haotengdeMacBook-Pro.local-127.0.0.1: Hello docker!
+2022-11-17 13:40:52.736 [XNIO-1 task-1] INFO  c.m.b.w.common.log.MinaWebLogFilter - [TID:3a51e412440f47098984eded9bd8bcee.63.16686636527290001] - 响应信息：{"code":0,"message":"请求成功","data":"haotengdeMacBook-Pro.local-127.0.0.1: Hello docker!"}，请求耗时:7ms
+2022-11-17 13:54:53.019 [SpringApplicationShutdownHook] INFO  io.undertow - [TID:N/A] - stopping server: Undertow - 2.2.18.Final
+2022-11-17 13:54:53.053 [SpringApplicationShutdownHook] INFO  io.undertow.servlet - [TID:N/A] - Destroying Spring FrameworkServlet 'dispatcherServlet'

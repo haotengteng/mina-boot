@@ -5,21 +5,14 @@
               value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%boldYellow(%thread)] %highlight(%-5level) %boldGreen(%logger) %msg%n"/>
 
     <!-- 控制台日志输出 -->
-    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>${log_pattern_console}</pattern>
-        </encoder>
-    </appender>
-
-    <!-- 同步打印日志输出 -->
-    <appender name="log-appender" class="cn.mina.boot.common.log.LogConsoleAppender">
+    <appender name="console-appender" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>${log_pattern_console}</pattern>
         </encoder>
     </appender>
 
     <!-- 异步打印日志输出 -->
-    <appender name="async-log-appender" class="ch.qos.logback.classic.AsyncAppender">
-        <appender-ref ref="log-appender"/>
+    <appender name="async-console-appender" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="console-appender"/>
     </appender>
 </included>

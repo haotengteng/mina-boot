@@ -6,14 +6,14 @@
     <springProperty scope="context" name="log_path" source="logging.file.path"
                     defaultValue="../"/>
     <springProperty scope="context" name="file_name" source="logging.file.name"
-                    defaultValue="../"/>
+                    defaultValue="app.log"/>
 
     <!--    logback-base-file.xml 与logback-skywalking.xml 同时只能引用一个，
     logback-skywalking-file.xml 会额外打印 traceId-->
         <include resource="logback-base-console.xml"/>
 
     <root level="info">
-        <appender-ref ref="console"/>
+        <appender-ref ref="console-appender"/>
     </root>
 
 </configuration>

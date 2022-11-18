@@ -1,0 +1,52 @@
+2022-11-17 13:55:03.043 [main] INFO  c.m.b.e.w.MinaExampleWebApplication - [TID:N/A] - Starting MinaExampleWebApplication using Java 11.0.17 on haotengdeMacBook-Pro.local with PID 96855 (/Users/haoteng/work/code/mina-boot/mina-boot-example/mina-boot-example-web/target/classes started by haoteng in /Users/haoteng/work/code/mina-boot)
+2022-11-17 13:55:03.047 [main] INFO  c.m.b.e.w.MinaExampleWebApplication - [TID:N/A] - No active profile set, falling back to 1 default profile: "default"
+2022-11-17 13:55:06.190 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - [TID:N/A] - Multiple Spring Data modules found, entering strict repository configuration mode
+2022-11-17 13:55:06.198 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - [TID:N/A] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-11-17 13:55:06.263 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - [TID:N/A] - Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces.
+2022-11-17 13:55:07.461 [main] INFO  io.undertow.servlet - [TID:N/A] - Initializing Spring embedded WebApplicationContext
+2022-11-17 13:55:07.461 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - [TID:N/A] - Root WebApplicationContext: initialization completed in 4262 ms
+2022-11-17 13:55:10.044 [main] INFO  io.undertow - [TID:N/A] - starting server: Undertow - 2.2.18.Final
+2022-11-17 13:55:10.058 [main] INFO  org.xnio - [TID:N/A] - XNIO version 3.8.7.Final
+2022-11-17 13:55:10.079 [main] INFO  org.xnio.nio - [TID:N/A] - XNIO NIO Implementation Version 3.8.7.Final
+2022-11-17 13:55:10.152 [main] INFO  org.jboss.threads - [TID:N/A] - JBoss Threads version 3.1.0.Final
+2022-11-17 13:55:10.247 [main] INFO  o.s.b.w.e.undertow.UndertowWebServer - [TID:N/A] - Undertow started on port(s) 8088 (http)
+2022-11-17 13:55:10.602 [main] INFO  c.m.b.e.w.MinaExampleWebApplication - [TID:N/A] - Started MinaExampleWebApplication in 9.502 seconds (JVM running for 14.506)
+2022-11-17 13:55:10.608 [main] INFO  c.m.boot.context.MinaBootApplication - [TID:N/A] - Mina project start succeeded !!!
+2022-11-17 13:57:24.702 [SpringApplicationShutdownHook] INFO  io.undertow - [TID:N/A] - stopping server: Undertow - 2.2.18.Final
+2022-11-17 13:57:38.214 [main] INFO  c.m.b.e.w.MinaExampleWebApplication - [TID:N/A] - Starting MinaExampleWebApplication using Java 11.0.17 on haotengdeMacBook-Pro.local with PID 97034 (/Users/haoteng/work/code/mina-boot/mina-boot-example/mina-boot-example-web/target/classes started by haoteng in /Users/haoteng/work/code/mina-boot)
+2022-11-17 13:57:38.219 [main] INFO  c.m.b.e.w.MinaExampleWebApplication - [TID:N/A] - No active profile set, falling back to 1 default profile: "default"
+2022-11-17 13:57:40.984 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - [TID:N/A] - Multiple Spring Data modules found, entering strict repository configuration mode
+2022-11-17 13:57:40.991 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - [TID:N/A] - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-11-17 13:57:41.064 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - [TID:N/A] - Finished Spring Data repository scanning in 24 ms. Found 0 Redis repository interfaces.
+2022-11-17 13:57:42.399 [main] INFO  io.undertow.servlet - [TID:N/A] - Initializing Spring embedded WebApplicationContext
+2022-11-17 13:57:42.399 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - [TID:N/A] - Root WebApplicationContext: initialization completed in 4030 ms
+2022-11-17 13:57:45.251 [main] INFO  io.undertow - [TID:N/A] - starting server: Undertow - 2.2.18.Final
+2022-11-17 13:57:45.263 [main] INFO  org.xnio - [TID:N/A] - XNIO version 3.8.7.Final
+2022-11-17 13:57:45.278 [main] INFO  org.xnio.nio - [TID:N/A] - XNIO NIO Implementation Version 3.8.7.Final
+2022-11-17 13:57:45.339 [main] INFO  org.jboss.threads - [TID:N/A] - JBoss Threads version 3.1.0.Final
+2022-11-17 13:57:45.419 [main] INFO  o.s.b.w.e.undertow.UndertowWebServer - [TID:N/A] - Undertow started on port(s) 8088 (http)
+2022-11-17 13:57:45.721 [main] INFO  c.m.b.e.w.MinaExampleWebApplication - [TID:N/A] - Started MinaExampleWebApplication in 11.96 seconds (JVM running for 16.235)
+2022-11-17 13:57:45.727 [main] INFO  c.m.boot.context.MinaBootApplication - [TID:N/A] - Mina project start succeeded !!!
+2022-11-17 13:58:50.195 [XNIO-1 task-1] INFO  io.undertow.servlet - [TID:87d7092816234a2481c61f3d5aa684ff.68.16686647300990001] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-17 13:58:50.196 [XNIO-1 task-1] INFO  o.s.web.servlet.DispatcherServlet - [TID:87d7092816234a2481c61f3d5aa684ff.68.16686647300990001] - Initializing Servlet 'dispatcherServlet'
+2022-11-17 13:58:50.199 [XNIO-1 task-1] INFO  o.s.web.servlet.DispatcherServlet - [TID:87d7092816234a2481c61f3d5aa684ff.68.16686647300990001] - Completed initialization in 3 ms
+2022-11-17 13:58:50.317 [XNIO-1 task-1] INFO  c.m.b.w.common.log.MinaWebLogFilter - [TID:87d7092816234a2481c61f3d5aa684ff.68.16686647300990001] - 请求信息：{"url":"http://localhost:8088/foo/hello","params":""}
+2022-11-17 13:58:50.383 [XNIO-1 task-1] INFO  c.m.b.e.web.controller.FooController - [TID:87d7092816234a2481c61f3d5aa684ff.68.16686647300990001] - haotengdeMacBook-Pro.local-127.0.0.1: Hello docker!
+2022-11-17 13:58:50.477 [XNIO-1 task-1] INFO  c.m.b.w.common.log.MinaWebLogFilter - [TID:87d7092816234a2481c61f3d5aa684ff.68.16686647300990001] - 响应信息：{"code":0,"message":"请求成功","data":"haotengdeMacBook-Pro.local-127.0.0.1: Hello docker!"}，请求耗时:268ms
+2022-11-17 14:09:27.301 [XNIO-1 task-1] INFO  c.m.b.w.common.log.MinaWebLogFilter - [TID:87d7092816234a2481c61f3d5aa684ff.67.16686653672940001] - 请求信息：{"url":"http://localhost:8088/foo/hello","params":""}
+2022-11-17 14:09:27.483 [XNIO-1 task-1] INFO  c.m.b.e.web.controller.FooController - [TID:87d7092816234a2481c61f3d5aa684ff.67.16686653672940001] - haotengdeMacBook-Pro.local-127.0.0.1: Hello docker!
+2022-11-17 14:09:27.510 [XNIO-1 task-1] INFO  c.m.b.w.common.log.MinaWebLogFilter - [TID:87d7092816234a2481c61f3d5aa684ff.67.16686653672940001] - 响应信息：{"code":0,"message":"请求成功","data":"haotengdeMacBook-Pro.local-127.0.0.1: Hello docker!"}，请求耗时:211ms
+2022-11-17 14:09:28.720 [XNIO-1 task-1] INFO  c.m.b.w.common.log.MinaWebLogFilter - [TID:87d7092816234a2481c61f3d5aa684ff.69.16686653687190001] - 请求信息：{"url":"http://localhost:8088/foo/hello","params":""}
+2022-11-17 14:09:28.721 [XNIO-1 task-1] INFO  c.m.b.e.web.controller.FooController - [TID:87d7092816234a2481c61f3d5aa684ff.69.16686653687190001] - haotengdeMacBook-Pro.local-127.0.0.1: Hello docker!
+2022-11-17 14:09:28.725 [XNIO-1 task-1] INFO  c.m.b.w.common.log.MinaWebLogFilter - [TID:87d7092816234a2481c61f3d5aa684ff.69.16686653687190001] - 响应信息：{"code":0,"message":"请求成功","data":"haotengdeMacBook-Pro.local-127.0.0.1: Hello docker!"}，请求耗时:5ms
+2022-11-17 14:09:29.743 [XNIO-1 task-1] INFO  c.m.b.w.common.log.MinaWebLogFilter - [TID:87d7092816234a2481c61f3d5aa684ff.66.16686653697430001] - 请求信息：{"url":"http://localhost:8088/foo/hello","params":""}
+2022-11-17 14:09:29.744 [XNIO-1 task-1] INFO  c.m.b.e.web.controller.FooController - [TID:87d7092816234a2481c61f3d5aa684ff.66.16686653697430001] - haotengdeMacBook-Pro.local-127.0.0.1: Hello docker!
+2022-11-17 14:09:29.748 [XNIO-1 task-1] INFO  c.m.b.w.common.log.MinaWebLogFilter - [TID:87d7092816234a2481c61f3d5aa684ff.66.16686653697430001] - 响应信息：{"code":0,"message":"请求成功","data":"haotengdeMacBook-Pro.local-127.0.0.1: Hello docker!"}，请求耗时:5ms
+2022-11-17 14:09:30.714 [XNIO-1 task-1] INFO  c.m.b.w.common.log.MinaWebLogFilter - [TID:87d7092816234a2481c61f3d5aa684ff.69.16686653707130003] - 请求信息：{"url":"http://localhost:8088/foo/hello","params":""}
+2022-11-17 14:09:30.714 [XNIO-1 task-1] INFO  c.m.b.e.web.controller.FooController - [TID:87d7092816234a2481c61f3d5aa684ff.69.16686653707130003] - haotengdeMacBook-Pro.local-127.0.0.1: Hello docker!
+2022-11-17 14:09:30.716 [XNIO-1 task-1] INFO  c.m.b.w.common.log.MinaWebLogFilter - [TID:87d7092816234a2481c61f3d5aa684ff.69.16686653707130003] - 响应信息：{"code":0,"message":"请求成功","data":"haotengdeMacBook-Pro.local-127.0.0.1: Hello docker!"}，请求耗时:3ms
+2022-11-17 14:09:31.565 [XNIO-1 task-1] INFO  c.m.b.w.common.log.MinaWebLogFilter - [TID:87d7092816234a2481c61f3d5aa684ff.67.16686653715650003] - 请求信息：{"url":"http://localhost:8088/foo/hello","params":""}
+2022-11-17 14:09:31.566 [XNIO-1 task-1] INFO  c.m.b.e.web.controller.FooController - [TID:87d7092816234a2481c61f3d5aa684ff.67.16686653715650003] - haotengdeMacBook-Pro.local-127.0.0.1: Hello docker!
+2022-11-17 14:09:31.568 [XNIO-1 task-1] INFO  c.m.b.w.common.log.MinaWebLogFilter - [TID:87d7092816234a2481c61f3d5aa684ff.67.16686653715650003] - 响应信息：{"code":0,"message":"请求成功","data":"haotengdeMacBook-Pro.local-127.0.0.1: Hello docker!"}，请求耗时:3ms
+2022-11-17 14:31:18.011 [SpringApplicationShutdownHook] INFO  io.undertow - [TID:N/A] - stopping server: Undertow - 2.2.18.Final
+2022-11-17 14:31:18.043 [SpringApplicationShutdownHook] INFO  io.undertow.servlet - [TID:N/A] - Destroying Spring FrameworkServlet 'dispatcherServlet'

@@ -1,5 +1,7 @@
 package cn.mina.boot.example.message;
 
+import cn.mina.boot.context.MinaBootApplication;
+import cn.mina.boot.web.common.MinaBootWebApplication;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -7,8 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MinaExampleWebApplication {
 
     public static void main(String[] args) {
-//        MinaBootApplication.run(MinaExampleWebApplication.class, args);
-        SpringApplication.run(MinaExampleWebApplication.class,args);
+        MinaBootWebApplication.run(MinaExampleWebApplication.class, args);
+//        SpringApplication.run(MinaExampleWebApplication.class,args);
     }
 
 }

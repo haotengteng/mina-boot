@@ -1,4 +1,9 @@
-rocketmq:
-  name-server: 127.0.0.1:9876
-  producer:
-    group: mina
+#rocketmq:
+#  name-server: 127.0.0.1:9876
+#  producer:
+#    group: mina
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+server:
+  port: 8088

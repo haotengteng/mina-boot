@@ -25,6 +25,7 @@ public class FooController {
     @GetMapping(path = "hello")
     public String sayHello() throws UnknownHostException {
         String ip = getLocalIP();
+        log.info(ip + ": Hello docker!");
         return ip + ": Hello docker!";
     }
 

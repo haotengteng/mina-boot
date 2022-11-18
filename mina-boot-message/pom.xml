@@ -5,6 +5,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>mina-boot-message-rocketmq-starter</module>
+        <module>mina-boot-message-kafka-starter</module>
     </modules>
     <parent>
         <groupId>cn.mina.boot</groupId>

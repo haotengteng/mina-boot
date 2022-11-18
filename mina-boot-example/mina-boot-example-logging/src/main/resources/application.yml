@@ -1,0 +1,14 @@
+server:
+  port: 8089
+logging:
+  file:
+    name: mina-web-example-logging
+    path: ./
+# 指定日志收集使用的topic名称
+mina:
+  logging:
+    kafka-topic: mina-topic
+# 指定kafka服务连接地址，集群用","分开
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092

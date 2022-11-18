@@ -21,7 +21,7 @@ public abstract class LogBaseAppender extends UnsynchronizedAppenderBase<ILoggin
      * 实现该抽象方法，自定义输出到指定目标
      * @param log
      */
-    abstract void output(String log);
+    public abstract void output(String log);
 
     public void start() {
         super.started = true;

@@ -5,7 +5,7 @@
               value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - [%tid] - %msg%n"/>
 
     <!-- 文件日志输出 -->
-    <appender name="time-file-appender-skywalking" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="time-file-sk-appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>debug</level>
         </filter>

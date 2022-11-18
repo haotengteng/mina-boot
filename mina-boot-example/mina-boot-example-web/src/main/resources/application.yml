@@ -28,4 +28,9 @@ spring:
         max-wait: -1
         max-idle: 8
         min-idle: 8
-
+server:
+  port: 8089
+logging:
+  file:
+    name: mina-web-example
+    path: ./
