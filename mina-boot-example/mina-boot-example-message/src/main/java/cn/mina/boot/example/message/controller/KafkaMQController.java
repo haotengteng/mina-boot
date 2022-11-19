@@ -1,5 +1,8 @@
 package cn.mina.boot.example.message.controller;
 
+import cn.mina.boot.web.common.context.MinaWebContextOperator;
+import cn.mina.boot.web.common.context.MinaWebResult;
+import cn.mina.boot.web.common.context.MinaWebTools;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.UnknownHostException;
 import java.util.Date;
 import java.util.Optional;
 
@@ -30,6 +34,18 @@ public class KafkaMQController {
     @GetMapping("publish")
     public void publish() {
         kafkaTemplate.send("mina-topic", "message" + System.currentTimeMillis());
+    }
+
+    @GetMapping(path = "hello/client")
+    public MinaWebResult<String> sayHelloClientResult() throws UnknownHostException {
+        log.info("Hello docker !!!!");
+        return MinaWebTools.response.success(": Hello docker!!");
+    }
+
+    @GetMapping(path = "hello/context")
+    public MinaWebResult sayHelloContext() {
+
+        return MinaWebTools.response.success();
     }
 
     @KafkaListener(topics = "mina-topic",groupId = "mina")

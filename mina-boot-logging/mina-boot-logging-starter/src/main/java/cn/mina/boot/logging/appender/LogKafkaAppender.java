@@ -1,6 +1,7 @@
 package cn.mina.boot.logging.appender;
 
 import cn.mina.boot.common.log.LogBaseAppender;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.kafka.core.KafkaTemplate;
 
 /**
@@ -17,7 +18,7 @@ public class LogKafkaAppender extends LogBaseAppender {
 
     @Override
     public void output(String log) {
-        if (kafkaTemplate != null) {
+        if (kafkaTemplate != null && StringUtils.isNoneBlank(kafkaLogTopic)) {
             kafkaTemplate.send(kafkaLogTopic, log);
         }
     }

@@ -22,14 +22,21 @@ public class MinaResponseBodyAdvice implements ResponseBodyAdvice {
     /**
      * 返回方法已经是MinaWebResult类型不拦截
      * swagger相关的请求不拦截
-     * @param returnType the return type
+     *
+     * @param returnType    the return type
      * @param converterType the selected converter type
      * @return
      */
     @Override
     public boolean supports(MethodParameter returnType, Class converterType) {
-        return !returnType.getNestedParameterType().equals(MinaWebResult.class)
-                || !returnType.getDeclaringClass().getName().contains("springfox");
+        if (returnType.getNestedParameterType().getName().equals(MinaWebResult.class.getName())) {
+            return false;
+        } else {
+            if (returnType.getDeclaringClass().getName().contains("springfox")) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
