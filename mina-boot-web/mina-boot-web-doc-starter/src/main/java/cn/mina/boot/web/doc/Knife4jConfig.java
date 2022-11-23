@@ -26,7 +26,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Import(BeanValidatorPluginsConfiguration.class)
 public class Knife4jConfig implements WebMvcConfigurer {
 
-    @Value("${mina.web.log.groupName}")
+    @Value("${mina.web.log.group-name}")
     private String groupName;
 
     @Bean

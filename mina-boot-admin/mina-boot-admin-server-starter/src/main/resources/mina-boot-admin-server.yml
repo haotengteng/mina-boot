@@ -1,5 +1,3 @@
-server:
-  port: 8000
 spring:
   thymeleaf:
     prefix: classpath:/templates/
@@ -11,3 +9,5 @@ spring:
     encoding: UTF-8
     mode: HTML
     check-template-location: false
+server:
+  port: 8000

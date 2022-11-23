@@ -1,5 +1,6 @@
 package cn.mina.boot.message.kafka;
 
+import cn.mina.boot.context.property.YmlPropertySourceFactory;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -29,6 +30,7 @@ import java.util.Map;
 @Configuration
 @ConditionalOnClass(value = KafkaTemplate.class)
 @EnableConfigurationProperties(MinaMessageKafakaProperties.class)
+@PropertySource(value = "classpath:mina-boot-message-kafka.yml",factory = YmlPropertySourceFactory.class)
 public class MinaMessageKafkaAutoConfiguration {
 
     @Autowired

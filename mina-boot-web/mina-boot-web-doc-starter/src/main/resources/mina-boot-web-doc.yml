@@ -1,0 +1,11 @@
+mina:
+  web:
+    log:
+      enable: true
+      exclude-urls:
+        - /foo/x/**
+        - /v3/api-docs
+        - /swagger-resources
+        - /favicon.ico
+        - /doc.html
+      group-name: "mina-boot"

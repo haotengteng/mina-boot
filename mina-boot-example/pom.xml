@@ -14,7 +14,7 @@
     <description>mina-boot-example</description>
 
     <modules>
-<!--        <module>mina-boot-example-docker</module>-->
+        <module>mina-boot-example-docker</module>
         <module>mina-boot-example-common-log</module>
         <module>mina-boot-example-web</module>
         <module>mina-boot-example-config</module>

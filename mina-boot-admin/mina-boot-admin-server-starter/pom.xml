@@ -11,6 +11,10 @@
     <name>mina-boot-admin-server-starter</name>
     <dependencies>
         <dependency>
+            <groupId>cn.mina.boot</groupId>
+            <artifactId>mina-boot-starter</artifactId>
+        </dependency>
+        <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-server</artifactId>
         </dependency>

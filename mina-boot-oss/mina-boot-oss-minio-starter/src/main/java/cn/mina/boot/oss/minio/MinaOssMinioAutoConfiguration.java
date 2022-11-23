@@ -1,5 +1,6 @@
 package cn.mina.boot.oss.minio;
 
+import cn.mina.boot.context.property.YmlPropertySourceFactory;
 import io.minio.MinioClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -7,6 +8,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 import javax.annotation.PostConstruct;
 
@@ -15,6 +17,7 @@ import javax.annotation.PostConstruct;
  */
 @Configuration
 @EnableConfigurationProperties({MinaOssMinioProperties.class})
+@PropertySource(value = "classpath:mina-oss-minio.yml" ,factory = YmlPropertySourceFactory.class)
 @ConditionalOnProperty(prefix = "mina.oss.minio", name = "enable", havingValue = "true", matchIfMissing = true)
 public class MinaOssMinioAutoConfiguration {
 

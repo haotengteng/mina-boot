@@ -21,8 +21,13 @@
         </dependency>
         <dependency>
             <groupId>cn.mina.boot</groupId>
+            <artifactId>mina-boot-oss-minio-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.mina.boot</groupId>
             <artifactId>mina-boot-config-nacos-starter</artifactId>
         </dependency>
+
     </dependencies>
 
 </project>
