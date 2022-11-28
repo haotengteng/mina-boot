@@ -5,7 +5,24 @@ logging:
 spring:
   application:
     name: mina-config
+  profiles:
+    active: @active.target.profile@
 nacos:
   config:
     server-addr: 127.0.0.1:8848
-    namespace: 52e671fa-26ea-48b5-938b-865e935f527f
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+nacos:
+  config:
+    namespace: 0efc12c9-8f03-4a24-9e22-18c473db25fa
+---
+spring:
+  config:
+    activate:
+      on-profile: uat
+nacos:
+  config:
+    namespace: e3fee940-d224-4c48-bf3c-4c086eaaae38

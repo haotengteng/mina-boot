@@ -2,7 +2,9 @@ package cn.mina.boot.web.auth.cache;
 
 import cn.mina.boot.web.auth.MinaTokenProperties;
 import cn.mina.boot.web.auth.MinaWebAuthTools;
+import cn.mina.boot.web.auth.TokenGenerator;
 import cn.mina.boot.web.auth.jwt.JwtTokenUtil;
+import cn.mina.boot.web.common.context.MinaWebContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;

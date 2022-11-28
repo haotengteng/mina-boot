@@ -24,6 +24,9 @@ public class FooController {
     @NacosValue("${mina.user.address:hangzhou}")
     private String address;
 
+    @NacosValue(value = "${mina.user.age:1}", autoRefreshed = true)
+    private Integer age;
+
     @Autowired
     private ExampleConfig exampleConfig;
 
@@ -34,6 +37,7 @@ public class FooController {
     public String sayHello() throws UnknownHostException {
         log.info("nacos-config 监听到配置信息为:{}", name);
         log.info("nacos-config 监听到配置信息为:{}", address);
+        log.info("nacos-config 监听到配置信息为:{}", age);
         log.info("nacos-config 监听到配置信息为:{}", exampleConfig.getName());
         log.info("nacos-config 监听到配置信息为:{}", exampleConfig.getAddress());
         log.info("nacos-config 监听到配置信息为:{}", minaConfigContext.getProperty("mina.user.name"));

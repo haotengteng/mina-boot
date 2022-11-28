@@ -12,7 +12,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
  */
 @SpringBootApplication
 @NacosPropertySource(dataId = "mina-boot.yaml", groupId = "mina-boot", autoRefreshed = true)
-@NacosPropertySource(dataId = "mina-boot-base.yaml", groupId = "mina-boot", autoRefreshed = true)
+@NacosPropertySource(dataId = "mina-boot-base.yaml", groupId = "mina", autoRefreshed = true)
 @EnableConfigurationProperties({ExampleConfig.class})
 public class MinaExampleWebConfigApplication {
 
