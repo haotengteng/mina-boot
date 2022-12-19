@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "mina.cache.redis")
 public class MinaCacheRedisProperties {
 
-    private String enable = "true";
+    private Boolean enable = true;
 
     // jackson、fastjson
     private String serializer = "jackson";
@@ -16,27 +16,35 @@ public class MinaCacheRedisProperties {
     /**
      * 是否开启全局缓存自动过期
      */
-    private String enableTtl;
+    private Boolean enableTtl;
 
     /**
      * 全局缓存自动过期时间，单位：秒，enableTtl=true时生效
      */
     private String duration;
 
-    public String getEnable() {
+    public Boolean getEnable() {
         return enable;
     }
 
-    public void setEnable(String enable) {
+    public void setEnable(Boolean enable) {
         this.enable = enable;
     }
 
-    public String getEnableTtl() {
+    public Boolean getEnableTtl() {
         return enableTtl;
     }
 
-    public void setEnableTtl(String enableTtl) {
+    public void setEnableTtl(Boolean enableTtl) {
         this.enableTtl = enableTtl;
+    }
+
+    public String getSerializer() {
+        return serializer;
+    }
+
+    public void setSerializer(String serializer) {
+        this.serializer = serializer;
     }
 
     public String getDuration() {

@@ -40,8 +40,7 @@ public class JsonUtil {
         //忽略空Bean转json的错误
         MAPPER.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
         //所有的日期格式都统一为以下的样式，即yyyy-MM-dd HH:mm:ss
-        // todo 线程安全
-//        MAPPER.setDateFormat(new SimpleDateFormat(STANDARD_FORMAT));
+        MAPPER.setDateFormat(new SimpleDateFormat(STANDARD_FORMAT));
         //忽略 在json字符串中存在，但是在java对象中不存在对应属性的情况。防止错误
         MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }

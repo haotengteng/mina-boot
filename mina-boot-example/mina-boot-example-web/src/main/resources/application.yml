@@ -11,6 +11,7 @@ mina:
   cache:
     redis:
       enable: false
+      enableTtl: true
 spring:
   redis:
     host: 127.0.0.1

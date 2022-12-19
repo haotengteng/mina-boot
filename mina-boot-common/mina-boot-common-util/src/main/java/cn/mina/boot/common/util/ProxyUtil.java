@@ -15,9 +15,9 @@ import java.lang.reflect.Proxy;
  */
 public class ProxyUtil {
 
-    public static Object proxy(Object object, InvocationHandler h) {
-        ClassLoader classLoader = object.getClass().getClassLoader();
-        Object proxyInstance = Proxy.newProxyInstance(classLoader, object.getClass().getInterfaces(), h);
+    public static Object proxy(Class clazz, InvocationHandler h) {
+        ClassLoader classLoader = clazz.getClassLoader();
+        Object proxyInstance = Proxy.newProxyInstance(classLoader, clazz.getInterfaces(), h);
         return proxyInstance;
     }
 
@@ -39,34 +39,34 @@ public class ProxyUtil {
         }
     }
 
-    public static void main(String[] args) {
-        TestImpl test = (TestImpl)ProxyUtil.proxy(TestImpl.class,new MethodInterceptor() {
-            @Override
-            public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-                System.out.println(11);
-                Object result = methodProxy.invokeSuper(o, objects);
-                System.out.println(22);
-                return null;
-            }
-        });
-        test.say("he");
-
-    }
-
 //    public static void main(String[] args) {
-//        TestImpl test = new TestImpl();
-//        Object proxy = ProxyUtil.proxy(test, new InvocationHandler() {
+//        TestImpl test = (TestImpl)ProxyUtil.proxy(TestImpl.class,new MethodInterceptor() {
 //            @Override
-//            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-//                System.out.println(111);
-//                Object invoke = method.invoke(new TestImpl(), args);
-//                System.out.println(222);
-//                return null;
+//            public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
+//                System.out.println(11);
+//                Object result = methodProxy.invokeSuper(o, objects);
+//                System.out.println(22);
+//                return result;
 //            }
 //        });
-//        Test test1 = (Test) proxy;
-//        test1.say("你好");
+//        test.say("he");
 //
 //    }
+
+    public static void main(String[] args) {
+        TestImpl test = new TestImpl();
+        Object proxy = ProxyUtil.proxy(test.getClass(), new InvocationHandler() {
+            @Override
+            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                System.out.println(111);
+                Object invoke = method.invoke(test, args);
+                System.out.println(222);
+                return invoke;
+            }
+        });
+        Test test1 = (Test) proxy;
+        test1.say("你好");
+
+    }
 
 }

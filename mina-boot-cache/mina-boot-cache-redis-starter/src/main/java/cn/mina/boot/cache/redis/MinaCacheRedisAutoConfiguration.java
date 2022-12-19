@@ -78,13 +78,18 @@ public class MinaCacheRedisAutoConfiguration {
     @ConditionalOnProperty(prefix = "mina.cache.redis", name = "enableTtl", havingValue = "true")
     public RedisCacheConfiguration cacheConfiguration() {
         String duration = properties.getDuration();
-        if (StringUtils.isBlank(duration)) {
-            throw new MinaBaseException("mina cache redis config 'duration' must not be null ");
+        if (properties.getEnableTtl()) {
+            if (StringUtils.isBlank(duration)) {
+                throw new MinaBaseException("mina cache redis config 'duration' must not be null ");
+            }
+            // 设置缓存过期时间为 duration 秒后
+            return RedisCacheConfiguration.defaultCacheConfig()
+                    .entryTtl(Duration.ofSeconds(Integer.parseInt(duration)))
+                    .disableCachingNullValues();
+        } else {
+            return RedisCacheConfiguration.defaultCacheConfig()
+                    .disableCachingNullValues();
         }
-        // 设置缓存过期时间为 duration 秒后
-        return RedisCacheConfiguration.defaultCacheConfig()
-                .entryTtl(Duration.ofSeconds(Integer.parseInt(duration)))
-                .disableCachingNullValues();
     }
 
 
