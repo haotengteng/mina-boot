@@ -24,8 +24,19 @@
         </dependency>
 
         <dependency>
+            <groupId>org.apache.skywalking</groupId>
+            <artifactId>apm-toolkit-trace</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>cn.mina.boot</groupId>
             <artifactId>mina-boot-message-kafka-starter</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
             <scope>provided</scope>
         </dependency>
 

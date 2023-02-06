@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<included>
+    <property name="log_pattern_kafka"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>
+
+    <!-- kafka日志输出 -->
+    <appender name="kafka-sk-appender" class="cn.mina.boot.logging.appender.LogKafkaAppender">
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <pattern>${log_pattern_kafka}</pattern>
+        </encoder>
+    </appender>
+
+</included>

@@ -1,6 +1,7 @@
 package cn.mina.boot.logging;
 
 import cn.mina.boot.common.exception.MinaBaseException;
+import cn.mina.boot.context.property.YmlPropertySourceFactory;
 import cn.mina.boot.logging.appender.LogKafkaAppender;
 import cn.mina.boot.logging.appender.LogKafkaTemplate;
 import org.apache.commons.lang3.StringUtils;
@@ -13,6 +14,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 import javax.annotation.PostConstruct;
 
@@ -24,6 +26,7 @@ import javax.annotation.PostConstruct;
 @Configuration
 @ConditionalOnBean(LogKafkaTemplate.class)
 @EnableConfigurationProperties(LogKafkaProperties.class)
+@PropertySource(value = "classpath:mina-boot-logging.yml",factory = YmlPropertySourceFactory.class)
 public class LogKafkaAppenderAutoConfiguration implements ApplicationContextAware {
 
     private ApplicationContext applicationContext;

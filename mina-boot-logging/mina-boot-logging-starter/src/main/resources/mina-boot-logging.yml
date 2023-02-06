@@ -1,0 +1,4 @@
+# 默认日志kafka收集使用的topic名称
+mina:
+  logging:
+    kafka-topic: mina-app-logging

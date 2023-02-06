@@ -13,7 +13,7 @@
         <mina.version>0.0.1-SNAPSHOT</mina.version>
         <fastjson2.version>2.0.4</fastjson2.version>
         <fastjson.version>1.2.83</fastjson.version>
-        <skywalking.version>8.6.0</skywalking.version>
+        <skywalking.version>8.7.0</skywalking.version>
         <hutool.version>5.7.2</hutool.version>
         <knife4j.version>3.0.3</knife4j.version>
         <mybatis.version>2.2.2</mybatis.version>
@@ -29,6 +29,7 @@
         <xxl-job-core.version>2.3.1</xxl-job-core.version>
         <cglib.version>3.3.0</cglib.version>
         <spring-kafka.version>2.9.2</spring-kafka.version>
+        <logstash-logback-encoder.version>7.2</logstash-logback-encoder.version>
     </properties>
 
     <dependencyManagement>
@@ -144,6 +145,16 @@
                 <groupId>org.apache.skywalking</groupId>
                 <artifactId>apm-toolkit-logback-1.x</artifactId>
                 <version>${skywalking.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.skywalking</groupId>
+                <artifactId>apm-toolkit-trace</artifactId>
+                <version>${skywalking.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.logstash.logback</groupId>
+                <artifactId>logstash-logback-encoder</artifactId>
+                <version>${logstash-logback-encoder.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.alibaba.fastjson2</groupId>

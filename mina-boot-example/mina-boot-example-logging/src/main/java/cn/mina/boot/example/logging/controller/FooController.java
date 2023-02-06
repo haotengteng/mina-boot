@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/foo")
@@ -20,15 +21,15 @@ import java.net.UnknownHostException;
 public class FooController {
 
     @GetMapping(path = "hello")
-    public String sayHello() throws UnknownHostException {
+    public String sayHello() throws UnknownHostException, InterruptedException {
         String ip = getLocalIP();
         log.info(ip + ": Hello docker!");
+        TimeUnit.SECONDS.sleep(2);
         return ip + ": Hello docker!";
     }
 
     @GetMapping(path = "exception")
     public String testException() {
-
         throw new ExampleException(ExampleErrorCode.ERROR_INTERNAL_ERROR);
     }
 
