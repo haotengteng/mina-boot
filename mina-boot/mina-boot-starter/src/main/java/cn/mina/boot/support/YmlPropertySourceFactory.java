@@ -1,4 +1,4 @@
-package cn.mina.boot.context.property;
+package cn.mina.boot.support;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;

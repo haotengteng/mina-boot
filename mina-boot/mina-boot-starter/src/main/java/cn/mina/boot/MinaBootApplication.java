@@ -1,4 +1,4 @@
-package cn.mina.boot.context;
+package cn.mina.boot;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,6 +1,6 @@
 package cn.mina.boot.admin.server;
 
-import cn.mina.boot.context.property.YmlPropertySourceFactory;
+import cn.mina.boot.support.YmlPropertySourceFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 

@@ -1,16 +1,13 @@
 package cn.mina.boot.oss.minio;
 
-import cn.mina.boot.context.property.YmlPropertySourceFactory;
+import cn.mina.boot.support.YmlPropertySourceFactory;
 import io.minio.MinioClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-
-import javax.annotation.PostConstruct;
 
 /**
  * @author Created by haoteng on 2022/10/17.

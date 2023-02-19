@@ -1,8 +1,6 @@
 package cn.mina.boot.example.message;
 
-import cn.mina.boot.context.MinaBootApplication;
 import cn.mina.boot.web.common.MinaBootWebApplication;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication

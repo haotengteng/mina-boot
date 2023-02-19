@@ -1,11 +1,8 @@
 package cn.mina.boot.admin.arthas;
 
-import cn.mina.boot.context.property.YmlPropertySourceFactory;
+import cn.mina.boot.support.YmlPropertySourceFactory;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
 import org.springframework.context.EnvironmentAware;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;

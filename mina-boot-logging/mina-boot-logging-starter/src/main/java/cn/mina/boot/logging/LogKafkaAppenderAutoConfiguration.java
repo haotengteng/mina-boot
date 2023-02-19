@@ -1,14 +1,12 @@
 package cn.mina.boot.logging;
 
 import cn.mina.boot.common.exception.MinaBaseException;
-import cn.mina.boot.context.property.YmlPropertySourceFactory;
+import cn.mina.boot.support.YmlPropertySourceFactory;
 import cn.mina.boot.logging.appender.LogKafkaAppender;
 import cn.mina.boot.logging.appender.LogKafkaTemplate;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;

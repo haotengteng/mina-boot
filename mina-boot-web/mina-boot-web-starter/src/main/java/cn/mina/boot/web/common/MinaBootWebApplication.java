@@ -1,8 +1,6 @@
 package cn.mina.boot.web.common;
 
-import cn.mina.boot.context.MinaBootApplication;
-import cn.mina.boot.web.common.context.MinaWebContext;
-import cn.mina.boot.web.common.context.MinaWebContextOperator;
+import cn.mina.boot.MinaBootApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ConfigurableApplicationContext;

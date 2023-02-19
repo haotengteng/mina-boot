@@ -1,6 +1,6 @@
 package cn.mina.boot.example.admin.server;
 
-import cn.mina.boot.context.MinaBootApplication;
+import cn.mina.boot.MinaBootApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
