@@ -10,6 +10,6 @@ public class MinaBootAdminClientApplication {
     private static final Logger logger = LoggerFactory.getLogger(MinaBootAdminClientApplication.class);
 
     public static void main(String[] args) {
-        MinaBootWebApplication.run(MinaBootAdminClientApplication.class, args, null);
+        MinaBootWebApplication.run(MinaBootAdminClientApplication.class, args);
     }
 }

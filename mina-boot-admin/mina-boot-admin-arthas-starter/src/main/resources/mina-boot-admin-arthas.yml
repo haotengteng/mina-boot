@@ -1,0 +1,15 @@
+arthas:
+  agent-id: ${random.uuid}
+  app-name: ${spring.application.name:arthas-appName}
+management:
+  endpoints:
+    web:
+      # 自定义actuator根路径
+      base-path: /mina-actuator
+      #暴露的访问点
+      exposure:
+        include: health,info,arthas
+    jmx:
+      exposure:
+        include: health,info,arthas
+

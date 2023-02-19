@@ -18,6 +18,5 @@ public class UndertowFactoryCustomizer implements WebServerFactoryCustomizer<Und
                 webSocketDeploymentInfo.setBuffers(new DefaultByteBufferPool(false, 1024));
                 deploymentInfo.addServletContextAttribute("io.undertow.websockets.jsr.WebSocketDeploymentInfo", webSocketDeploymentInfo);
             });
-
         }
 }

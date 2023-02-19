@@ -14,11 +14,4 @@ public class MinaBootWebApplication {
     public static ConfigurableApplicationContext run(Class<?> primarySource, String[] args) {
         return MinaBootApplication.run(primarySource, args);
     }
-
-    public static ConfigurableApplicationContext run(Class<?> primarySource, String[] args, Class<? extends MinaWebContext> context) {
-        ConfigurableApplicationContext applicationContext = run(primarySource, args);
-        // 设置自定义上下文
-        MinaWebContextOperator.initCustomContext(context);
-        return applicationContext;
-    }
 }

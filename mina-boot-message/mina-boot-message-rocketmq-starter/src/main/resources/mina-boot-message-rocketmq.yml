@@ -5,7 +5,9 @@ rocketmq:
     # 消费模式：集群 或者 广播（消费组内每个节点都会收到全部消息）
     message-model: CLUSTERING
     # 消费每次拉取消息数量
-    pull-batch-size: 10
+    pull-batch-size: 50
+    # 消费端每次拉取消息间隔
+    pull-interval: 500
   producer:
     # 消息体超过多大，启用压缩，默认4k
     compress-message-body-threshold: 4096

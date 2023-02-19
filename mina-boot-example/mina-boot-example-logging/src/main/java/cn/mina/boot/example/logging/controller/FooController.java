@@ -55,8 +55,6 @@ public class FooController {
     public MinaWebResult testLoginToken() {
         ExampleWebContext context = new ExampleWebContext();
         context.setName("example");
-
-
         log.info("上下文内容:{}", MinaWebTools.context.getContext(ExampleWebContext.class).getName());
         MinaWebContextOperator.removeContext();
         return MinaWebTools.response.success();

@@ -94,7 +94,6 @@ public class MinaWebTools {
          * @param clazz
          */
         protected synchronized static void initCustomContext(Class<? extends MinaWebContext> clazz) {
-
             if (customContextClazz != null) {
                 logger.error("自定义上下文已设置，不能重复配置。");
                 throw new MinaGlobalException(GlobalErrorCode.ERROR_SYS_ERROR);

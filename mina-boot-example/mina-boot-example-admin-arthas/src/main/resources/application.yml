@@ -1,0 +1,7 @@
+arthas:
+  tunnel-server: ws://localhost:7777/ws
+server:
+  port: 8081
+spring:
+  application:
+    name: mina-boot-admin-arthas

@@ -15,6 +15,7 @@
     <modules>
         <module>mina-boot-admin-server-starter</module>
         <module>mina-boot-admin-client-starter</module>
+        <module>mina-boot-admin-arthas-starter</module>
     </modules>
 
 </project>

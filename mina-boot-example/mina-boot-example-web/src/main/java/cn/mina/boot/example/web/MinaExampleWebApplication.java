@@ -13,7 +13,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 public class MinaExampleWebApplication {
 
     public static void main(String[] args) {
-        MinaBootWebApplication.run(MinaExampleWebApplication.class, args,ExampleWebContext.class);
+        MinaBootWebApplication.run(MinaExampleWebApplication.class, args);
         // 设置自定义上下文
 //        MinaWebContextOperator.initCustomContext(ExampleWebContext.class);
     }
