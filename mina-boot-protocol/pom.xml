@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <modules>
+        <module>mina-boot-protocol-framework</module>
+        <module>mina-boot-protocol-http-accepter</module>
+        <module>mina-boot-protocol-api</module>
+    </modules>
+    <parent>
+        <groupId>cn.mina.boot</groupId>
+        <artifactId>mina-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version> <!-- lookup parent from repository -->
+    </parent>
+    <artifactId>mina-boot-protocol</artifactId>
+    <name>mina-boot-protocol</name>
+    <description>Demo project for Spring Boot</description>
+    <properties>
+        <java.version>${java.version}</java.version>
+    </properties>
+
+
+</project>

@@ -12,4 +12,17 @@
         </encoder>
     </appender>
 
+    <!-- 文件日志按日分割输出 -->
+    <appender name="time-file-appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>debug</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log_path}/${file_name}-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>31</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${log_pattern_file}</pattern>
+        </encoder>
+    </appender>
 </included>

@@ -26,5 +26,6 @@
         <module>mina-boot-example-job</module>
         <module>mina-boot-example-logging</module>
         <module>mina-boot-example-admin-arthas</module>
+        <module>mina-boot-example-protocol</module>
     </modules>
 </project>
