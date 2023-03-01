@@ -1,9 +1,17 @@
-#rocketmq:
-#  name-server: 127.0.0.1:9876
-#  producer:
-#    group: mina
+rocketmq:
+  name-server: 127.0.0.1:9876
+  producer:
+    group: mina
 spring:
   kafka:
     bootstrap-servers: localhost:9092
+    consumer:
+      group-id: mina-kafka-consumer
 server:
   port: 8088
+# 开启rocketMQTemplate增强（自定义处理异常等）
+mina:
+  message:
+    rocketmq:
+      template:
+        enhance: true

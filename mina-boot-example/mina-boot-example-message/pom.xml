@@ -17,14 +17,14 @@
             <groupId>cn.mina.boot</groupId>
             <artifactId>mina-boot-web-starter</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>cn.mina.boot</groupId>-->
-<!--            <artifactId>mina-boot-message-rocketmq-starter</artifactId>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>cn.mina.boot</groupId>
-            <artifactId>mina-boot-message-kafka-starter</artifactId>
+            <artifactId>mina-boot-message-rocketmq-starter</artifactId>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>cn.mina.boot</groupId>-->
+<!--            <artifactId>mina-boot-message-kafka-starter</artifactId>-->
+<!--        </dependency>-->
     </dependencies>
 
 

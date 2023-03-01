@@ -29,16 +29,16 @@ public class ProxyUtil {
 //        String say(String h);
 //    }
 //
-//    public static class TestImpl implements Test {
+//    public static class TestImpl  {
 //
 //
-//        @Override
+////        @Override
 //        public String say(String h) {
 //            System.out.println(h);
 //            return h;
 //        }
 //    }
-
+//
 //    public static void main(String[] args) {
 //        TestImpl test = (TestImpl)ProxyUtil.proxy(TestImpl.class,new MethodInterceptor() {
 //            @Override
