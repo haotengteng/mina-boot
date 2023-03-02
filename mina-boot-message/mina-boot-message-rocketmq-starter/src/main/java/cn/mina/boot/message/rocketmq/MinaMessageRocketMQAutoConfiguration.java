@@ -14,10 +14,13 @@ import org.springframework.beans.BeansException;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 import java.lang.reflect.Method;
 
+import static org.apache.rocketmq.client.log.ClientLogger.CLIENT_LOG_USESLF4J;
 import static org.apache.rocketmq.spring.autoconfigure.RocketMQAutoConfiguration.CONSUMER_BEAN_NAME;
 import static org.apache.rocketmq.spring.autoconfigure.RocketMQAutoConfiguration.PRODUCER_BEAN_NAME;
 
@@ -29,6 +32,11 @@ import static org.apache.rocketmq.spring.autoconfigure.RocketMQAutoConfiguration
 @Configuration
 @PropertySource(value = "classpath:mina-boot-message-rocketmq.yml", factory = YmlPropertySourceFactory.class)
 public class MinaMessageRocketMQAutoConfiguration implements ApplicationContextAware {
+
+//    rocketmq client使用系统默认日志配置
+    static {
+        System.setProperty(CLIENT_LOG_USESLF4J,"true");
+    }
 
     Logger logger = LoggerFactory.getLogger(MinaMessageRocketMQAutoConfiguration.class);
 

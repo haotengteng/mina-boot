@@ -36,8 +36,8 @@ public class RocketMQController {
         String ip = getLocalIP();
         //send spring message
         rocketMQTemplate.send("test-topic-1", MessageBuilder.withPayload(ip + ": Hello docker!").build());
-        System.out.println("============success=========");
-        return "";
+        log.info("============success=========");
+        return "============success=========";
     }
 
     @Autowired(required = false)
@@ -55,8 +55,8 @@ public class RocketMQController {
         String ip = getLocalIP();
         //send spring message
         rocketMQTemplateDiy.send("test-topic-1", MessageBuilder.withPayload(ip + ": Hello docker!").build());
-        System.out.println("============success=========");
-        return "";
+        log.info("============success=========");
+        return "============success=========";
     }
 
     private String getLocalIP() throws UnknownHostException {
