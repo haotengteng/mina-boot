@@ -15,12 +15,24 @@ import java.lang.reflect.Proxy;
  */
 public class ProxyUtil {
 
+    /**
+     * jdk 动态代理
+     * @param clazz
+     * @param h
+     * @return
+     */
     public static Object proxy(Class clazz, InvocationHandler h) {
         ClassLoader classLoader = clazz.getClassLoader();
         Object proxyInstance = Proxy.newProxyInstance(classLoader, clazz.getInterfaces(), h);
         return proxyInstance;
     }
 
+    /**
+     * cglib 动态代理
+     * @param clazz
+     * @param callback
+     * @return
+     */
     public static Object proxy(Class clazz,Callback callback) {
         return  Enhancer.create(clazz, callback);
     }

@@ -27,5 +27,6 @@
         <module>mina-boot-example-logging</module>
         <module>mina-boot-example-admin-arthas</module>
         <module>mina-boot-example-protocol</module>
+        <module>mina-boot-example-ratelimit</module>
     </modules>
 </project>

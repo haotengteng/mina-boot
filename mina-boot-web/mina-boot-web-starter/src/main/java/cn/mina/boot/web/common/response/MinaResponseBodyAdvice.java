@@ -9,6 +9,7 @@ import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
+import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
@@ -50,6 +51,9 @@ public class MinaResponseBodyAdvice implements ResponseBodyAdvice {
             } catch (JsonProcessingException e) {
                 throw new MinaGlobalException();
             }
+            // mvc重定向到/error端点的请求 不进行包装
+        } else if ("/error".equals(((ServletServerHttpRequest) request).getServletRequest().getServletPath())) {
+            return body;
         }
         // 将原本的数据包装在MinaWebResult里
         return MinaWebTools.response.success(body);

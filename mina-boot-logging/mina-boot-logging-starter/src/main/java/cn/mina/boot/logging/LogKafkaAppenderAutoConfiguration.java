@@ -32,6 +32,7 @@ public class LogKafkaAppenderAutoConfiguration implements ApplicationContextAwar
     @Autowired
     private LogKafkaProperties properties;
 
+    //todo 优化LogKafkaTemplate 对象生成方式，采用 ConditionalOnMissBean方式，默认生成
     @PostConstruct
     public void setProperties() {
         LogKafkaTemplate logKafkaTemplate = applicationContext.getBean(LogKafkaTemplate.class);
