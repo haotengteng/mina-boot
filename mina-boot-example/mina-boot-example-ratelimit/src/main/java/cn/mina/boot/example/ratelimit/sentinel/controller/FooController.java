@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.IntStream;
 
 @RestController
 @RequestMapping("/foo")
