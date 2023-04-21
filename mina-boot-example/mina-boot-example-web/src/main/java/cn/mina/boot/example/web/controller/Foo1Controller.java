@@ -76,8 +76,8 @@ public class Foo1Controller {
     @GetMapping(path = "hello/cache/redis")
     public MinaWebResult testCacheRedis() {
         MinaCacheRedisUtil.put("mina","a simple 框架");
-        log.info("redis数据:{}",MinaCacheRedisUtil.get("mina",String.class));
-        return MinaWebTools.response.success(MinaCacheRedisUtil.get("mina",String.class));
+        log.info("redis数据:{}",MinaCacheRedisUtil.getBean("mina",String.class));
+        return MinaWebTools.response.success(MinaCacheRedisUtil.getBean("mina",String.class));
     }
 
 

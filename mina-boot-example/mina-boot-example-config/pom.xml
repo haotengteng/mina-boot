@@ -32,6 +32,7 @@
             <id>dev</id><!-- 开发环境 -->
             <properties>
                 <active.target.profile>dev</active.target.profile>
+                <nacos.config.server>127.0.0.1:8848</nacos.config.server>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -41,12 +42,14 @@
             <id>uat</id><!-- 测试环境 -->
             <properties>
                 <active.target.profile>uat</active.target.profile>
+                <nacos.config.server>127.0.0.1:8848</nacos.config.server>
             </properties>
         </profile>
         <profile>
             <id>prod</id><!-- 生产环境 -->
             <properties>
                 <active.target.profile>prod</active.target.profile>
+                <nacos.config.server>127.0.0.1:8849</nacos.config.server>
             </properties>
         </profile>
     </profiles>

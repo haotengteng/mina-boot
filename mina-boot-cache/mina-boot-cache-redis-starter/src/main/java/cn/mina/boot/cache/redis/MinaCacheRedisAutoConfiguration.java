@@ -45,6 +45,7 @@ public class MinaCacheRedisAutoConfiguration {
         Jackson2JsonRedisSerializer serializer = new Jackson2JsonRedisSerializer(Object.class);
         template.setValueSerializer(serializer);
         template.setHashKeySerializer(serializer);
+        template.setHashValueSerializer(serializer);
         template.setKeySerializer(new StringRedisSerializer());
         template.afterPropertiesSet();
 
@@ -60,6 +61,7 @@ public class MinaCacheRedisAutoConfiguration {
         FastJson2RedisSerializer serializer = new FastJson2RedisSerializer(Object.class);
         template.setValueSerializer(serializer);
         template.setHashKeySerializer(serializer);
+        template.setHashValueSerializer(serializer);
         template.setKeySerializer(new StringRedisSerializer());
         template.afterPropertiesSet();
 

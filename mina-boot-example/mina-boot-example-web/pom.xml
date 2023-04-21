@@ -28,5 +28,4 @@
             <artifactId>mina-boot-web-auth-starter</artifactId>
         </dependency>
     </dependencies>
-
 </project>

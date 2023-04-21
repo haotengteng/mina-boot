@@ -1,5 +1,8 @@
 package cn.mina.boot.web.auth.cache;
 
+import cn.mina.boot.common.util.DateUtil;
+import cn.mina.boot.common.util.JsonUtil;
+import cn.mina.boot.common.util.MD5Utils;
 import cn.mina.boot.web.auth.MinaTokenProperties;
 import cn.mina.boot.web.auth.MinaWebAuthTools;
 import cn.mina.boot.web.auth.TokenGenerator;
@@ -33,7 +36,6 @@ public class CacheTokenConfiguration {
 
     @PostConstruct
     public void init() {
-        // TODO: 2022/7/28 实现缓存token生成逻辑 
-        MinaWebAuthTools.token.generator = t -> JwtTokenUtil.encode(t, Integer.valueOf(properties.getExpireTime()), properties.getSecret());
+        MinaWebAuthTools.token.generator = t -> MD5Utils.MD5Lower(JsonUtil.toJSONString(t), properties.getSecret() + DateUtil.nowMs());
     }
 }

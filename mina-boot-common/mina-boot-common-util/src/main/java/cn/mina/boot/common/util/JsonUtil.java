@@ -45,6 +45,10 @@ public class JsonUtil {
         MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
+    public static ObjectMapper mapper() {
+        return MAPPER;
+    }
+
     /**
      * 序列化为JSON字符串
      *

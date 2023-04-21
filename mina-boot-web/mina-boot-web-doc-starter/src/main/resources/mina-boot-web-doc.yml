@@ -9,3 +9,7 @@ mina:
         - /favicon.ico
         - /doc.html
       group-name: "mina-boot"
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher

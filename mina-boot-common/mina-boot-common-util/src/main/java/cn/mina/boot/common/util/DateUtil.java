@@ -29,6 +29,16 @@ public class DateUtil {
     public static final String HOUR_ONLY_FORMAT = "HH";
     public static final String MINUTE_JAVA_AUTHOR_FORMAT = "yyyy/MM/dd HH:mm";
 
+
+    /**
+     * 获取当前时间戳 -- 毫秒
+     *
+     * @return 字符串格式时间
+     */
+    public static Long nowMs() {
+        return System.currentTimeMillis();
+    }
+
     /**
      * 获取当前时间的字符串格式时间 -- 秒
      *

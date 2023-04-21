@@ -21,10 +21,14 @@ public class MinaWebContextOperator {
      * @param context
      */
     public static <T extends MinaWebContext> void  addContext(T context) {
-        //初始化用户自定义上下文，全局只能调用一次
-        MinaWebTools.context.initCustomContext(context.getClass());
+
         // 添加到当前线程
         MinaWebTools.context.addContext(context);
+    }
+
+    public static void initCustomContext(Class<? extends MinaWebContext> clazz){
+        //初始化用户自定义上下文，全局只能调用一次
+        MinaWebTools.context.initCustomContext(clazz);
     }
 
 }

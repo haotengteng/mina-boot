@@ -22,8 +22,10 @@ spring:
         max-wait: -1
         max-idle: 8
         min-idle: 8
+  profiles:
+    active: @active.target.profile@
 server:
-  port: 8089
+  port: 8090
 logging:
   file:
     name: mina-web-example

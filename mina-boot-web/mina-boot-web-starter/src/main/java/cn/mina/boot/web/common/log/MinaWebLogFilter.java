@@ -58,9 +58,9 @@ public class MinaWebLogFilter implements Filter {
     }
 
     private void logResponse(ServletResponse response, long st, LoggingHttpServletResponseWrapper multiResponse) throws IOException {
-        response.getOutputStream().write(multiResponse.getContentAsBytes());
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setCharacterEncoding("UTF-8");
+        response.getOutputStream().write(multiResponse.getContentAsBytes());
         log.info("响应信息：{}，请求耗时:{}ms", multiResponse.getContent(), System.currentTimeMillis() - st);
     }
 
@@ -72,6 +72,7 @@ public class MinaWebLogFilter implements Filter {
             log.info("请求信息：{}", JsonUtil.toJSONString(loggerModel));
         } else {
             StringBuilder content = new StringBuilder();
+            content.append(URLDecoder.decode(!StringUtils.hasLength(httpServletRequest.getQueryString()) ? "" : httpServletRequest.getQueryString(), "UTF-8"));
             ServletInputStream servletInputStream = multiReadRequest.getInputStream();
             byte[] b = new byte[1024];
             int lens = -1;

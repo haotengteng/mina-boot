@@ -1,5 +1,7 @@
 package cn.mina.boot.cache.redis;
 
+import cn.mina.boot.common.util.JsonUtil;
+import com.fasterxml.jackson.core.type.TypeReference;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 
@@ -45,6 +47,18 @@ public class MinaCacheRedisUtil {
     }
 
     /**
+     * 设置有效时间
+     *
+     * @param key Redis键
+     * @return true=存在；false=不存在
+     */
+    public static boolean hasKey(final String key) {
+
+        Boolean ret = redisTemplate.opsForValue().getOperations().hasKey(key);
+        return ret != null && ret;
+    }
+
+    /**
      * 删除单个key
      *
      * @param key 键
@@ -76,7 +90,7 @@ public class MinaCacheRedisUtil {
      */
     public static void put(final String key, final Object value) {
 
-        redisTemplate.opsForValue().set(key, value, 1, TimeUnit.MINUTES);
+        redisTemplate.opsForValue().set(key, JsonUtil.toJSONString(value));
     }
 
     // 存储普通对象操作
@@ -90,18 +104,27 @@ public class MinaCacheRedisUtil {
      */
     public static void put(final String key, final Object value, final long timeout) {
 
-        redisTemplate.opsForValue().set(key, value, timeout, TimeUnit.SECONDS);
+        redisTemplate.opsForValue().set(key, JsonUtil.toJSONString(value), timeout, TimeUnit.SECONDS);
     }
 
     /**
-     * 获取普通对象
+     * 获取对象
      *
      * @param key 键
      * @return 对象
      */
-    public static <T> T get(final String key, Class<T> clazz) {
+    public static String get(final String key) {
+        return (String) redisTemplate.opsForValue().get(key);
+    }
 
-        return clazz.cast(redisTemplate.opsForValue().get(key));
+    /**
+     * 获取pojo对象
+     *
+     * @param key 键
+     * @return 对象
+     */
+    public static <T> T getBean(final String key, Class<T> clazz) {
+        return JsonUtil.toBean(get(key), clazz);
     }
 
     // 存储Hash操作
