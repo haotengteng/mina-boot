@@ -7,24 +7,6 @@ mina:
         - /v3/api-docs
         - /swagger-resources
       groupName: "aaa"
-    auth:
-      enable: true
-      type: cache
-      key: token
-      secret: uahsdahsdkjjeriuh
-      expireTime: 12
-    doc:
-      enable: true
-  cache:
-    redis:
-      enable: false
-  oss:
-    minio:
-      enable: true
-      endpoint: http://localhost:9000
-      accessKey: root
-      secretKey: 12345678
-      bucketName: minio-demo
 ---
 xxl:
   job:
@@ -43,5 +25,9 @@ mina:
         password: 123456
       executor:
         title: mina-title
-
+---
+elasticjob:
+  reg-center:
+    serverLists: localhost:2181
+    namespace: mina-boot
 

@@ -5,6 +5,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>mina-boot-job-xxl-starter</module>
+        <module>mina-boot-job-elastic-starter</module>
     </modules>
     <parent>
         <groupId>cn.mina.boot</groupId>

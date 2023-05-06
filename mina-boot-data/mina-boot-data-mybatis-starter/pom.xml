@@ -13,11 +13,7 @@
     <dependencies>
         <dependency>
             <groupId>cn.mina.boot</groupId>
-            <artifactId>mina-boot-common-util</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.mina.boot</groupId>
-            <artifactId>mina-boot-common-exception</artifactId>
+            <artifactId>mina-boot-starter</artifactId>
         </dependency>
         <!-- MyBatis-->
         <dependency>

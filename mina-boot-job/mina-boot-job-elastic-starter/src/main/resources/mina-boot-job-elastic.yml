@@ -1,0 +1,10 @@
+elasticjob:
+  enabled: true
+  reg-center:
+    #    serverLists:
+    #    namespace:
+    baseSleepTimeMilliseconds: 10000
+    maxSleepTimeMilliseconds: 30000
+    maxRetries: 3
+    sessionTimeoutMilliseconds: 60000
+    connectionTimeoutMilliseconds: 30000

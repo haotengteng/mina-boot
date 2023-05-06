@@ -15,9 +15,13 @@
             <groupId>cn.mina.boot</groupId>
             <artifactId>mina-boot-web-starter</artifactId>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>cn.mina.boot</groupId>-->
+<!--            <artifactId>mina-boot-job-xxl-starter</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>cn.mina.boot</groupId>
-            <artifactId>mina-boot-job-xxl-starter</artifactId>
+            <artifactId>mina-boot-job-elastic-starter</artifactId>
         </dependency>
     </dependencies>
 

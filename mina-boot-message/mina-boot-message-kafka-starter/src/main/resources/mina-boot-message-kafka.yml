@@ -1,20 +1,18 @@
 spring:
   kafka:
     consumer:
-      #自动提交时间间隔，单位ms
-      auto-commit-interval: 10000
+      #自动提交位点时间间隔，单位ms
+      auto-commit-interval-ms: 10000
       #最早未被消费的offset
-      auto-offset-reset: earliest
+      auto-offset-reset: latest
       #是否自动提交
       enable-auto-commit: true
       #批量一次最大拉取数据量
-      max-poll-records: 50
+      max-poll-records: 500
       # 两次poll操作间隔超过了这个时间，触发rebalance
-      properties:
-        max:
-          poll:
-            interval:
-              ms: 600000    # 10分钟
+      max-poll-interval-ms: 300000    # 5分钟
+      # 请求超时时间
+      request-timeout-ms: 600000  #10分钟
     listener:
       concurrency: 3
     producer:
@@ -25,9 +23,13 @@ spring:
       # acks=1 ： 只要集群的首领节点收到消息，生产者就会收到一个来自服务器成功响应。
       # acks=-1 ：只有当所有参与复制的节点全部收到消息时，生产者才会收到一个来自服务器的成功响应。
       acks: 0
-      #批量发送的消息数量
-      batch-size: 1000
+      #批量发送的消息缓存量
+      batch-size: 16384
       #32MB的批处理缓冲区
       buffer-memory: 33554432
       #重试次数
       retries: 3
+      #消息发送失败时的重试间隔，建议设置为1000。单位：毫秒
+      retry-backoff-ms: 1000
+      #100毫秒之后发出
+      linger-ms: 100

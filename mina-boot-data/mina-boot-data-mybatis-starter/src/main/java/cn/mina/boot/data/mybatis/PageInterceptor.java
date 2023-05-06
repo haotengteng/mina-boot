@@ -27,6 +27,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -102,18 +103,38 @@ public class PageInterceptor implements Interceptor {
                     Map<String, Object> paraObject = (Map<String, Object>) parameterHandler.getParameterObject();
                     //参数名称和在dao中@Param设置的名称一致
                     page = (int) paraObject.get("page");
-                    pageSize = (int) paraObject.get("pageSize");
+                    int size = (int) paraObject.get("pageSize");
+                    if (size != 0) {
+                        pageSize = size;
+                    }
                 } else {
                     // 通过反射获取分页参数
                     Object param = parameterHandler.getParameterObject();
                     Class<?> paramClass = param.getClass();
                     try {
-                        Field pageField = paramClass.getDeclaredField("page");
+                        Field[] fields = paramClass.getDeclaredFields();
+                        Field pageField;
+                        if (Arrays.stream(fields).anyMatch(field -> "page".equals(field.getName()))) {
+                            pageField = paramClass.getDeclaredField("page");
+                        } else {
+                            // 子类不存在 page字段，尝试父类获取
+                            pageField = paramClass.getSuperclass().getDeclaredField("page");
+                        }
                         pageField.setAccessible(true);
                         page = (int) pageField.get(param);
-                        Field pageSizeField = paramClass.getDeclaredField("pageSize");
+
+                        Field pageSizeField;
+                        if (Arrays.stream(fields).anyMatch(field -> "pageSize".equals(field.getName()))) {
+                            pageSizeField= paramClass.getDeclaredField("pageSize");
+                        }else {
+                            pageSizeField= paramClass.getSuperclass().getDeclaredField("pageSize");
+                        }
                         pageSizeField.setAccessible(true);
-                        pageSize = (int) pageSizeField.get(param);
+                        // 未设置分页数量的情况下，使用默认配置
+                        int size = (int) pageSizeField.get(param);
+                        if (size != 0) {
+                            pageSize = size;
+                        }
                     } catch (IllegalAccessException e) {
                         throw new RuntimeException(e);
                     } catch (NoSuchFieldException e) {

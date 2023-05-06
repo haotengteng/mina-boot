@@ -32,6 +32,7 @@
         <logstash-logback-encoder.version>7.2</logstash-logback-encoder.version>
         <arthas.starter.version>3.6.7</arthas.starter.version>
         <sentinel.version>1.8.6</sentinel.version>
+        <elasticjob.version>3.0.3</elasticjob.version>
     </properties>
 
     <dependencyManagement>
@@ -278,6 +279,17 @@
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-ratelimit-sentinel-starter</artifactId>
                 <version>${mina.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.mina.boot</groupId>
+                <artifactId>mina-boot-job-elastic-starter</artifactId>
+                <version>${mina.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.shardingsphere.elasticjob</groupId>
+                <artifactId>elasticjob-lite-spring-boot-starter</artifactId>
+                <version>${elasticjob.version}</version>
             </dependency>
 
 <!--            <dependency>-->
