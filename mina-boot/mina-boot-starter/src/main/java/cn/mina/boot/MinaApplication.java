@@ -5,8 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-public class MinaBootApplication {
-    private static final Logger logger = LoggerFactory.getLogger(MinaBootApplication.class);
+public class MinaApplication {
+    private static final Logger logger = LoggerFactory.getLogger(MinaApplication.class);
 
     public static ConfigurableApplicationContext run(Class<?> primarySource, String[] args) {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(primarySource, args);

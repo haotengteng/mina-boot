@@ -1,4 +1,4 @@
-package cn.mina.config.nacos;
+package cn.mina.boot.config.nacos;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,8 +10,8 @@ import org.springframework.core.env.Environment;
 /**
  * @author Created by haoteng on 2022/7/26.pri
  */
-public class MinaConfigContext implements ApplicationContextAware {
-    private static Logger log = LoggerFactory.getLogger(MinaConfigContext.class);
+public class MinaConfigNacosContext implements ApplicationContextAware {
+    private static Logger log = LoggerFactory.getLogger(MinaConfigNacosContext.class);
 
     private Environment environment;
 

@@ -1,6 +1,6 @@
 package cn.mina.boot.example.common.log;
 
-import cn.mina.boot.MinaBootApplication;
+import cn.mina.boot.MinaApplication;
 import cn.mina.boot.context.MinaBootContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +21,7 @@ public class MinaExampleCommonLogApplication implements CommandLineRunner {
     private static final Logger logger = LoggerFactory.getLogger(MinaExampleCommonLogApplication.class);
 
     public static void main(String[] args) throws InterruptedException {
-        MinaBootApplication.run(MinaExampleCommonLogApplication.class, args);
+        MinaApplication.run(MinaExampleCommonLogApplication.class, args);
         while (true) {
             TimeUnit.SECONDS.sleep(10);
             logger.debug("This is a info message1.");

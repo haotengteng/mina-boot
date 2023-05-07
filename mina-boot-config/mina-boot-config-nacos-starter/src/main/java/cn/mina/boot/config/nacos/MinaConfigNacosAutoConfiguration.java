@@ -1,4 +1,4 @@
-package cn.mina.config.nacos;
+package cn.mina.boot.config.nacos;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.ApplicationContext;
@@ -11,10 +11,10 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ConditionalOnClass(ApplicationContext.class)
-public class MinaConfigAutoConfiguration {
+public class MinaConfigNacosAutoConfiguration {
 
     @Bean
-    public MinaConfigContext minaConfigContext() {
-        return new MinaConfigContext();
+    public MinaConfigNacosContext minaConfigContext() {
+        return new MinaConfigNacosContext();
     }
 }

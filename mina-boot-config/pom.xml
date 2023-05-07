@@ -5,6 +5,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>mina-boot-config-nacos-starter</module>
+        <module>mina-boot-config-apollo-starter</module>
     </modules>
     <parent>
         <groupId>cn.mina.boot</groupId>

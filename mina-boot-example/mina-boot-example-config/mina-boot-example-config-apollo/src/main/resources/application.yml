@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: mina-config
+  profiles:
+    active: @active.target.profile@
+apollo:
+  meta: @apollo.config.server@
+  bootstrap:
+    # 在应用启动阶段是否向Spring容器注入被托管的properties文件配置信息
+    enabled: true
+    eagerLoad:
+      # Apollo配置加载提到初始化日志系统之前
+      enabled: false
+    namespaces: application,mina
+app:
+  id: mima-boot-appid
+

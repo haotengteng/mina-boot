@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-cn.mina.boot.config.nacos.MinaConfigNacosAutoConfiguration
+cn.mina.boot.config.apollo.MinaConfigApolloAutoConfiguration

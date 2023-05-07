@@ -1,6 +1,6 @@
 package cn.mina.boot.example.web.config.controller;
 
-import cn.mina.config.nacos.MinaConfigContext;
+import cn.mina.boot.config.nacos.MinaConfigNacosContext;
 import com.alibaba.nacos.api.config.annotation.NacosValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +31,7 @@ public class FooController {
     private ExampleConfig exampleConfig;
 
     @Autowired
-    private MinaConfigContext minaConfigContext;
+    private MinaConfigNacosContext minaConfigNacosContext;
 
     @GetMapping(path = "hello")
     public String sayHello() throws UnknownHostException {
@@ -40,8 +40,8 @@ public class FooController {
         log.info("nacos-config 监听到配置信息为:{}", age);
         log.info("nacos-config 监听到配置信息为:{}", exampleConfig.getName());
         log.info("nacos-config 监听到配置信息为:{}", exampleConfig.getAddress());
-        log.info("nacos-config 监听到配置信息为:{}", minaConfigContext.getProperty("mina.user.name"));
-        log.info("nacos-config 监听到配置信息为:{}", minaConfigContext.getProperty("mina.user.address"));
+        log.info("nacos-config 监听到配置信息为:{}", minaConfigNacosContext.getProperty("mina.user.name"));
+        log.info("nacos-config 监听到配置信息为:{}", minaConfigNacosContext.getProperty("mina.user.address"));
 
         String ip = getLocalIP();
         return ip + ": Hello docker!";
