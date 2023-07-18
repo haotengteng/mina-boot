@@ -5,16 +5,18 @@ import com.alibaba.nacos.api.config.annotation.NacosValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/foo")
-public class FooController {
+public class FooController implements CommandLineRunner {
 
     Logger log = LoggerFactory.getLogger(FooController.class);
 
@@ -50,5 +52,19 @@ public class FooController {
     private String getLocalIP() throws UnknownHostException {
         InetAddress addr = InetAddress.getLocalHost();
         return addr.getHostName() + "-" + addr.getHostAddress();
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        new Thread(()->{
+            try {
+                while (true){
+                    TimeUnit.SECONDS.sleep(3);
+                    this.sayHello();
+                }
+            } catch (UnknownHostException | InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }).start();
     }
 }

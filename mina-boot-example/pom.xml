@@ -6,6 +6,7 @@
         <groupId>cn.mina.boot</groupId>
         <artifactId>mina-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>mina-boot-example</artifactId>
     <version>0.0.1-SNAPSHOT</version>

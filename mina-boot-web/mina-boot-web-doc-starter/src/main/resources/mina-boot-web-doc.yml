@@ -8,6 +8,7 @@ mina:
         - /swagger-resources
         - /favicon.ico
         - /doc.html
+        - /webjars/**
       group-name: "mina-boot"
 spring:
   mvc:

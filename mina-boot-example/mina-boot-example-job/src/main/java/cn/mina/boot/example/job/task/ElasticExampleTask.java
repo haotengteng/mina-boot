@@ -18,3 +18,4 @@ public class ElasticExampleTask implements SimpleJob {
         log.info("elastic job .....");
     }
 }
+

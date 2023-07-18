@@ -14,7 +14,7 @@ spring:
       stat-view-servlet:
         allow: 127.0.0.1
         deny: ''
-        enabled: true
+        enabled: false
         login-password: 123456
         login-username: mina
         reset-enable: false

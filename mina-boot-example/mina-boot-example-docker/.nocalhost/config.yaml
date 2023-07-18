@@ -1,0 +1,31 @@
+name: deployment-simple
+serviceType: deployment
+containers:
+    - name: example-app
+      dev:
+        gitUrl: ""
+        image: registry.cn-hangzhou.aliyuncs.com/haot_repo/mina-boot-example-docker:0.0.3-SNAPSHOT
+        shell: ""
+        workDir: ""
+        storageClass: ""
+        resources: null
+        persistentVolumeDirs: []
+        command:
+            run: []
+            debug:
+                - mvn
+                - package
+                - -Dmaven.test.skip=true
+                - '&&'
+                - mvn
+                - -e
+                - spring-boot:run
+                - -Dspring-boot.run.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5345"
+        debug:
+            remoteDebugPort: 5345
+            language: java
+        hotReload: true
+        sync: null
+        env: []
+        portForward:
+            - 8888:8080

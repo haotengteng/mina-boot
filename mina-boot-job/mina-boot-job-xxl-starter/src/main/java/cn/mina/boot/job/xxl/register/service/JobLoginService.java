@@ -33,7 +33,7 @@ public class JobLoginService {
         List<HttpCookie> cookies = response.getCookies();
         Optional<HttpCookie> cookieOpt = cookies.stream()
                 .filter(cookie -> cookie.getName().equals(TOKEN_KEY)).findFirst();
-        if (cookieOpt.isEmpty()) {
+        if (!cookieOpt.isPresent()) {
             throw new MinaBaseException("mina-job get xxl-job cookie error!");
         }
         String value = cookieOpt.get().getValue();

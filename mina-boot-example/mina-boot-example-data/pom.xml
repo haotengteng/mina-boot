@@ -15,10 +15,6 @@
             <groupId>cn.mina.boot</groupId>
             <artifactId>mina-boot-web-starter</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-web</artifactId>-->
-<!--        </dependency>-->
         <!--jpa 与 mybatis 若要同时应用，各自的配置需要在应用项目中设置-->
         <dependency>
             <groupId>cn.mina.boot</groupId>
