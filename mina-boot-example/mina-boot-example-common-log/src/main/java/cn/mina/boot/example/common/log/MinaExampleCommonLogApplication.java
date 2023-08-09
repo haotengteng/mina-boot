@@ -2,13 +2,17 @@ package cn.mina.boot.example.common.log;
 
 import cn.mina.boot.MinaApplication;
 import cn.mina.boot.context.MinaBootContext;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
@@ -20,10 +24,10 @@ public class MinaExampleCommonLogApplication implements CommandLineRunner {
 
     private static final Logger logger = LoggerFactory.getLogger(MinaExampleCommonLogApplication.class);
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, IOException {
         MinaApplication.run(MinaExampleCommonLogApplication.class, args);
         while (true) {
-            TimeUnit.SECONDS.sleep(10);
+            TimeUnit.SECONDS.sleep(100);
             logger.debug("This is a info message1.");
             logger.info("This is a info message2.");
             logger.error("This is a info message3.");

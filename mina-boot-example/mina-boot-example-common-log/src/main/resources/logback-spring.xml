@@ -18,7 +18,11 @@
         <!--        <appender-ref ref="file-appender-skywalking"/>-->
         <!--        <appender-ref ref="log-appender-skywalking"/>-->
         <appender-ref ref="console-appender"/>
-<!--        <appender-ref ref="time-file-appender"/>-->
+        <!--        <appender-ref ref="time-file-appender"/>-->
     </root>
+
+    <logger name="cn.mina.boot.admin.client.actuator.dependency.Collector" level="debug">
+        <appender-ref ref="console-appender"/>
+    </logger>
 
 </configuration>

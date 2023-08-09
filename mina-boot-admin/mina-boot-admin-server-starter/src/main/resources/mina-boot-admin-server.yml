@@ -9,5 +9,10 @@ spring:
     encoding: UTF-8
     mode: HTML
     check-template-location: false
+mina:
+  boot:
+    web:
+      response:
+        advice: false
 server:
   port: 8000

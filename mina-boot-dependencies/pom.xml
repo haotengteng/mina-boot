@@ -24,7 +24,7 @@
         <commons-collections.version>3.2.2</commons-collections.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <nacos-config.starter.version>0.2.12</nacos-config.starter.version>
-        <boot-admin.version>2.7.3</boot-admin.version>
+        <boot-admin.version>2.7.10</boot-admin.version>
         <minio.version>8.4.1</minio.version>
         <xxl-job-core.version>2.3.1</xxl-job-core.version>
         <cglib.version>3.3.0</cglib.version>
@@ -34,6 +34,7 @@
         <sentinel.version>1.8.6</sentinel.version>
         <elasticjob.version>3.0.3</elasticjob.version>
         <apollo.version>2.1.0</apollo.version>
+        <guava.version>32.1.1-jre</guava.version>
     </properties>
 
     <dependencyManagement>
@@ -299,6 +300,11 @@
                 <groupId>com.ctrip.framework.apollo</groupId>
                 <artifactId>apollo-client</artifactId>
                 <version>${apollo.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
             </dependency>
 
 <!--            <dependency>-->

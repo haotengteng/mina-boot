@@ -5,6 +5,7 @@ import cn.mina.boot.web.common.context.MinaWebResult;
 import cn.mina.boot.web.common.context.MinaWebTools;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.ServerHttpRequest;
@@ -19,6 +20,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 @ControllerAdvice
 public class MinaResponseBodyAdvice implements ResponseBodyAdvice {
 
+    @Value("${mina.boot.web.response.advice:true}")
+    private Boolean enable;
 
     /**
      * 返回方法已经是MinaWebResult类型不拦截
@@ -30,10 +33,15 @@ public class MinaResponseBodyAdvice implements ResponseBodyAdvice {
      */
     @Override
     public boolean supports(MethodParameter returnType, Class converterType) {
+        // 判断响应增强是否开启
+        if (!enable) {
+            return false;
+        }
         if (returnType.getNestedParameterType().getName().equals(MinaWebResult.class.getName())) {
             return false;
         } else {
-            if (returnType.getDeclaringClass().getName().contains("springfox")) {
+            if (returnType.getDeclaringClass().getName().contains("springfox")
+                    || returnType.getDeclaringClass().getName().contains("actuator")) {
                 return false;
             }
         }
