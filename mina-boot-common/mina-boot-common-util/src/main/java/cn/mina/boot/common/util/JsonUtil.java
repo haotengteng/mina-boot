@@ -11,10 +11,12 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.SneakyThrows;
 import org.apache.commons.lang3.StringUtils;
 
+import java.io.ObjectOutput;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.TimeZone;
 
 import static org.apache.commons.lang3.StringUtils.isEmpty;
 
@@ -27,7 +29,7 @@ import static org.apache.commons.lang3.StringUtils.isEmpty;
  * @author Created by haoteng on 2022/7/27.
  */
 public class JsonUtil {
-    private final static ObjectMapper MAPPER = new ObjectMapper();
+    private static ObjectMapper MAPPER = new ObjectMapper();
 
     // 日起格式化
     private static final String STANDARD_FORMAT = "yyyy-MM-dd HH:mm:ss";
@@ -43,10 +45,16 @@ public class JsonUtil {
         MAPPER.setDateFormat(new SimpleDateFormat(STANDARD_FORMAT));
         //忽略 在json字符串中存在，但是在java对象中不存在对应属性的情况。防止错误
         MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        // 设置时区
+        MAPPER.setTimeZone(TimeZone.getTimeZone("GMT+8"));
     }
 
     public static ObjectMapper mapper() {
         return MAPPER;
+    }
+
+    public static void setMapper(ObjectMapper mapper) {
+        JsonUtil.MAPPER = mapper;
     }
 
     /**
@@ -60,7 +68,7 @@ public class JsonUtil {
         if (obj == null) {
             return null;
         }
-        return MAPPER.writeValueAsString(obj);
+        return mapper().writeValueAsString(obj);
     }
 
 
@@ -77,7 +85,7 @@ public class JsonUtil {
         if (StringUtils.isBlank(jsonStr) || clazz == null) {
             return null;
         }
-        return MAPPER.readValue(jsonStr, clazz);
+        return mapper().readValue(jsonStr, clazz);
     }
 
 
@@ -94,7 +102,7 @@ public class JsonUtil {
         if (StringUtils.isBlank(jsonStr) || reference == null) {
             return null;
         }
-        return MAPPER.readValue(jsonStr, reference);
+        return mapper().readValue(jsonStr, reference);
     }
 
     /**
@@ -110,7 +118,7 @@ public class JsonUtil {
         if (StringUtils.isBlank(listJsonStr) || clazz == null) {
             return Collections.emptyList();
         }
-        return MAPPER.readValue(listJsonStr, List.class);
+        return mapper().readValue(listJsonStr, List.class);
     }
 
 
@@ -128,7 +136,7 @@ public class JsonUtil {
         if (StringUtils.isBlank(mapJsonStr) || kClazz == null || vClazz == null) {
             return Collections.emptyMap();
         }
-        return MAPPER.readValue(mapJsonStr, MAPPER.getTypeFactory().constructParametricType(Map.class, kClazz, vClazz));
+        return mapper().readValue(mapJsonStr, mapper().getTypeFactory().constructParametricType(Map.class, kClazz, vClazz));
     }
 
 
@@ -138,7 +146,7 @@ public class JsonUtil {
      * @return {@link ObjectNode}
      */
     public static ObjectNode getObjectNode() {
-        return MAPPER.createObjectNode();
+        return mapper().createObjectNode();
     }
 
     /*
@@ -149,7 +157,7 @@ public class JsonUtil {
         if (isEmpty(jsonString)) {
             return null;
         }
-        return MAPPER.readTree(jsonString);
+        return mapper().readTree(jsonString);
     }
 
     /*
@@ -160,7 +168,7 @@ public class JsonUtil {
         if (jsonNode == null) {
             return null;
         }
-        return (T) MAPPER.convertValue(jsonNode, t);
+        return (T) mapper().convertValue(jsonNode, t);
     }
 
     /**
@@ -174,7 +182,12 @@ public class JsonUtil {
         if (t == null) {
             return null;
         }
-        return MAPPER.convertValue(t, JsonNode.class);
+        return mapper().convertValue(t, JsonNode.class);
+    }
+
+    @SneakyThrows
+    public static ObjectNode create() {
+        return mapper().createObjectNode();
     }
 
 }
