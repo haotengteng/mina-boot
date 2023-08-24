@@ -29,6 +29,16 @@ public class FooController {
         return MinaWebTools.response.success(aDo);
     }
 
+
+    @GetMapping(path = "mysql/dto")
+    public MinaWebResult<ExampleDO> sayHelloDto() throws UnknownHostException {
+        ExampleDO exampleDO = new ExampleDO();
+        exampleDO.setId(1);
+        exampleDO.setName("tom");
+        ExampleDO aDo = exampleMapper.findByDto(exampleDO);
+        return MinaWebTools.response.success(aDo);
+    }
+
     /**
      * 分页查询(以.ByPage结尾)
      * @return

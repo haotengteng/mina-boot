@@ -16,6 +16,9 @@
 
 
     <plugins>
+        <plugin interceptor="cn.mina.boot.data.mybatis.SqlLogInterceptor">
+            <property name="log.enable" value="true"/>
+        </plugin>
         <plugin interceptor="cn.mina.boot.data.mybatis.PageInterceptor">
             <property name="pageSize" value="10"/>
         </plugin>

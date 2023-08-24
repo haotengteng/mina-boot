@@ -15,6 +15,21 @@
         where id = #{id}
     </select>
 
+    <select id="findByDto" parameterType="cn.mina.boot.example.web.data.mybatis.entity.ExampleDO"
+            resultType="cn.mina.boot.example.web.data.mybatis.entity.ExampleDO">
+        select
+        <include refid="column"></include>
+        from example_info
+        <where>
+            <if test="id != null">
+                and  id = #{id}
+            </if>
+            <if test="name != null">
+                and  name = #{name}
+            </if>
+        </where>
+    </select>
+
     <select id="findListByPage" parameterType="int"
             resultType="cn.mina.boot.example.web.data.mybatis.entity.ExampleDO">
         select

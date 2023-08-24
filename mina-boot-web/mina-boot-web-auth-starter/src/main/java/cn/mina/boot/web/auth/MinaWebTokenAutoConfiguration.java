@@ -24,25 +24,25 @@ public class MinaWebTokenAutoConfiguration {
     @Autowired
     private MinaTokenProperties minaTokenProperties;
 
-    @Bean
-    @Qualifier
-    public WebMvcConfigurer webMvcConfigurer(AbstractTokenInterceptor tokenInterceptor) {
-        return new WebConfigurer(tokenInterceptor);
-    }
-
-    static class WebConfigurer implements WebMvcConfigurer {
-
-        private AbstractTokenInterceptor tokenInterceptor;
-
-        public WebConfigurer(AbstractTokenInterceptor tokenInterceptor) {
-            this.tokenInterceptor = tokenInterceptor;
-        }
-
-        @Override
-        public void addInterceptors(InterceptorRegistry registry) {
-            // 拦截所有请求，通过判断是否有 @Login注解 决定是否需要登录
-            registry.addInterceptor(tokenInterceptor).addPathPatterns("/**");
-        }
-
-    }
+//    @Bean
+//    @Qualifier
+//    public WebMvcConfigurer webMvcConfigurer(AbstractTokenInterceptor tokenInterceptor) {
+//        return new WebConfigurer(tokenInterceptor);
+//    }
+//
+//    static class WebConfigurer implements WebMvcConfigurer {
+//
+//        private AbstractTokenInterceptor tokenInterceptor;
+//
+//        public WebConfigurer(AbstractTokenInterceptor tokenInterceptor) {
+//            this.tokenInterceptor = tokenInterceptor;
+//        }
+//
+//        @Override
+//        public void addInterceptors(InterceptorRegistry registry) {
+//            // 拦截所有请求，通过判断是否有 @Login注解 决定是否需要登录
+//            registry.addInterceptor(tokenInterceptor).addPathPatterns("/**");
+//        }
+//
+//    }
 }

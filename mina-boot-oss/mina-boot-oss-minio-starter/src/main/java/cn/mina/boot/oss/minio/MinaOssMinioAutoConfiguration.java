@@ -39,6 +39,8 @@ public class MinaOssMinioAutoConfiguration {
     private void initMinaOssMinio(MinioClient minioClient) {
         MinaOssMinioUtil.minioClient = minioClient;
         MinaOssMinioUtil.bucketName = minaOssMinioProperties.getBucketName();
+        // 初始化桶，不存在则创建
+        MinaOssMinioUtil.initBucket();
     }
 
 }

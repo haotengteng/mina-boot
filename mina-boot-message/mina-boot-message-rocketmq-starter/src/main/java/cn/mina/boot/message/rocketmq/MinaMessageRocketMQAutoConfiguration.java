@@ -1,6 +1,6 @@
 package cn.mina.boot.message.rocketmq;
 
-import cn.mina.boot.common.util.ProxyUtil;
+import cn.mina.boot.common.util.ProxyUtils;
 import cn.mina.boot.support.YmlPropertySourceFactory;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
@@ -31,55 +31,11 @@ import static org.apache.rocketmq.spring.autoconfigure.RocketMQAutoConfiguration
  */
 @Configuration
 @PropertySource(value = "classpath:mina-boot-message-rocketmq.yml", factory = YmlPropertySourceFactory.class)
-public class MinaMessageRocketMQAutoConfiguration implements ApplicationContextAware {
+public class MinaMessageRocketMQAutoConfiguration {
 
 //    rocketmq client使用系统默认日志配置
     static {
         System.setProperty(CLIENT_LOG_USESLF4J,"true");
-    }
-
-    Logger logger = LoggerFactory.getLogger(MinaMessageRocketMQAutoConfiguration.class);
-
-    private ApplicationContext applicationContext;
-
-    @Bean(destroyMethod = "destroy")
-    @ConditionalOnProperty(prefix = "mina.message.rocketmq.template", name = "enhance", havingValue = "true")
-    public RocketMQTemplate rocketMQTemplate(RocketMQMessageConverter rocketMQMessageConverter) {
-        // 创建原生 RocketMQTemplate
-        RocketMQTemplate rocketMQTemplate = new RocketMQTemplate();
-        if (applicationContext.containsBean(PRODUCER_BEAN_NAME)) {
-            rocketMQTemplate.setProducer((DefaultMQProducer) applicationContext.getBean(PRODUCER_BEAN_NAME));
-        }
-        if (applicationContext.containsBean(CONSUMER_BEAN_NAME)) {
-            rocketMQTemplate.setConsumer((DefaultLitePullConsumer) applicationContext.getBean(CONSUMER_BEAN_NAME));
-        }
-        rocketMQTemplate.setMessageConverter(rocketMQMessageConverter.getMessageConverter());
-        // 创建增强代理类
-        RocketMQTemplate proxy = (RocketMQTemplate) ProxyUtil.proxy(RocketMQTemplate.class, new MethodInterceptor() {
-            @Override
-            public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-                Object result = null;
-                try {
-                    result = methodProxy.invoke(rocketMQTemplate, objects);
-                } catch (Exception e) {
-                    // 未重写sendErrorFun情况 原样返回异常
-                    SendErrorFun errorFun = MinaRocketMQConfig.getGlobalSendErrorFun();
-                    if (errorFun != null) {
-                        errorFun.invoke(e);
-                    } else {
-                        throw new Exception(e);
-                    }
-                    logger.error("rocketmq send message error ,exception:{}", e.getMessage());
-                }
-                return result;
-            }
-        });
-        return proxy;
-    }
-
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
     }
 }
 

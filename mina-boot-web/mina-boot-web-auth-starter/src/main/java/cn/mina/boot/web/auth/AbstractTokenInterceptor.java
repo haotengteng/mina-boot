@@ -6,6 +6,7 @@ import cn.mina.boot.web.common.exception.MinaGlobalException;
 import cn.mina.boot.web.common.context.MinaWebContext;
 import cn.mina.boot.web.common.context.MinaWebContextOperator;
 import cn.mina.boot.web.common.context.MinaWebTools;
+import cn.mina.boot.web.common.interceptor.MinaHandlerInterceptor;
 import org.springframework.lang.Nullable;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -18,12 +19,11 @@ import java.lang.reflect.Method;
 /**
  * @author Created by haoteng on 2022/7/21.
  */
-public abstract class AbstractTokenInterceptor implements HandlerInterceptor {
+public abstract class AbstractTokenInterceptor extends MinaHandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         if (!(handler instanceof HandlerMethod)) {
-//            throw new MinaGlobalException(GlobalErrorCode.ERROR_NO_LOGIN);
             return true;
         }
         HandlerMethod handlerMethod = (HandlerMethod) handler;
@@ -39,6 +39,11 @@ public abstract class AbstractTokenInterceptor implements HandlerInterceptor {
             }
         }
         return true;
+    }
+
+    @Override
+    protected String havePathPattern() {
+        return "/**";
     }
 
     @Override
@@ -60,7 +65,6 @@ public abstract class AbstractTokenInterceptor implements HandlerInterceptor {
      * @param clazz
      */
     protected abstract void addContext(String token, Class<? extends MinaWebContext> clazz);
-
 
 
 }

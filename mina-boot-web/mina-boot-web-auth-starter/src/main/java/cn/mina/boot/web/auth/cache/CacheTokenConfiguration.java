@@ -1,13 +1,10 @@
 package cn.mina.boot.web.auth.cache;
 
-import cn.mina.boot.common.util.DateUtil;
-import cn.mina.boot.common.util.JsonUtil;
+import cn.mina.boot.common.util.DateUtils;
+import cn.mina.boot.common.util.JsonUtils;
 import cn.mina.boot.common.util.MD5Utils;
 import cn.mina.boot.web.auth.MinaTokenProperties;
 import cn.mina.boot.web.auth.MinaWebAuthTools;
-import cn.mina.boot.web.auth.TokenGenerator;
-import cn.mina.boot.web.auth.jwt.JwtTokenUtil;
-import cn.mina.boot.web.common.context.MinaWebContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
@@ -36,6 +33,6 @@ public class CacheTokenConfiguration {
 
     @PostConstruct
     public void init() {
-        MinaWebAuthTools.token.generator = t -> MD5Utils.MD5Lower(JsonUtil.toJSONString(t), properties.getSecret() + DateUtil.nowMs());
+        MinaWebAuthTools.token.generator = t -> MD5Utils.MD5Lower(JsonUtils.toJSONString(t), properties.getSecret() + DateUtils.nowMs());
     }
 }

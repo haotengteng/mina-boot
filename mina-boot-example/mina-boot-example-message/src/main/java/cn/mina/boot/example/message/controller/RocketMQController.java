@@ -1,8 +1,10 @@
 package cn.mina.boot.example.message.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
+import org.apache.rocketmq.spring.core.RocketMQPushConsumerLifecycleListener;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -22,7 +24,7 @@ import java.net.UnknownHostException;
 public class RocketMQController {
 
 
-    @Autowired(required = false)
+    @Autowired
     private RocketMQTemplate rocketMQTemplate;
 
     /**
@@ -40,9 +42,6 @@ public class RocketMQController {
         return "============success=========";
     }
 
-    @Autowired(required = false)
-    @Qualifier(value = "RocketMQTemplateDiy")
-    private RocketMQTemplate rocketMQTemplateDiy;
 
     /**
      * 发送消息
@@ -54,7 +53,7 @@ public class RocketMQController {
     public String sayHelloEnhance() throws UnknownHostException {
         String ip = getLocalIP();
         //send spring message
-        rocketMQTemplateDiy.send("test-topic-1", MessageBuilder.withPayload(ip + ": Hello docker!").build());
+        rocketMQTemplate.send("test-topic-1", MessageBuilder.withPayload(ip + ": Hello docker!").build());
         log.info("============success=========");
         return "============success=========";
     }
@@ -72,11 +71,17 @@ public class RocketMQController {
     @Component
     @Lazy
     @RocketMQMessageListener(consumerGroup = "MinaConsumerGroup", topic = "test-topic-1", maxReconsumeTimes = 3)
-    public class SpringConsumer implements RocketMQListener<String> {
+    public class SpringConsumer implements RocketMQListener<String>, RocketMQPushConsumerLifecycleListener {
         @Override
         public void onMessage(String message) {
             log.info("Recived message: {}", message);
 //            throw new MinaGlobalException(GlobalErrorCode.ERROR_SYS_ERROR);
+        }
+
+        @Override
+        public void prepareStart(DefaultMQPushConsumer consumer) {
+            consumer.setPullInterval(20);
+            consumer.setPullBatchSize(10);
         }
     }
 

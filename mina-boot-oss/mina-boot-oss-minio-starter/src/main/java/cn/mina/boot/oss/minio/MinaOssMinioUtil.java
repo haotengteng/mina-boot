@@ -1,18 +1,15 @@
 package cn.mina.boot.oss.minio;
 
+import cn.mina.boot.common.util.DateUtils;
 import io.minio.*;
-import io.minio.errors.*;
 import io.minio.http.Method;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.compress.utils.IOUtils;
-import org.springframework.beans.factory.annotation.Value;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.StringUtils;
+import sun.misc.BASE64Decoder;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
+import java.io.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -25,19 +22,39 @@ public class MinaOssMinioUtil {
 
     protected static MinioClient minioClient;
 
+
+    /**
+     * 初始化桶，不存在则创建
+     */
+    protected static void initBucket() {
+        log.info("bucket start create");
+        try {
+            boolean exists = bucketExist(bucketName);
+            if (!exists) {
+                minioClient.makeBucket(MakeBucketArgs.builder().bucket(bucketName).build());
+                log.info("bucket create success, bucket name >>> {} <<<", bucketName);
+            }
+        } catch (Exception e) {
+            log.error("bucket create exception.", e);
+        }
+    }
+
+
     /**
      * description: 文件流上传文件
+     * contentType: MultipartFile.getContentType 获取
      */
-    public static void upload(String fileName, InputStream in, String contentType) {
+    public static String upload(String fileName, InputStream in, String contentType) {
 
         try {
-            minioClient.putObject(PutObjectArgs.builder()
+            ObjectWriteResponse objectWriteResponse = minioClient.putObject(PutObjectArgs.builder()
                     .bucket(bucketName)
-                    .object(fileName)
+                    .object(getFileName(fileName))
                     .stream(in, in.available(), -1)
                     .contentType(contentType)
                     .build()
             );
+            return objectWriteResponse.object();
         } catch (Exception e) {
             throw new RuntimeException("mina oss minio upload failed", e);
         } finally {
@@ -51,19 +68,78 @@ public class MinaOssMinioUtil {
         }
     }
 
+    private static String getFileName(String fileName) {
+        String dataStr = DateUtils.nowStr("yyyyMMdd") + "/";
+        if (StringUtils.contains(fileName, "/")) {
+            // 忽略filename携带的路径
+            fileName = StringUtils.substringAfterLast(fileName, "/");
+        }
+        // 增加随机字符 防重复
+        String[] split = StringUtils.split(fileName, ".");
+        Boolean flag = true;
+        String name = "";
+        for (String s : split) {
+            if (flag) {
+                name = s + "-" + RandomStringUtils.randomNumeric(8);
+                flag = false;
+            } else {
+                name = name + "." + s;
+            }
+
+        }
+        return dataStr + "" + name;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getFileName("name.jpg"));
+    }
+
+    /**
+     * 图片上传
+     *
+     * @param imageBase64
+     * @param imageName
+     * @return
+     */
+    public String uploadImage(String imageBase64, String imageName) {
+        if (!StringUtils.isEmpty(imageBase64)) {
+            InputStream in = base64ToInputStream(imageBase64);
+            return upload(imageName, in, null);
+        }
+        return null;
+    }
+
+    public static InputStream base64ToInputStream(String base64) {
+        ByteArrayInputStream stream = null;
+        try {
+            byte[] bytes = new BASE64Decoder().decodeBuffer(base64.trim());
+            stream = new ByteArrayInputStream(bytes);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return stream;
+    }
+
     /**
      * description: 下载文件
      * 推荐设置桶为公共策略，直接请求localhost:9000/bucket/fileName下载
      * 此方法应用场景针对于不对外开放的敏感数据认证下载
      */
     public static byte[] download(String fileName) {
+        ByteArrayOutputStream out = (ByteArrayOutputStream) downloadStream(fileName);
+        //封装返回值
+        return out.toByteArray();
+    }
+
+
+    public static OutputStream downloadStream(String fileName) {
         try (
                 InputStream in = minioClient.getObject(GetObjectArgs.builder().bucket(bucketName).object(fileName).build());
                 ByteArrayOutputStream out = new ByteArrayOutputStream();
         ) {
             IOUtils.copy(in, out);
             //封装返回值
-            return out.toByteArray();
+            return out;
         } catch (Exception e) {
             throw new RuntimeException("mina oss minio download failed", e);
         }
@@ -117,7 +193,7 @@ public class MinaOssMinioUtil {
      * @return
      */
     private static boolean bucketExist(String bucketName) {
-        boolean exist ;
+        boolean exist;
         try {
             exist = minioClient.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build());
         } catch (Exception e) {

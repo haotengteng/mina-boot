@@ -30,14 +30,16 @@ public class FooController {
         List<String> fileList = new ArrayList<>();
         for (MultipartFile file : files) {
             String fileName = file.getOriginalFilename();
+            fileName = "/abd/ddd/"+fileName;
+            String upload;
             try (
                     InputStream in = file.getInputStream();
             ) {
-                MinaOssMinioUtil.upload(fileName, in, file.getContentType());
+                 upload = MinaOssMinioUtil.upload(fileName, in, file.getContentType());
             } catch (Exception e) {
                 throw new MinaGlobalException(GlobalErrorCode.ERROR_SYS_ERROR.customMassage("minio 上传失败！"));
             }
-            fileList.add(fileName);
+            fileList.add(upload);
         }
 
         return fileList;

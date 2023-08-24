@@ -1,7 +1,7 @@
 package cn.mina.boot.example.web.controller;
 
 import cn.mina.boot.cache.redis.MinaCacheRedisUtil;
-import cn.mina.boot.common.util.JsonUtil;
+import cn.mina.boot.common.util.JsonUtils;
 import cn.mina.boot.example.web.bean.UserDTO;
 import cn.mina.boot.example.web.context.ExampleWebContext;
 import cn.mina.boot.example.web.exception.ExampleErrorCode;
@@ -102,7 +102,7 @@ public class Foo1Controller {
         userDTO.setName("郝腾腾");
         userDTO.setPhone("18767176323");
         userDTO.setAddress("浙江省宁波市鄞州区下应街道东兴社区53幢304室");
-        System.out.println(JsonUtil.toJSONString(userDTO));
+        System.out.println(JsonUtils.toJSONString(userDTO));
     }
 
     private static void testJetToken() {

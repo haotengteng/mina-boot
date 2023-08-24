@@ -21,6 +21,7 @@ import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.type.TypeHandler;
 import org.apache.ibatis.type.TypeHandlerRegistry;
+import org.springframework.util.ReflectionUtils;
 
 import java.lang.reflect.Field;
 import java.sql.Connection;
@@ -40,7 +41,8 @@ import java.util.Properties;
 @Intercepts({@Signature(type = Executor.class, method = "query", args = {
         MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class}),
         @Signature(type = StatementHandler.class, method = "prepare", args = {
-                Connection.class, Integer.class})})
+                Connection.class, Integer.class})
+})
 public class PageInterceptor implements Interceptor {
 
     protected static final ThreadLocal<Long> countStorage = new ThreadLocal<>();
@@ -62,13 +64,17 @@ public class PageInterceptor implements Interceptor {
     private void getCount(Invocation invocation) throws SQLException {
         if (invocation.getTarget() instanceof Executor) {
             final MappedStatement mappedStatement = (MappedStatement) invocation.getArgs()[0];
-            //拦截需要分页的SQL
-            Object parameter = invocation.getArgs()[1];
-            BoundSql boundSql = mappedStatement.getBoundSql(parameter);
-            Object parameterObject = boundSql.getParameterObject();
-            String originSql = boundSql.getSql().trim();
-            long rowCount = getRowCount(originSql, boundSql, mappedStatement, parameterObject);
-            countStorage.set(rowCount);
+            String mapId = mappedStatement.getId();
+            //拦截以.ByPage结尾的请求，分页功能的统一实现
+            if (mapId.matches(".+ByPage$")) {
+                //拦截需要分页的SQL
+                Object parameter = invocation.getArgs()[1];
+                BoundSql boundSql = mappedStatement.getBoundSql(parameter);
+                Object parameterObject = boundSql.getParameterObject();
+                String originSql = boundSql.getSql().trim();
+                long rowCount = getRowCount(originSql, boundSql, mappedStatement, parameterObject);
+                countStorage.set(rowCount);
+            }
         }
     }
 
@@ -77,27 +83,26 @@ public class PageInterceptor implements Interceptor {
         if (invocation.getTarget() instanceof StatementHandler) {
             StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
             //获取statementHandler包装类
-            MetaObject MetaObjectHandler = SystemMetaObject.forObject(statementHandler);
+            MetaObject metaObject = SystemMetaObject.forObject(statementHandler);
 
             //分离代理对象链
-            while (MetaObjectHandler.hasGetter("h")) {
-                Object obj = MetaObjectHandler.getValue("h");
-                MetaObjectHandler = SystemMetaObject.forObject(obj);
+            while (metaObject.hasGetter("h")) {
+                Object obj = metaObject.getValue("h");
+                metaObject = SystemMetaObject.forObject(obj);
             }
 
-            while (MetaObjectHandler.hasGetter("target")) {
-                Object obj = MetaObjectHandler.getValue("target");
-                MetaObjectHandler = SystemMetaObject.forObject(obj);
+            while (metaObject.hasGetter("target")) {
+                Object obj = metaObject.getValue("target");
+                metaObject = SystemMetaObject.forObject(obj);
             }
 
             //获取查询接口映射的相关信息
-            MappedStatement mappedStatement = (MappedStatement) MetaObjectHandler.getValue("delegate.mappedStatement");
+            MappedStatement mappedStatement = (MappedStatement) metaObject.getValue("delegate.mappedStatement");
             String mapId = mappedStatement.getId();
-
             //拦截以.ByPage结尾的请求，分页功能的统一实现
             if (mapId.matches(".+ByPage$")) {
                 //获取进行数据库操作时管理参数的handler
-                ParameterHandler parameterHandler = (ParameterHandler) MetaObjectHandler.getValue("delegate.parameterHandler");
+                ParameterHandler parameterHandler = (ParameterHandler) metaObject.getValue("delegate.parameterHandler");
                 //获取请求时的参数
                 if (parameterHandler.getParameterObject() instanceof MapperMethod.ParamMap) {
                     Map<String, Object> paraObject = (Map<String, Object>) parameterHandler.getParameterObject();
@@ -125,9 +130,9 @@ public class PageInterceptor implements Interceptor {
 
                         Field pageSizeField;
                         if (Arrays.stream(fields).anyMatch(field -> "pageSize".equals(field.getName()))) {
-                            pageSizeField= paramClass.getDeclaredField("pageSize");
-                        }else {
-                            pageSizeField= paramClass.getSuperclass().getDeclaredField("pageSize");
+                            pageSizeField = paramClass.getDeclaredField("pageSize");
+                        } else {
+                            pageSizeField = paramClass.getSuperclass().getDeclaredField("pageSize");
                         }
                         pageSizeField.setAccessible(true);
                         // 未设置分页数量的情况下，使用默认配置
@@ -138,12 +143,10 @@ public class PageInterceptor implements Interceptor {
                     } catch (IllegalAccessException e) {
                         throw new RuntimeException(e);
                     } catch (NoSuchFieldException e) {
-                        throw new MinaBaseException("mina data mybatis page params error");
+                        throw new MinaBaseException("jungle data mybatis page params error");
                     }
                 }
-
-
-                String sql = (String) MetaObjectHandler.getValue("delegate.boundSql.sql");
+                String sql = (String) metaObject.getValue("delegate.boundSql.sql");
                 //也可以通过statementHandler直接获取
                 //sql = statementHandler.getBoundSql().getSql();
 
@@ -153,7 +156,7 @@ public class PageInterceptor implements Interceptor {
                 limitSql = sql + " limit " + (page - 1) * pageSize + "," + pageSize;
 
                 //将构建完成的分页sql语句赋值个体'delegate.boundSql.sql'
-                MetaObjectHandler.setValue("delegate.boundSql.sql", limitSql);
+                metaObject.setValue("delegate.boundSql.sql", limitSql);
             }
         }
     }
@@ -173,7 +176,6 @@ public class PageInterceptor implements Interceptor {
         this.pageSize = Integer.parseInt(properties.getProperty("pageSize", "10"));
     }
 
-
     public static long getRowCount(final String sql, final BoundSql boundSql,
                                    final MappedStatement mappedStatement, final Object parameterObject) throws SQLException {
         final String countSql = "select count(1) from (" + sql + ")temp_count";
@@ -189,6 +191,13 @@ public class PageInterceptor implements Interceptor {
                     countSql,
                     boundSql.getParameterMappings(),
                     parameterObject);
+
+            Arrays.asList("additionalParameters", "metaParameters").forEach(s -> {
+                Field field = ReflectionUtils.findField(BoundSql.class, s);
+                ReflectionUtils.makeAccessible(field);
+                ReflectionUtils.setField(field, countBS, ReflectionUtils.getField(field, boundSql));
+            });
+
             setParameters(ps, mappedStatement, countBS, parameterObject);
             rs = ps.executeQuery();
             long count = 0;

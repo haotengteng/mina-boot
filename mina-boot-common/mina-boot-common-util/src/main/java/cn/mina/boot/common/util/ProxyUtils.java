@@ -1,11 +1,8 @@
 package cn.mina.boot.common.util;
 
-import lombok.extern.slf4j.Slf4j;
-import net.sf.cglib.core.ReflectUtils;
 import net.sf.cglib.proxy.*;
 
 import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
@@ -13,7 +10,7 @@ import java.lang.reflect.Proxy;
  *
  * @author Created by haoteng on 2022/11/6.
  */
-public class ProxyUtil {
+public class ProxyUtils {
 
     /**
      * jdk 动态代理

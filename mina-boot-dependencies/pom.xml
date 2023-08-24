@@ -15,7 +15,7 @@
         <fastjson.version>1.2.83</fastjson.version>
         <skywalking.version>8.7.0</skywalking.version>
         <hutool.version>5.7.2</hutool.version>
-        <knife4j.version>3.0.3</knife4j.version>
+        <knife4j.version>3.0.0</knife4j.version>
         <mybatis.version>2.2.2</mybatis.version>
         <mysql.version>8.0.30</mysql.version>
         <druid.version>1.2.8</druid.version>
@@ -35,6 +35,7 @@
         <elasticjob.version>3.0.3</elasticjob.version>
         <apollo.version>2.1.0</apollo.version>
         <guava.version>32.1.1-jre</guava.version>
+        <orika.version>1.5.4</orika.version>
     </properties>
 
     <dependencyManagement>
@@ -306,8 +307,14 @@
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
             </dependency>
+            <dependency>
+                <groupId>ma.glasnost.orika</groupId>
+                <artifactId>orika-core</artifactId>
+                <version>${orika.version}</version>
+            </dependency>
 
-<!--            <dependency>-->
+
+            <!--            <dependency>-->
 <!--                <groupId>com.alibaba.csp</groupId>-->
 <!--                <artifactId>sentinel-annotation-aspectj</artifactId>-->
 <!--                <version>${sentinel.version}</version>-->

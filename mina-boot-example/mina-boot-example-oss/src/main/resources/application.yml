@@ -1,9 +1,9 @@
 mina:
   web:
-    log:
+    logger:
       enable: true
       excludeUrls:
-        - /foo/*
+#        - /foo/*
         - /v3/api-docs
         - /swagger-resources
       groupName: "aaa"

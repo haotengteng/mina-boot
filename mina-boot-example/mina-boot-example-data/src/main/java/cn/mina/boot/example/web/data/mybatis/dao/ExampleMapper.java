@@ -15,6 +15,8 @@ public interface ExampleMapper {
 
     ExampleDO findById(Integer id);
 
+    ExampleDO findByDto(ExampleDO dto);
+
     List<ExampleDO> findListByPage(@Param("page") Integer page, @Param("pageSize") Integer pageSize);
 
     List<ExampleDO> findByPage(QueryDto query);

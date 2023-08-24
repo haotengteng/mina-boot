@@ -13,7 +13,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public class DateUtil {
+public class DateUtils {
 
     public static final String GMT = "GMT+8";
     public static final String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";

@@ -1,7 +1,6 @@
 package cn.mina.boot.cache.redis;
 
-import cn.mina.boot.common.util.JsonUtil;
-import com.fasterxml.jackson.core.type.TypeReference;
+import cn.mina.boot.common.util.JsonUtils;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 
@@ -90,7 +89,7 @@ public class MinaCacheRedisUtil {
      */
     public static void put(final String key, final Object value) {
 
-        redisTemplate.opsForValue().set(key, JsonUtil.toJSONString(value));
+        redisTemplate.opsForValue().set(key, JsonUtils.toJSONString(value));
     }
 
     // 存储普通对象操作
@@ -104,7 +103,7 @@ public class MinaCacheRedisUtil {
      */
     public static void put(final String key, final Object value, final long timeout) {
 
-        redisTemplate.opsForValue().set(key, JsonUtil.toJSONString(value), timeout, TimeUnit.SECONDS);
+        redisTemplate.opsForValue().set(key, JsonUtils.toJSONString(value), timeout, TimeUnit.SECONDS);
     }
 
     /**
@@ -124,7 +123,7 @@ public class MinaCacheRedisUtil {
      * @return 对象
      */
     public static <T> T getBean(final String key, Class<T> clazz) {
-        return JsonUtil.toBean(get(key), clazz);
+        return JsonUtils.toBean(get(key), clazz);
     }
 
     // 存储Hash操作

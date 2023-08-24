@@ -1,7 +1,6 @@
 package cn.mina.boot.common.util;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -11,7 +10,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.SneakyThrows;
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.ObjectOutput;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.List;
@@ -28,7 +26,7 @@ import static org.apache.commons.lang3.StringUtils.isEmpty;
  *
  * @author Created by haoteng on 2022/7/27.
  */
-public class JsonUtil {
+public class JsonUtils {
     private static ObjectMapper MAPPER = new ObjectMapper();
 
     // 日起格式化
@@ -54,10 +52,10 @@ public class JsonUtil {
     }
 
     public static void setMapper(ObjectMapper mapper) {
-        JsonUtil.MAPPER = mapper;
+        JsonUtils.MAPPER = mapper;
     }
 
-    /**
+    /**˚
      * 序列化为JSON字符串
      *
      * @param obj obj
