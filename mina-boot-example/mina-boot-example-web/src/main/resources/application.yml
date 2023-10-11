@@ -1,31 +1,37 @@
 mina:
   web:
     auth:
-      enable: true
+      enable: false
       type: cache
       key: token
       secret: uahsdahsdkjjeriuh
       expireTime: 12
     doc:
       enable: true
+    logger:
+      enable: false
   cache:
     redis:
       enable: false
       enableTtl: true
-spring:
-  redis:
-    host: 127.0.0.1
-    port: 6379
-    lettuce:
-      pool:
-        max-active: 8
-        max-wait: -1
-        max-idle: 8
-        min-idle: 8
+#spring:
+#  redis:
+#    host: 127.0.0.1
+#    port: 6379
+#    lettuce:
+#      pool:
+#        max-active: 8
+#        max-wait: -1
+#        max-idle: 8
+#        min-idle: 8
   profiles:
     active: @active.target.profile@
 server:
   port: 8090
+#
+#  error:
+#    whitelabel:
+#      enabled: false
 logging:
   file:
     name: mina-web-example

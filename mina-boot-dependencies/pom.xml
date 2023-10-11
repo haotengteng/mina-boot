@@ -15,7 +15,7 @@
         <fastjson.version>1.2.83</fastjson.version>
         <skywalking.version>8.7.0</skywalking.version>
         <hutool.version>5.7.2</hutool.version>
-        <knife4j.version>3.0.0</knife4j.version>
+        <knife4j.version>3.0.3</knife4j.version>
         <mybatis.version>2.2.2</mybatis.version>
         <mysql.version>8.0.30</mysql.version>
         <druid.version>1.2.8</druid.version>

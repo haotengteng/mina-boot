@@ -1,5 +1,6 @@
 package cn.mina.boot.web.common.response;
 
+import cn.mina.boot.common.util.JsonUtils;
 import cn.mina.boot.web.common.exception.MinaGlobalException;
 import cn.mina.boot.web.common.context.MinaWebResult;
 import cn.mina.boot.web.common.context.MinaWebTools;
@@ -52,13 +53,8 @@ public class MinaResponseBodyAdvice implements ResponseBodyAdvice {
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
         // String类型不能直接包装，所以要进行些特别的处理
         if (returnType.getGenericParameterType().equals(String.class)) {
-            ObjectMapper objectMapper = new ObjectMapper();
-            try {
-                // 将数据包装在MinaWebResult里后，再转换为json字符串响应给前端
-                return objectMapper.writeValueAsString(MinaWebTools.response.success(body));
-            } catch (JsonProcessingException e) {
-                throw new MinaGlobalException();
-            }
+            // 将数据包装在MinaWebResult里后，再转换为json字符串响应给前端
+            return JsonUtils.toJSONString(MinaWebTools.response.success(body));
             // mvc重定向到/error端点的请求 不进行包装
         } else if ("/error".equals(((ServletServerHttpRequest) request).getServletRequest().getServletPath())) {
             return body;
