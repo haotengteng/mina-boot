@@ -2,11 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <!--    <parent>-->
-    <!--        <groupId>cn.mina.boot</groupId>-->
-    <!--        <artifactId>mina-parent</artifactId>-->
-    <!--        <version>${mina.version}</version>-->
-    <!--    </parent>-->
     <groupId>cn.mina.boot</groupId>
     <artifactId>mina-boot-dependencies</artifactId>
     <version>${mina.version}</version>
@@ -15,8 +10,8 @@
     <packaging>pom</packaging>
 
     <properties>
-        <spring.boot.version>2.7.1</spring.boot.version>
         <mina.version>0.0.1-SNAPSHOT</mina.version>
+        <spring.boot.version>2.7.1</spring.boot.version>
         <hutool.version>5.7.2</hutool.version>
         <fastjson2.version>2.0.4</fastjson2.version>
         <fastjson.version>1.2.83</fastjson.version>
@@ -369,6 +364,12 @@
                 <version>${sentinel.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-transport-simple-http</artifactId>
+                <version>${sentinel.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -389,5 +390,19 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>rdc-releases</id>
+            <url>https://packages.aliyun.com/maven/repository/2244391-release-zNHCbw/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+        <snapshotRepository>
+            <id>rdc-snapshots</id>
+            <url>https://packages.aliyun.com/maven/repository/2244391-snapshot-OqPMVa/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>
