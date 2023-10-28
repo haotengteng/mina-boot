@@ -449,30 +449,30 @@
                     </configuration>
                 </plugin>
 
-                <!--                <plugin>-->
-                <!--                    <groupId>cn.mina.boot</groupId>-->
-                <!--                    <artifactId>mina-dependency-maven-plugin</artifactId>-->
-                <!--                    <version>1.0.0-SNAPSHOT</version>-->
-                <!--                    <configuration>-->
-                <!--                        <outputFile>src/main/resources/dependency.txt</outputFile>-->
-                <!--                    </configuration>-->
-                <!--                    <executions>-->
-                <!--                        <execution>-->
-                <!--                            <id>generate-dependency.txt</id>-->
-                <!--                            <phase>generate-resources</phase>-->
-                <!--                            <goals>-->
-                <!--                                <goal>tree</goal>-->
-                <!--                            </goals>-->
-                <!--                        </execution>-->
-                <!--                        <execution>-->
-                <!--                            <id>remove-dependency.txt</id>-->
-                <!--                            <phase>compile</phase>-->
-                <!--                            <goals>-->
-                <!--                                <goal>remove-tree</goal>-->
-                <!--                            </goals>-->
-                <!--                        </execution>-->
-                <!--                    </executions>-->
-                <!--                </plugin>-->
+                <plugin>
+                    <groupId>cn.mina.boot</groupId>
+                    <artifactId>mina-dependency-maven-plugin</artifactId>
+                    <version>1.0.0-SNAPSHOT</version>
+                    <configuration>
+                        <outputFile>src/main/resources/dependency.txt</outputFile>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>generate-dependency.txt</id>
+                            <phase>generate-resources</phase>
+                            <goals>
+                                <goal>tree</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>remove-dependency.txt</id>
+                            <phase>compile</phase>
+                            <goals>
+                                <goal>remove-tree</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
