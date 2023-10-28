@@ -5,11 +5,10 @@
     <parent>
         <groupId>cn.mina.boot</groupId>
         <artifactId>mina-parent</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>${mina.version}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>mina-boot-example</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>mina-boot-example</name>
     <description>mina-boot-example</description>

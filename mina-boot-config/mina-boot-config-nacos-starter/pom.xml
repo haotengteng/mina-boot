@@ -5,7 +5,7 @@
     <parent>
         <groupId>cn.mina.boot</groupId>
         <artifactId>mina-boot-config</artifactId>
-        <version>0.0.1-SNAPSHOT</version> <!-- lookup parent from repository -->
+        <version>${mina.version}</version><!-- lookup parent from repository -->
     </parent>
     <artifactId>mina-boot-config-nacos-starter</artifactId>
     <name>mina-boot-config-nacos-starter</name>

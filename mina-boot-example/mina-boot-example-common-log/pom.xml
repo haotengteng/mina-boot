@@ -5,7 +5,7 @@
     <parent>
         <groupId>cn.mina.boot</groupId>
         <artifactId>mina-boot-example</artifactId>
-        <version>0.0.1-SNAPSHOT</version> <!-- lookup parent from repository -->
+        <version>${mina.version}</version>
     </parent>
     <artifactId>mina-boot-example-common-log</artifactId>
     <name>mina-boot-example-common-log</name>

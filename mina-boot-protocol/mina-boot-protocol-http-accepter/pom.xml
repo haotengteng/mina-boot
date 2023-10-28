@@ -5,7 +5,7 @@
     <parent>
         <groupId>cn.mina.boot</groupId>
         <artifactId>mina-boot-protocol</artifactId>
-        <version>0.0.1-SNAPSHOT</version> <!-- lookup parent from repository -->
+        <version>${mina.version}</version>
     </parent>
     <artifactId>mina-boot-protocol-http-accepter</artifactId>
     <name>mina-boot-protocol-http-accepter</name>

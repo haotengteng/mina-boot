@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cn.mina.boot</groupId>
+        <artifactId>mina-boot-data</artifactId>
+        <version>${mina.version}</version>
+    </parent>
+
+    <artifactId>mina-boot-data-hugegraph-starter</artifactId>
+
+    <properties>
+        <jersey.version>3.0.3</jersey.version>
+        <jakarta-annotation.version>2.0.0</jakarta-annotation.version>
+        <jakarta-ws-rs.version>3.0.0</jakarta-ws-rs.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.mina.boot</groupId>
+            <artifactId>mina-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.hugegraph</groupId>
+            <artifactId>hugegraph-client</artifactId>
+        </dependency>
+
+    </dependencies>
+
+
+</project>

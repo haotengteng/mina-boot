@@ -6,11 +6,12 @@
     <modules>
         <module>mina-boot-data-mybatis-starter</module>
         <module>mina-boot-data-jpa-starter</module>
+        <module>mina-boot-data-hugegraph-starter</module>
     </modules>
     <parent>
         <groupId>cn.mina.boot</groupId>
         <artifactId>mina-parent</artifactId>
-        <version>0.0.1-SNAPSHOT</version> <!-- lookup parent from repository -->
+        <version>${mina.version}</version><!-- lookup parent from repository -->
     </parent>
     <artifactId>mina-boot-data</artifactId>
     <name>mina-boot-data</name>

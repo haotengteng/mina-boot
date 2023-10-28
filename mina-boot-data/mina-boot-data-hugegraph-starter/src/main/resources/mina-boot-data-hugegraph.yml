@@ -1,0 +1,8 @@
+mina:
+  boot:
+    data:
+      hugegraph:
+        url: http://localhost:18080
+        graph: hugegraph
+        username: "**"
+        password: "**"

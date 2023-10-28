@@ -5,10 +5,9 @@
     <parent>
         <groupId>cn.mina.boot</groupId>
         <artifactId>mina-parent</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>${mina.version}</version>
     </parent>
     <artifactId>mina-boot-docker</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>mina-boot-docker</name>
     <description>mina-boot-docker</description>
     <packaging>jar</packaging>

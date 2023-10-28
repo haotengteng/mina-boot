@@ -5,25 +5,39 @@
     <parent>
         <groupId>cn.mina.boot</groupId>
         <artifactId>mina-boot-example</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>${mina.version}</version>
     </parent>
     <artifactId>mina-boot-example-data</artifactId>
     <name>mina-boot-example-data</name>
 
+    <properties>
+        <jersey.version>3.0.3</jersey.version>
+        <jakarta-annotation.version>2.0.0</jakarta-annotation.version>
+        <jakarta-ws-rs.version>3.0.0</jakarta-ws-rs.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>cn.mina.boot</groupId>
-            <artifactId>mina-boot-web-starter</artifactId>
-        </dependency>
-        <!--jpa 与 mybatis 若要同时应用，各自的配置需要在应用项目中设置-->
-        <dependency>
-            <groupId>cn.mina.boot</groupId>
-            <artifactId>mina-boot-data-mybatis-starter</artifactId>
+            <artifactId>mina-boot-starter</artifactId>
         </dependency>
 <!--        <dependency>-->
-<!--            <groupId>cn.mina.boot</groupId>-->
-<!--            <artifactId>mina-boot-data-jpa-starter</artifactId>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-tomcat</artifactId>-->
 <!--        </dependency>-->
+        <!--jpa 与 mybatis 若要同时应用，各自的配置需要在应用项目中设置-->
+        <!--        <dependency>-->
+        <!--            <groupId>cn.mina.boot</groupId>-->
+        <!--            <artifactId>mina-boot-data-mybatis-starter</artifactId>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>cn.mina.boot</groupId>-->
+        <!--            <artifactId>mina-boot-data-jpa-starter</artifactId>-->
+        <!--        </dependency>-->
+        <dependency>
+            <groupId>cn.mina.boot</groupId>
+            <artifactId>mina-boot-data-hugegraph-starter</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
