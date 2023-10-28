@@ -4,10 +4,10 @@ import cn.mina.boot.common.util.DateUtils;
 import io.minio.*;
 import io.minio.http.Method;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.compress.utils.IOUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
-import sun.misc.BASE64Decoder;
 
 import java.io.*;
 import java.util.concurrent.TimeUnit;
@@ -109,10 +109,25 @@ public class MinaOssMinioUtil {
         return null;
     }
 
+    /**
+     * 图片下载
+     *
+     * @param imageName
+     * @return
+     */
+    public String downloadImage( String imageName) {
+        if (!StringUtils.isEmpty(imageName)) {
+            ByteArrayOutputStream out = (ByteArrayOutputStream) downloadStream(imageName);
+            byte[] bytes = out.toByteArray();
+           return Base64.encodeBase64String(bytes);
+        }
+        return null;
+    }
+
     public static InputStream base64ToInputStream(String base64) {
         ByteArrayInputStream stream = null;
         try {
-            byte[] bytes = new BASE64Decoder().decodeBuffer(base64.trim());
+            byte[] bytes = Base64.decodeBase64(base64.trim());
             stream = new ByteArrayInputStream(bytes);
         } catch (Exception e) {
             e.printStackTrace();
