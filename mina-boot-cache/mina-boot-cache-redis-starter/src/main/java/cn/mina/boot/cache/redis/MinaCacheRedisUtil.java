@@ -3,11 +3,9 @@ package cn.mina.boot.cache.redis;
 import cn.mina.boot.common.util.JsonUtils;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
+import org.springframework.lang.NonNull;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -17,7 +15,7 @@ import java.util.stream.Collectors;
 public class MinaCacheRedisUtil {
 
 
-    protected static RedisTemplate<String, Object> redisTemplate;
+    protected static RedisTemplate<String, String> redisTemplate;
 
     /**
      * 设置有效时间
@@ -26,7 +24,7 @@ public class MinaCacheRedisUtil {
      * @param timeout 超时时间
      * @return true=设置成功；false=设置失败
      */
-    public static boolean expire(final String key, final long timeout) {
+    public static boolean expire(@NonNull final String key, @NonNull final long timeout) {
 
         return expire(key, timeout, TimeUnit.SECONDS);
     }
@@ -39,7 +37,7 @@ public class MinaCacheRedisUtil {
      * @param unit    时间单位
      * @return true=设置成功；false=设置失败
      */
-    public static boolean expire(final String key, final long timeout, final TimeUnit unit) {
+    public static boolean expire(@NonNull final String key, @NonNull final long timeout, @NonNull final TimeUnit unit) {
 
         Boolean ret = redisTemplate.expire(key, timeout, unit);
         return ret != null && ret;
@@ -51,7 +49,7 @@ public class MinaCacheRedisUtil {
      * @param key Redis键
      * @return true=存在；false=不存在
      */
-    public static boolean hasKey(final String key) {
+    public static boolean hasKey(@NonNull final String key) {
 
         Boolean ret = redisTemplate.opsForValue().getOperations().hasKey(key);
         return ret != null && ret;
@@ -63,7 +61,7 @@ public class MinaCacheRedisUtil {
      * @param key 键
      * @return true=删除成功；false=删除失败
      */
-    public static boolean del(final String key) {
+    public static boolean del(@NonNull final String key) {
 
         Boolean ret = redisTemplate.delete(key);
         return ret != null && ret;
@@ -75,7 +73,7 @@ public class MinaCacheRedisUtil {
      * @param keys 键集合
      * @return 成功删除的个数
      */
-    public static long del(final Collection<String> keys) {
+    public static long del(@NonNull final Collection<String> keys) {
 
         Long ret = redisTemplate.delete(keys);
         return ret == null ? 0 : ret;
@@ -87,7 +85,7 @@ public class MinaCacheRedisUtil {
      * @param key   Redis键
      * @param value 值
      */
-    public static void put(final String key, final Object value) {
+    public static void put(@NonNull final String key, @NonNull final Object value) {
 
         redisTemplate.opsForValue().set(key, JsonUtils.toJSONString(value));
     }
@@ -101,7 +99,7 @@ public class MinaCacheRedisUtil {
      * @param value   值
      * @param timeout 有效期，单位秒
      */
-    public static void put(final String key, final Object value, final long timeout) {
+    public static void put(@NonNull final String key, @NonNull final Object value, @NonNull final long timeout) {
 
         redisTemplate.opsForValue().set(key, JsonUtils.toJSONString(value), timeout, TimeUnit.SECONDS);
     }
@@ -112,7 +110,7 @@ public class MinaCacheRedisUtil {
      * @param key 键
      * @return 对象
      */
-    public static String get(final String key) {
+    public static String get(@NonNull final String key) {
         return (String) redisTemplate.opsForValue().get(key);
     }
 
@@ -122,7 +120,7 @@ public class MinaCacheRedisUtil {
      * @param key 键
      * @return 对象
      */
-    public static <T> T getBean(final String key, Class<T> clazz) {
+    public static <T> T getBean(@NonNull final String key, Class<T> clazz) {
         return JsonUtils.toBean(get(key), clazz);
     }
 
@@ -135,7 +133,7 @@ public class MinaCacheRedisUtil {
      * @param hkey hash键
      * @return true=存在；false=不存在
      */
-    public static boolean hasHashKey(final String key, String hkey) {
+    public static boolean hasHashKey(@NonNull final String key, @NonNull String hkey) {
 
         Boolean ret = redisTemplate.opsForHash().hasKey(key, hkey);
         return ret != null && ret;
@@ -148,7 +146,7 @@ public class MinaCacheRedisUtil {
      * @param hKey  Hash键
      * @param value 值
      */
-    public static void putHash(final String key, final String hKey, final Object value) {
+    public static void putHash(@NonNull final String key, @NonNull final String hKey, @NonNull final Object value) {
 
         redisTemplate.opsForHash().put(key, hKey, value);
     }
@@ -159,7 +157,7 @@ public class MinaCacheRedisUtil {
      * @param key    Redis键
      * @param values Hash键值对
      */
-    public static void putAllHash(final String key, final Map<String, Object> values) {
+    public static void putAllHash(@NonNull final String key, @NonNull final Map<String, Object> values) {
 
         redisTemplate.opsForHash().putAll(key, values);
     }
@@ -171,7 +169,7 @@ public class MinaCacheRedisUtil {
      * @param hKey Hash键
      * @return Hash中的对象
      */
-    public static <T> T getHash(final String key, final String hKey, Class<T> clazz) {
+    public static <T> T getHash(@NonNull final String key, @NonNull final String hKey, Class<T> clazz) {
 
         return clazz.cast(redisTemplate.opsForHash().get(key, hKey));
     }
@@ -182,7 +180,7 @@ public class MinaCacheRedisUtil {
      * @param key Redis键
      * @return Hash对象
      */
-    public static Map<Object, Object> getAllHash(final String key) {
+    public static Map<Object, Object> getAllHash(@NonNull final String key) {
         return redisTemplate.opsForHash().entries(key);
     }
 
@@ -193,7 +191,7 @@ public class MinaCacheRedisUtil {
      * @param hKeys Hash键集合
      * @return Hash对象集合
      */
-    public static List<Object> getMultiHash(final String key, final Collection<Object> hKeys) {
+    public static List<Object> getMultiHash(@NonNull final String key, @NonNull final Collection<Object> hKeys) {
 
         return redisTemplate.opsForHash().multiGet(key, hKeys);
     }
@@ -205,7 +203,7 @@ public class MinaCacheRedisUtil {
      * @param hKeys Hash键集合
      * @return Hash对象集合
      */
-    public static <T> long delHashKeys(final String key, final Collection<T> hKeys) {
+    public static <T> long delHashKeys(@NonNull final String key, @NonNull final Collection<T> hKeys) {
         return redisTemplate.opsForHash().delete(key, hKeys);
     }
 
@@ -218,8 +216,9 @@ public class MinaCacheRedisUtil {
      * @param values 值
      * @return 存入的个数
      */
-    public static <T> long putSet(final String key, final T... values) {
-        Long count = redisTemplate.opsForSet().add(key, values);
+    public static <T> long putSet(@NonNull final String key, @NonNull final T... values) {
+        String[] array = Arrays.stream(values).map(JsonUtils::toJSONString).toArray(String[]::new);
+        Long count = redisTemplate.opsForSet().add(key, array);
         return count == null ? 0 : count;
     }
 
@@ -230,8 +229,9 @@ public class MinaCacheRedisUtil {
      * @param values 值
      * @return 移除的个数
      */
-    public static <T> long delSet(final String key, final T... values) {
-        Long count = redisTemplate.opsForSet().remove(key, values);
+    public static <T> long delSet(@NonNull final String key, @NonNull final T... values) {
+        String[] array = Arrays.stream(values).map(JsonUtils::toJSONString).toArray(String[]::new);
+        Long count = redisTemplate.opsForSet().remove(key, array);
         return count == null ? 0 : count;
     }
 
@@ -241,39 +241,14 @@ public class MinaCacheRedisUtil {
      * @param key Redis键
      * @return set集合
      */
-    public static <T> Set<T> getSetAll(final String key, Class<T> clazz) {
-        Set<Object> members = redisTemplate.opsForSet().members(key);
+    public static <T> Set<T> getSetAll(@NonNull final String key, Class<T> clazz) {
+        Set<String> members = redisTemplate.opsForSet().members(key);
         if (members == null) {
             return null;
         }
-        return members.stream().map(clazz::cast).collect(Collectors.toSet());
+        return members.stream().map(value -> JsonUtils.toBean(value, clazz)).collect(Collectors.toSet());
     }
 
-    // 存储ZSet相关操作
-
-    /**
-     * 往ZSet中存入数据
-     *
-     * @param key    Redis键
-     * @param values 值
-     * @return 存入的个数
-     */
-    public static long putZSet(final String key, final Set<ZSetOperations.TypedTuple<Object>> values) {
-        Long count = redisTemplate.opsForZSet().add(key, values);
-        return count == null ? 0 : count;
-    }
-
-    /**
-     * 删除ZSet中的数据
-     *
-     * @param key    Redis键
-     * @param values 值
-     * @return 移除的个数
-     */
-    public static long delZSet(final String key, final Set<ZSetOperations.TypedTuple<Object>> values) {
-        Long count = redisTemplate.opsForZSet().remove(key, values);
-        return count == null ? 0 : count;
-    }
 
     // 存储List相关操作
 
@@ -284,8 +259,8 @@ public class MinaCacheRedisUtil {
      * @param value 数据
      * @return 存入的个数
      */
-    public static <T> long pushList(final String key, final T value) {
-        Long count = redisTemplate.opsForList().rightPush(key, value);
+    public static <T> long pushList(@NonNull final String key, @NonNull final T value) {
+        Long count = redisTemplate.opsForList().rightPush(key, JsonUtils.toJSONString(value));
         return count == null ? 0 : count;
     }
 
@@ -296,8 +271,9 @@ public class MinaCacheRedisUtil {
      * @param values 多个数据
      * @return 存入的个数
      */
-    public static <T> long pushAllList(final String key, final Collection<T> values) {
-        Long count = redisTemplate.opsForList().rightPushAll(key, values);
+    public static <T> long pushAllList(@NonNull final String key, @NonNull final Collection<T> values) {
+        String[] array = values.stream().map(JsonUtils::toJSONString).toArray(String[]::new);
+        Long count = redisTemplate.opsForList().rightPushAll(key, array);
         return count == null ? 0 : count;
     }
 
@@ -308,8 +284,9 @@ public class MinaCacheRedisUtil {
      * @param values 多个数据
      * @return 存入的个数
      */
-    public static <T> long pushAllList(final String key, final T... values) {
-        Long count = redisTemplate.opsForList().rightPushAll(key, values);
+    public static <T> long pushAllList(@NonNull final String key, @NonNull final T... values) {
+        String[] array = Arrays.stream(values).map(JsonUtils::toJSONString).toArray(String[]::new);
+        Long count = redisTemplate.opsForList().rightPushAll(key, array);
         return count == null ? 0 : count;
     }
 
@@ -321,11 +298,11 @@ public class MinaCacheRedisUtil {
      * @param end   结束位置（start=0，end=-1表示获取全部元素）
      * @return List对象
      */
-    public static <T> List<T> getList(final String key, final int start, final int end, Class<T> clazz) {
-        List<Object> objects = redisTemplate.opsForList().range(key, start, end);
+    public static <T> List<T> getList(@NonNull final String key, @NonNull final int start, @NonNull final int end, Class<T> clazz) {
+        List<String> objects = redisTemplate.opsForList().range(key, start, end);
         if (objects == null) {
             return null;
         }
-        return objects.stream().map(clazz::cast).collect(Collectors.toList());
+        return objects.stream().map(v -> JsonUtils.toBean(v, clazz)).collect(Collectors.toList());
     }
 }

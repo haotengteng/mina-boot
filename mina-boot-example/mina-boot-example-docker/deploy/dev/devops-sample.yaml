@@ -4,7 +4,7 @@ metadata:
   labels:
     app: mina-boot-example-docker
   name: ks-sample-dev
-  namespace: devops-project
+  namespace: mina-project
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -30,7 +30,7 @@ spec:
             timeoutSeconds: 10
             failureThreshold: 30
             periodSeconds: 5
-          imagePullPolicy: PullIfNotPresent
+          imagePullPolicy: IfNotPresent
           name: ks-sample
           ports:
             - containerPort: 8080
@@ -47,3 +47,21 @@ spec:
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: mina-boot-example-docker
+  name: ks-sample-svr
+  namespace: mina-project
+spec:
+  ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+      nodePort: 30861
+  selector:
+    app: mina-boot-example-docker
+  sessionAffinity: None
+  type: NodePort

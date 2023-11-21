@@ -1,6 +1,5 @@
 package cn.mina.boot.cache.redis;
 
-import cn.mina.boot.cache.redis.serializer.FastJson2RedisSerializer;
 import cn.mina.boot.common.exception.MinaBaseException;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +11,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.time.Duration;
@@ -38,11 +35,11 @@ public class MinaCacheRedisAutoConfiguration {
      */
     @Bean
     @ConditionalOnProperty(prefix = "mina.cache.redis", name = "serializer", havingValue = "jackson", matchIfMissing = true)
-    public RedisTemplate<String, Object> redisTemplateJackson(RedisConnectionFactory connectionFactory) {
-        RedisTemplate<String, Object> template = new RedisTemplate<>();
+    public RedisTemplate<String, String> redisTemplateJackson(RedisConnectionFactory connectionFactory) {
+        RedisTemplate<String, String> template = new RedisTemplate<>();
         template.setConnectionFactory(connectionFactory);
 
-        Jackson2JsonRedisSerializer serializer = new Jackson2JsonRedisSerializer(Object.class);
+        StringRedisSerializer serializer = new StringRedisSerializer();
         template.setValueSerializer(serializer);
         template.setHashKeySerializer(serializer);
         template.setHashValueSerializer(serializer);
@@ -55,10 +52,10 @@ public class MinaCacheRedisAutoConfiguration {
 
     @Bean
     @ConditionalOnProperty(prefix = "mina.cache.redis", name = "serializer", havingValue = "fastjson")
-    public RedisTemplate<String, Object> redisTemplateFastJson(RedisConnectionFactory connectionFactory) {
-        RedisTemplate<String, Object> template = new RedisTemplate<>();
+    public RedisTemplate<String, String> redisTemplateFastJson(RedisConnectionFactory connectionFactory) {
+        RedisTemplate<String, String> template = new RedisTemplate<>();
         template.setConnectionFactory(connectionFactory);
-        FastJson2RedisSerializer serializer = new FastJson2RedisSerializer(Object.class);
+        StringRedisSerializer serializer = new StringRedisSerializer();
         template.setValueSerializer(serializer);
         template.setHashKeySerializer(serializer);
         template.setHashValueSerializer(serializer);
@@ -69,12 +66,12 @@ public class MinaCacheRedisAutoConfiguration {
         return template;
     }
 
-    @Bean
-    public StringRedisTemplate stringRedisTemplate(RedisConnectionFactory factory) {
-        StringRedisTemplate stringRedisTemplate = new StringRedisTemplate();
-        stringRedisTemplate.setConnectionFactory(factory);
-        return stringRedisTemplate;
-    }
+//    @Bean
+//    public StringRedisTemplate stringRedisTemplate(RedisConnectionFactory factory) {
+//        StringRedisTemplate stringRedisTemplate = new StringRedisTemplate();
+//        stringRedisTemplate.setConnectionFactory(factory);
+//        return stringRedisTemplate;
+//    }
 
     @Bean
     @ConditionalOnProperty(prefix = "mina.cache.redis", name = "enableTtl", havingValue = "true")
@@ -95,7 +92,7 @@ public class MinaCacheRedisAutoConfiguration {
     }
 
 
-    private void initMinaRedisUtil(RedisTemplate<String, Object> redisTemplate) {
+    private void initMinaRedisUtil(RedisTemplate<String, String> redisTemplate) {
         MinaCacheRedisUtil.redisTemplate = redisTemplate;
     }
 }

@@ -66,6 +66,10 @@ public class JsonUtils {
         if (obj == null) {
             return null;
         }
+        // 解决对象为string时，jackson序列化会增加引号问题
+        if (obj instanceof String || obj instanceof Character){
+            return obj.toString();
+        }
         return mapper().writeValueAsString(obj);
     }
 
