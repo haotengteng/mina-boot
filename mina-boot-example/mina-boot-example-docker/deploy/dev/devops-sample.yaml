@@ -4,7 +4,7 @@ metadata:
   labels:
     app: mina-boot-example-docker
   name: ks-sample-dev
-  namespace: mina-project
+  namespace: mima-project
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -53,7 +53,7 @@ metadata:
   labels:
     app: mina-boot-example-docker
   name: ks-sample-svr
-  namespace: mina-project
+  namespace: mima-project
 spec:
   ports:
     - name: http
