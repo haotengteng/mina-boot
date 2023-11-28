@@ -35,6 +35,11 @@ public enum ExampleErrorCode implements ErrorCode {
     private String message;
 
 
+    ExampleErrorCode(int code, String message) {
+        this.code = code;
+        this.message = message;
+    }
+
     public int getCode() {
         return code;
     }
@@ -50,12 +55,6 @@ public enum ExampleErrorCode implements ErrorCode {
     public void setMessage(String message) {
         this.message = message;
     }
-
-    ExampleErrorCode(int code, String message) {
-        this.code = code;
-        this.message = message;
-    }
-
 
     public ErrorCode customCode(int code) {
         this.code = code;

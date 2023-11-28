@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 /**
  * 分页查询 基础参数
+ *
  * @author Created by haoteng on 2022/8/8.
  */
 @Data

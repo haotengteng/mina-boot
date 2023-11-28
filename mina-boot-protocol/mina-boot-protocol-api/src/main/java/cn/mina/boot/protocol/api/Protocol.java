@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 /**
  * 定义协议体
+ *
  * @author Created by haoteng on 2023/2/20.
  */
 @Data

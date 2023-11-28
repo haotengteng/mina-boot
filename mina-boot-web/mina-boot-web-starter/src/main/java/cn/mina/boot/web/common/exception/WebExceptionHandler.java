@@ -26,7 +26,7 @@ public class WebExceptionHandler implements HandlerExceptionResolver {
             MinaBaseException baseException = (MinaBaseException) ex;
             result.put("code", baseException.getCode());
             result.put("message", baseException.getMessage());
-        }else {
+        } else {
             result.put("code", GlobalErrorCode.ERROR_SYS_ERROR.getCode());
             result.put("message", GlobalErrorCode.ERROR_SYS_ERROR.getMessage());
         }

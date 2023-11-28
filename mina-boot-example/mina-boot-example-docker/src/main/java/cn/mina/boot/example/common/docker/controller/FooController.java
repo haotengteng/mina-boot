@@ -20,6 +20,6 @@ public class FooController {
 
     private String getLocalIP() throws UnknownHostException {
         InetAddress addr = InetAddress.getLocalHost();
-        return addr.getHostName()+"-"+addr.getHostAddress();
+        return addr.getHostName() + "-" + addr.getHostAddress();
     }
 }

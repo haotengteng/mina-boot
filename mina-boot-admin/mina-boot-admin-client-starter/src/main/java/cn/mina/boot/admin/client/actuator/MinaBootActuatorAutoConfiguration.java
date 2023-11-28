@@ -1,7 +1,6 @@
 package cn.mina.boot.admin.client.actuator;
 
 import cn.mina.boot.admin.client.actuator.dependency.Collector;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,6 +13,7 @@ public class MinaBootActuatorAutoConfiguration {
 
     /**
      * 进在指定的profile 执行
+     *
      * @return
      */
     @Bean

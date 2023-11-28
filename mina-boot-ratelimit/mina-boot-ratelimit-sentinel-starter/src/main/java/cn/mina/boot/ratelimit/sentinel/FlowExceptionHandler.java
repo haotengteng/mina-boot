@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * sentinel 限流处理接口
+ *
  * @author Created by haoteng on 2023/3/17.
  */
 @FunctionalInterface

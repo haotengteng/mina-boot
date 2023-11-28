@@ -13,13 +13,15 @@ import java.util.stream.Collectors;
 
 /**
  * 修改springbox ，使其兼容springboot 2.6以后版本 的路径匹配策略
+ *
  * @author Created by haoteng on 2022/11/23.
  */
 public class SpringfoxHandlerProviderBeanPostProcessor implements BeanPostProcessor {
 
     /**
      * bean 后置处理，在执行完bean的各项初始化 方法后执行
-     * @param bean the new bean instance
+     *
+     * @param bean     the new bean instance
      * @param beanName the name of the bean
      * @return
      * @throws BeansException

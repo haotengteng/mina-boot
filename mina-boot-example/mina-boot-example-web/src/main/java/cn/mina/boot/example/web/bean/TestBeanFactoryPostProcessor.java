@@ -9,6 +9,6 @@ import org.springframework.stereotype.Component;
 public class TestBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory configurableListableBeanFactory) throws BeansException {
-        System.out.println("TestBeanFactoryPostProcessor==>"+configurableListableBeanFactory.getSingletonCount());
+        System.out.println("TestBeanFactoryPostProcessor==>" + configurableListableBeanFactory.getSingletonCount());
     }
 }

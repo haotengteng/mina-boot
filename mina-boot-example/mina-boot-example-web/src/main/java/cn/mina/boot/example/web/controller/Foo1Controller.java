@@ -24,6 +24,31 @@ import java.net.UnknownHostException;
 @Slf4j
 public class Foo1Controller {
 
+    public static void main(String[] args) {
+
+//        testJetToken();
+
+        UserDTO userDTO = new UserDTO();
+        userDTO.setId(11);
+        userDTO.setName("郝腾腾");
+        userDTO.setPhone("18767176323");
+        userDTO.setAddress("浙江省宁波市鄞州区下应街道东兴社区53幢304室");
+        System.out.println(JsonUtils.toJSONString(userDTO));
+    }
+
+    private static void testJetToken() {
+        ExampleWebContext context = new ExampleWebContext();
+        context.setName("example");
+        String generate = MinaWebAuthTools.token.generate(context);
+        System.out.println("generate:" + generate);
+//        String encode = JwtTokenHelper.encode(context,1,"");
+//        System.out.println("encode:" + encode);
+//        Boolean verify = JwtTokenHelper.verify(encode, JwtTokenHelper.SECRET);
+//        System.out.println("verify:" + verify);
+//        ExampleWebContext decode = JwtTokenHelper.decode(encode, ExampleWebContext.class);
+//        System.out.println("decode:" + JSON.toJSONString(decode));
+    }
+
     @GetMapping(path = "hello")
     public String sayHello() throws UnknownHostException {
         String ip = getLocalIP();
@@ -42,7 +67,6 @@ public class Foo1Controller {
         String ip = getLocalIP();
         return MinaWebTools.response.success(ip + ": Hello docker!!");
     }
-
 
     @GetMapping(path = "hello/context")
     public MinaWebResult sayHelloContext() {
@@ -77,44 +101,13 @@ public class Foo1Controller {
 
     @GetMapping(path = "hello/cache/redis")
     public MinaWebResult testCacheRedis() {
-        MinaCacheRedisUtil.put("mina","a simple 框架");
-        log.info("redis数据:{}",MinaCacheRedisUtil.getBean("mina",String.class));
-        return MinaWebTools.response.success(MinaCacheRedisUtil.getBean("mina",String.class));
+        MinaCacheRedisUtil.put("mina", "a simple 框架");
+        log.info("redis数据:{}", MinaCacheRedisUtil.getBean("mina", String.class));
+        return MinaWebTools.response.success(MinaCacheRedisUtil.getBean("mina", String.class));
     }
-
-
-
 
     private String getLocalIP() throws UnknownHostException {
         InetAddress addr = InetAddress.getLocalHost();
         return addr.getHostName() + "-" + addr.getHostAddress();
-    }
-
-
-
-
-    public static void main(String[] args) {
-
-//        testJetToken();
-
-        UserDTO userDTO = new UserDTO();
-        userDTO.setId(11);
-        userDTO.setName("郝腾腾");
-        userDTO.setPhone("18767176323");
-        userDTO.setAddress("浙江省宁波市鄞州区下应街道东兴社区53幢304室");
-        System.out.println(JsonUtils.toJSONString(userDTO));
-    }
-
-    private static void testJetToken() {
-        ExampleWebContext context = new ExampleWebContext();
-        context.setName("example");
-        String generate = MinaWebAuthTools.token.generate(context);
-        System.out.println("generate:" + generate);
-//        String encode = JwtTokenHelper.encode(context,1,"");
-//        System.out.println("encode:" + encode);
-//        Boolean verify = JwtTokenHelper.verify(encode, JwtTokenHelper.SECRET);
-//        System.out.println("verify:" + verify);
-//        ExampleWebContext decode = JwtTokenHelper.decode(encode, ExampleWebContext.class);
-//        System.out.println("decode:" + JSON.toJSONString(decode));
     }
 }

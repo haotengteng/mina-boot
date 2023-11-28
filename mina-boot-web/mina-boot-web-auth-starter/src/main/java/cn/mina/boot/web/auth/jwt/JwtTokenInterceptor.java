@@ -2,10 +2,10 @@ package cn.mina.boot.web.auth.jwt;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.mina.boot.web.auth.AbstractTokenInterceptor;
 import cn.mina.boot.web.auth.MinaTokenProperties;
 import cn.mina.boot.web.common.context.MinaWebContext;
 import cn.mina.boot.web.common.context.MinaWebContextOperator;
-import cn.mina.boot.web.auth.AbstractTokenInterceptor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Date;
@@ -18,7 +18,7 @@ import java.util.Date;
 @Slf4j
 public class JwtTokenInterceptor extends AbstractTokenInterceptor {
 
-    private MinaTokenProperties properties;
+    private final MinaTokenProperties properties;
 
     public JwtTokenInterceptor(MinaTokenProperties minaTokenProperties) {
         this.properties = minaTokenProperties;

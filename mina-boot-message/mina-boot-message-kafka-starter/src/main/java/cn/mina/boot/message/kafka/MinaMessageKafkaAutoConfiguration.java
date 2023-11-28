@@ -29,7 +29,7 @@ import java.util.Map;
 @Configuration
 @ConditionalOnClass(value = KafkaTemplate.class)
 @EnableConfigurationProperties(MinaMessageKafakaProperties.class)
-@PropertySource(value = "classpath:mina-boot-message-kafka.yml",factory = YmlPropertySourceFactory.class)
+@PropertySource(value = "classpath:mina-boot-message-kafka.yml", factory = YmlPropertySourceFactory.class)
 public class MinaMessageKafkaAutoConfiguration {
 
     @Autowired

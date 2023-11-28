@@ -6,6 +6,7 @@ import lombok.Data;
 
 /**
  * 脱敏功能 示例
+ *
  * @author Created by haoteng on 2023/8/9.
  */
 @Data

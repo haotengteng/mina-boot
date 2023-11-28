@@ -27,10 +27,9 @@ import static org.apache.commons.lang3.StringUtils.isEmpty;
  * @author Created by haoteng on 2022/7/27.
  */
 public class JsonUtils {
-    private static ObjectMapper MAPPER = new ObjectMapper();
-
     // 日起格式化
     private static final String STANDARD_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    private static ObjectMapper MAPPER = new ObjectMapper();
 
     static {
         //对象的所有字段全部列入
@@ -55,7 +54,8 @@ public class JsonUtils {
         JsonUtils.MAPPER = mapper;
     }
 
-    /**˚
+    /**
+     * ˚
      * 序列化为JSON字符串
      *
      * @param obj obj
@@ -67,7 +67,7 @@ public class JsonUtils {
             return null;
         }
         // 解决对象为string时，jackson序列化会增加引号问题
-        if (obj instanceof String || obj instanceof Character){
+        if (obj instanceof String || obj instanceof Character) {
             return obj.toString();
         }
         return mapper().writeValueAsString(obj);
@@ -170,7 +170,7 @@ public class JsonUtils {
         if (jsonNode == null) {
             return null;
         }
-        return (T) mapper().convertValue(jsonNode, t);
+        return mapper().convertValue(jsonNode, t);
     }
 
     /**

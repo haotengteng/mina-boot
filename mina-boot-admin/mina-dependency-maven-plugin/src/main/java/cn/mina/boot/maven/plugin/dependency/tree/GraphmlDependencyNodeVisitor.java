@@ -60,6 +60,19 @@ public class GraphmlDependencyNodeVisitor extends AbstractSerializingVisitor imp
     }
 
     /**
+     * Generate a unique id from a DependencyNode.
+     * <p>
+     * Current implementation is rather simple and uses hashcode.
+     * </p>
+     *
+     * @param node the DependencyNode to use.
+     * @return the unique id.
+     */
+    private static String generateId(DependencyNode node) {
+        return String.valueOf(node.hashCode());
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override
@@ -94,18 +107,5 @@ public class GraphmlDependencyNodeVisitor extends AbstractSerializingVisitor imp
                 + "</y:NodeLabel></y:ShapeNode></data>");
         writer.println("</node>");
         return true;
-    }
-
-    /**
-     * Generate a unique id from a DependencyNode.
-     * <p>
-     * Current implementation is rather simple and uses hashcode.
-     * </p>
-     *
-     * @param node the DependencyNode to use.
-     * @return the unique id.
-     */
-    private static String generateId(DependencyNode node) {
-        return String.valueOf(node.hashCode());
     }
 }

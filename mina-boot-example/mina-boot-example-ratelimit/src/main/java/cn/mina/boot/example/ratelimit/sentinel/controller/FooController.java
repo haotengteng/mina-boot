@@ -16,6 +16,8 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class FooController {
 
+    private int count = 0;
+
     @GetMapping(path = "hello")
     public String sayHello(@RequestParam("name") String name) throws UnknownHostException, InterruptedException {
         String ip = getLocalIP();
@@ -25,9 +27,6 @@ public class FooController {
         log.info(ip + ": Hello docker!");
         return ip + ": Hello docker!";
     }
-
-
-    private int count = 0;
 
     @GetMapping(path = "hello1")
     public String sayHello1() throws UnknownHostException, InterruptedException {

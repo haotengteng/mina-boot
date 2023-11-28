@@ -4,8 +4,8 @@ package cn.mina.boot.common.exception;
  * @author Created by haoteng on 2022/7/19.
  */
 public class MinaBaseException extends RuntimeException {
-    private Integer code;
-    private String message;
+    private final Integer code;
+    private final String message;
 
     public MinaBaseException(Integer code, String message) {
         this.code = code;

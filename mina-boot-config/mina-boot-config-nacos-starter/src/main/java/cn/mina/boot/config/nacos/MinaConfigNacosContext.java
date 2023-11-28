@@ -11,7 +11,7 @@ import org.springframework.core.env.Environment;
  * @author Created by haoteng on 2022/7/26.pri
  */
 public class MinaConfigNacosContext implements ApplicationContextAware {
-    private static Logger log = LoggerFactory.getLogger(MinaConfigNacosContext.class);
+    private static final Logger log = LoggerFactory.getLogger(MinaConfigNacosContext.class);
 
     private Environment environment;
 

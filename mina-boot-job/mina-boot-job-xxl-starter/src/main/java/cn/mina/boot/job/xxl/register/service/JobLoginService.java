@@ -5,7 +5,6 @@ import cn.hutool.http.HttpResponse;
 import cn.mina.boot.common.exception.MinaBaseException;
 import cn.mina.boot.job.xxl.MinaJobXxlProperties;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.net.HttpCookie;
 import java.util.HashMap;
@@ -18,11 +17,10 @@ import java.util.Optional;
  */
 public class JobLoginService {
 
-    @Autowired
-    private MinaJobXxlProperties properties;
-
     private final String TOKEN_KEY = "XXL_JOB_LOGIN_IDENTITY";
     private final Map<String, String> loginCookie = new HashMap<>();
+    @Autowired
+    private MinaJobXxlProperties properties;
 
     public void login() {
         String url = properties.getAdminAddresses().concat("/login");

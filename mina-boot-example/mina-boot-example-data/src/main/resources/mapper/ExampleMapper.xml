@@ -22,10 +22,10 @@
         from example_info
         <where>
             <if test="id != null">
-                and  id = #{id}
+                and id = #{id}
             </if>
             <if test="name != null">
-                and  name = #{name}
+                and name = #{name}
             </if>
         </where>
     </select>

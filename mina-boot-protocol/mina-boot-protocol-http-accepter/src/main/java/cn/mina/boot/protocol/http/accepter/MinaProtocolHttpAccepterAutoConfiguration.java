@@ -14,7 +14,7 @@ import javax.servlet.Servlet;
 public class MinaProtocolHttpAccepterAutoConfiguration {
 
     @Bean
-    public HttpProtocolAccepter httpProtocolAccepter(){
+    public HttpProtocolAccepter httpProtocolAccepter() {
         return new HttpProtocolAccepter();
     }
 

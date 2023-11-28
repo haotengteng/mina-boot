@@ -38,6 +38,11 @@ public enum GlobalErrorCode implements ErrorCode {
     private String message;
 
 
+    GlobalErrorCode(int code, String message) {
+        this.code = code;
+        this.message = message;
+    }
+
     public int getCode() {
         return code;
     }
@@ -53,12 +58,6 @@ public enum GlobalErrorCode implements ErrorCode {
     public void setMessage(String message) {
         this.message = message;
     }
-
-    GlobalErrorCode(int code, String message) {
-        this.code = code;
-        this.message = message;
-    }
-
 
     public ErrorCode customCode(int code) {
         this.code = code;

@@ -3,14 +3,12 @@ package cn.mina.boot.job.elastic;
 
 import cn.mina.boot.job.elastic.anno.ElasticSimpleJob;
 import cn.mina.boot.support.YmlPropertySourceFactory;
-import lombok.SneakyThrows;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shardingsphere.elasticjob.api.JobConfiguration;
-import org.apache.shardingsphere.elasticjob.reg.zookeeper.ZookeeperRegistryCenter;
 import org.apache.shardingsphere.elasticjob.lite.api.bootstrap.impl.ScheduleJobBootstrap;
+import org.apache.shardingsphere.elasticjob.reg.zookeeper.ZookeeperRegistryCenter;
 import org.apache.shardingsphere.elasticjob.simple.job.SimpleJob;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;

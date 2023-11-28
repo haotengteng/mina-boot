@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cn.mina.boot</groupId>
         <artifactId>mina-boot-common</artifactId>
-        <version>${mina.version}</version>
+        <version>${project.version}</version>
     </parent>
     <artifactId>mina-boot-common-core</artifactId>
     <name>mina-boot-common-core</name>
@@ -15,14 +15,14 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.fastjson2</groupId>-->
-<!--            <artifactId>fastjson2</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.fastjson2</groupId>-->
-<!--            <artifactId>fastjson2-extension</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.alibaba.fastjson2</groupId>-->
+        <!--            <artifactId>fastjson2</artifactId>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.alibaba.fastjson2</groupId>-->
+        <!--            <artifactId>fastjson2-extension</artifactId>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
@@ -44,10 +44,10 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.apache.commons</groupId>-->
-<!--            <artifactId>commons</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.apache.commons</groupId>-->
+        <!--            <artifactId>commons</artifactId>-->
+        <!--        </dependency>-->
 
         <dependency>
             <groupId>com.google.guava</groupId>

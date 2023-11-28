@@ -14,7 +14,7 @@ import org.springframework.context.annotation.PropertySource;
  */
 @Configuration
 @EnableConfigurationProperties({MinaOssMinioProperties.class})
-@PropertySource(value = "classpath:mina-oss-minio.yml" ,factory = YmlPropertySourceFactory.class)
+@PropertySource(value = "classpath:mina-oss-minio.yml", factory = YmlPropertySourceFactory.class)
 @ConditionalOnProperty(prefix = "mina.oss.minio", name = "enable", havingValue = "true", matchIfMissing = true)
 public class MinaOssMinioAutoConfiguration {
 

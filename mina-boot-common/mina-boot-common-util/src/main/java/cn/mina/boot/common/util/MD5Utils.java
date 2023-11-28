@@ -3,16 +3,16 @@ package cn.mina.boot.common.util;
 import lombok.SneakyThrows;
 
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 /**
  * @author Created by haoteng on 2023/4/21.
  */
 public class MD5Utils {
 
-    static final char hexDigits[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
-    static final char hexDigitsLower[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+    static final char[] hexDigits = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+    static final char[] hexDigitsLower = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 
     /**
      * 对字符串 MD5 无盐值加密
@@ -53,7 +53,7 @@ public class MD5Utils {
         byte[] mdResult = md.digest();
         // 把密文转换成十六进制的字符串形式
         int j = mdResult.length;
-        char str[] = new char[j * 2];
+        char[] str = new char[j * 2];
         int k = 0;
         for (int i = 0; i < j; i++) {
             byte byte0 = mdResult[i];
@@ -107,7 +107,7 @@ public class MD5Utils {
         byte[] mdResult = md.digest();
         // 把密文转换成十六进制的字符串形式
         int j = mdResult.length;
-        char str[] = new char[j * 2];
+        char[] str = new char[j * 2];
         int k = 0;
         for (int i = 0; i < j; i++) {
             byte byte0 = mdResult[i];
@@ -126,11 +126,11 @@ public class MD5Utils {
 
         MessageDigest mdTemp = MessageDigest.getInstance("MD5");
 
-        mdTemp.update(plainText.getBytes("UTF-8"));
+        mdTemp.update(plainText.getBytes(StandardCharsets.UTF_8));
 
         byte[] md = mdTemp.digest();
         int j = md.length;
-        char str[] = new char[j * 2];
+        char[] str = new char[j * 2];
         int k = 0;
         for (int i = 0; i < j; i++) {
             byte byte0 = md[i];

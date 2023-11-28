@@ -3,7 +3,6 @@ package cn.mina.boot.admin.client.actuator.dependency;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.io.ClassPathResource;
 
@@ -18,7 +17,6 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 public class Collector implements CommandLineRunner {
-
 
 
     /**

@@ -1,8 +1,8 @@
 package cn.mina.boot.example.oss.controller;
 
+import cn.mina.boot.oss.minio.MinaOssMinioUtil;
 import cn.mina.boot.web.common.exception.GlobalErrorCode;
 import cn.mina.boot.web.common.exception.MinaGlobalException;
-import cn.mina.boot.oss.minio.MinaOssMinioUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -15,7 +15,7 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -30,12 +30,12 @@ public class FooController {
         List<String> fileList = new ArrayList<>();
         for (MultipartFile file : files) {
             String fileName = file.getOriginalFilename();
-            fileName = "/abd/ddd/"+fileName;
+            fileName = "/abd/ddd/" + fileName;
             String upload;
             try (
-                    InputStream in = file.getInputStream();
+                    InputStream in = file.getInputStream()
             ) {
-                 upload = MinaOssMinioUtil.upload(fileName, in, file.getContentType());
+                upload = MinaOssMinioUtil.upload(fileName, in, file.getContentType());
             } catch (Exception e) {
                 throw new MinaGlobalException(GlobalErrorCode.ERROR_SYS_ERROR.customMassage("minio 上传失败！"));
             }
@@ -57,7 +57,7 @@ public class FooController {
         }
         headers.setContentLength(bytes.length);
         headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-        headers.setAccessControlExposeHeaders(Arrays.asList("*"));
+        headers.setAccessControlExposeHeaders(Collections.singletonList("*"));
         return new ResponseEntity<byte[]>(bytes, headers, HttpStatus.OK);
     }
 

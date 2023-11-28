@@ -25,134 +25,134 @@ import java.util.Map;
  * @author Created by haoteng on 2023/8/21.
  */
 public class LoggingHttpServletRequestWrapper extends HttpServletRequestWrapper {
-        private static final Logger LOGGER = LoggerFactory.getLogger(LoggingHttpServletRequestWrapper.class);
-        private final ByteArrayOutputStream cachedContent;
-        private Map<String, String[]> cachedForm;
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoggingHttpServletRequestWrapper.class);
+    private final ByteArrayOutputStream cachedContent;
+    private Map<String, String[]> cachedForm;
 
-        @Nullable
-        private ServletInputStream inputStream;
+    @Nullable
+    private ServletInputStream inputStream;
 
-        public LoggingHttpServletRequestWrapper(HttpServletRequest request) {
-            super(request);
-            this.cachedContent = new ByteArrayOutputStream();
-            this.cachedForm = new HashMap<>();
-            cacheData();
+    public LoggingHttpServletRequestWrapper(HttpServletRequest request) {
+        super(request);
+        this.cachedContent = new ByteArrayOutputStream();
+        this.cachedForm = new HashMap<>();
+        cacheData();
+    }
+
+    @Override
+    public ServletInputStream getInputStream() throws IOException {
+        this.inputStream = new RepeatReadInputStream(cachedContent.toByteArray());
+        return this.inputStream;
+    }
+
+    @Override
+    public String getCharacterEncoding() {
+        String enc = super.getCharacterEncoding();
+        return (enc != null ? enc : WebUtils.DEFAULT_CHARACTER_ENCODING);
+    }
+
+    @Override
+    public BufferedReader getReader() throws IOException {
+        return new BufferedReader(new InputStreamReader(getInputStream(), getCharacterEncoding()));
+    }
+
+    @Override
+    public String getParameter(String name) {
+        String value = null;
+        if (isFormPost()) {
+            String[] values = cachedForm.get(name);
+            if (null != values && values.length > 0) {
+                value = values[0];
+            }
         }
 
-        @Override
-        public ServletInputStream getInputStream() throws IOException {
-            this.inputStream = new RepeatReadInputStream(cachedContent.toByteArray());
-            return this.inputStream;
+        if (StringUtils.isEmpty(value)) {
+            value = super.getParameter(name);
         }
 
-        @Override
-        public String getCharacterEncoding() {
-            String enc = super.getCharacterEncoding();
-            return (enc != null ? enc : WebUtils.DEFAULT_CHARACTER_ENCODING);
+        return value;
+    }
+
+    @Override
+    public Map<String, String[]> getParameterMap() {
+        if (isFormPost() && !CollectionUtils.isEmpty(cachedForm)) {
+            return cachedForm;
         }
 
-        @Override
-        public BufferedReader getReader() throws IOException {
-            return new BufferedReader(new InputStreamReader(getInputStream(), getCharacterEncoding()));
+        return super.getParameterMap();
+    }
+
+    @Override
+    public Enumeration<String> getParameterNames() {
+        if (isFormPost() && !CollectionUtils.isEmpty(cachedForm)) {
+            return Collections.enumeration(cachedForm.keySet());
         }
 
-        @Override
-        public String getParameter(String name) {
-            String value = null;
+        return super.getParameterNames();
+    }
+
+    @Override
+    public String[] getParameterValues(String name) {
+        if (isFormPost() && !CollectionUtils.isEmpty(cachedForm)) {
+            return cachedForm.get(name);
+        }
+
+        return super.getParameterValues(name);
+    }
+
+    private void cacheData() {
+        try {
             if (isFormPost()) {
-                String[] values = cachedForm.get(name);
-                if (null != values && values.length > 0) {
-                    value = values[0];
-                }
+                this.cachedForm = super.getParameterMap();
+            } else {
+                ServletInputStream inputStream = super.getInputStream();
+                IOUtils.copy(inputStream, this.cachedContent);
             }
+        } catch (IOException e) {
+            LOGGER.warn("[RepeatReadHttpRequest:cacheData], error: {}", e.getMessage());
+        }
 
-            if (StringUtils.isEmpty(value)) {
-                value = super.getParameter(name);
-            }
+    }
 
-            return value;
+    private boolean isFormPost() {
+        String contentType = getContentType();
+        return (contentType != null &&
+                (contentType.contains(MediaType.APPLICATION_FORM_URLENCODED_VALUE) ||
+                        contentType.contains(MediaType.MULTIPART_FORM_DATA_VALUE)) &&
+                HttpMethod.POST.matches(getMethod()));
+    }
+
+    private static class RepeatReadInputStream extends ServletInputStream {
+        private final ByteArrayInputStream inputStream;
+
+        public RepeatReadInputStream(byte[] bytes) {
+            this.inputStream = new ByteArrayInputStream(bytes);
         }
 
         @Override
-        public Map<String, String[]> getParameterMap() {
-            if (isFormPost() && !CollectionUtils.isEmpty(cachedForm)) {
-                return cachedForm;
-            }
-
-            return super.getParameterMap();
+        public int read() throws IOException {
+            return this.inputStream.read();
         }
 
         @Override
-        public Enumeration<String> getParameterNames() {
-            if (isFormPost() && !CollectionUtils.isEmpty(cachedForm)) {
-                return Collections.enumeration(cachedForm.keySet());
-            }
-
-            return super.getParameterNames();
+        public int readLine(byte[] b, int off, int len) throws IOException {
+            return this.inputStream.read(b, off, len);
         }
 
         @Override
-        public String[] getParameterValues(String name) {
-            if (isFormPost() && !CollectionUtils.isEmpty(cachedForm)) {
-                return cachedForm.get(name);
-            }
-
-            return super.getParameterValues(name);
+        public boolean isFinished() {
+            return this.inputStream.available() == 0;
         }
 
-        private void cacheData() {
-            try {
-                if (isFormPost()) {
-                    this.cachedForm = super.getParameterMap();
-                } else {
-                    ServletInputStream inputStream = super.getInputStream();
-                    IOUtils.copy(inputStream, this.cachedContent);
-                }
-            } catch (IOException e) {
-                LOGGER.warn("[RepeatReadHttpRequest:cacheData], error: {}", e.getMessage());
-            }
-
+        @Override
+        public boolean isReady() {
+            return true;
         }
 
-        private boolean isFormPost() {
-            String contentType = getContentType();
-            return (contentType != null &&
-                    (contentType.contains(MediaType.APPLICATION_FORM_URLENCODED_VALUE) ||
-                            contentType.contains(MediaType.MULTIPART_FORM_DATA_VALUE)) &&
-                    HttpMethod.POST.matches(getMethod()));
+        @Override
+        public void setReadListener(ReadListener listener) {
+
         }
-
-        private static class RepeatReadInputStream extends ServletInputStream {
-            private final ByteArrayInputStream inputStream;
-
-            public RepeatReadInputStream(byte[] bytes) {
-                this.inputStream = new ByteArrayInputStream(bytes);
-            }
-
-            @Override
-            public int read() throws IOException {
-                return this.inputStream.read();
-            }
-
-            @Override
-            public int readLine(byte[] b, int off, int len) throws IOException {
-                return this.inputStream.read(b, off, len);
-            }
-
-            @Override
-            public boolean isFinished() {
-                return this.inputStream.available() == 0;
-            }
-
-            @Override
-            public boolean isReady() {
-                return true;
-            }
-
-            @Override
-            public void setReadListener(ReadListener listener) {
-
-            }
-        }
+    }
 
 }

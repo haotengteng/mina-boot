@@ -2,7 +2,6 @@ package cn.mina.boot.cache.redis;
 
 import cn.mina.boot.common.util.JsonUtils;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.lang.NonNull;
 
 import java.util.*;
@@ -111,7 +110,7 @@ public class MinaCacheRedisUtil {
      * @return 对象
      */
     public static String get(@NonNull final String key) {
-        return (String) redisTemplate.opsForValue().get(key);
+        return redisTemplate.opsForValue().get(key);
     }
 
     /**

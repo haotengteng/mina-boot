@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <included>
-      <property name="log_pattern_file"
+    <property name="log_pattern_file"
               value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - [%tid] - %msg%n"/>
 
     <!-- 文件日志输出 -->

@@ -60,24 +60,18 @@ import org.eclipse.aether.repository.RemoteRepository;
 @Mojo(name = "remove-tree", requiresDependencyCollection = ResolutionScope.TEST, threadSafe = true)
 public class RemoveTreeMojo extends AbstractMojo {
 
-    @Parameter(defaultValue = "${project}", readonly = true, required = true)
-    private MavenProject project;
-
-    @Parameter(defaultValue = "${session}", readonly = true, required = true)
-    private MavenSession session;
-
-    @Parameter(property = "outputEncoding", defaultValue = "${project.reporting.outputEncoding}")
-    private String outputEncoding;
-
-    @Parameter(defaultValue = "${reactorProjects}", readonly = true, required = true)
-    private List<MavenProject> reactorProjects;
-
-    @Component
-    private RepositorySystem repositorySystem;
-
     @Parameter(defaultValue = "${repositorySystem}")
     RepositorySystem repositorySystemParam;
-
+    @Parameter(defaultValue = "${project}", readonly = true, required = true)
+    private MavenProject project;
+    @Parameter(defaultValue = "${session}", readonly = true, required = true)
+    private MavenSession session;
+    @Parameter(property = "outputEncoding", defaultValue = "${project.reporting.outputEncoding}")
+    private String outputEncoding;
+    @Parameter(defaultValue = "${reactorProjects}", readonly = true, required = true)
+    private List<MavenProject> reactorProjects;
+    @Component
+    private RepositorySystem repositorySystem;
     /**
      * The current repository/network configuration of Maven.
      */
@@ -212,6 +206,35 @@ public class RemoveTreeMojo extends AbstractMojo {
     private boolean skip;
     // Mojo methods -----------------------------------------------------------
 
+    /**
+     * Copied from Artifact.VersionRange. This is tweaked to handle singular ranges properly. Currently the default
+     * containsVersion method assumes a singular version means allow everything. This method assumes that "2.0.4" ==
+     * "[2.0.4,)"
+     *
+     * @param allowedRange range of allowed versions.
+     * @param theVersion   the version to be checked.
+     * @return true if the version is contained by the range.
+     * @deprecated This method is unused in this project and will be removed in the future.
+     */
+    @Deprecated
+    public static boolean containsVersion(VersionRange allowedRange, ArtifactVersion theVersion) {
+        ArtifactVersion recommendedVersion = allowedRange.getRecommendedVersion();
+        if (recommendedVersion == null) {
+            List<Restriction> restrictions = allowedRange.getRestrictions();
+            for (Restriction restriction : restrictions) {
+                if (restriction.containsVersion(theVersion)) {
+                    return true;
+                }
+            }
+            return false;
+        } else {
+            // only singular versions ever have a recommendedVersion
+            return recommendedVersion.compareTo(theVersion) <= 0;
+        }
+    }
+
+    // public methods ---------------------------------------------------------
+
     /*
      * @see org.apache.maven.plugin.Mojo#execute()
      */
@@ -227,8 +250,6 @@ public class RemoveTreeMojo extends AbstractMojo {
             getLog().info("remove dependency tree success:" + outputFile);
         }
     }
-
-    // public methods ---------------------------------------------------------
 
     /**
      * Gets the Maven project used by this mojo.
@@ -255,14 +276,14 @@ public class RemoveTreeMojo extends AbstractMojo {
         return skip;
     }
 
+    // private methods --------------------------------------------------------
+
     /**
      * @param skip {@link #skip}
      */
     public void setSkip(boolean skip) {
         this.skip = skip;
     }
-
-    // private methods --------------------------------------------------------
 
     /**
      * Gets the artifact filter to use when resolving the dependency tree.
@@ -355,6 +376,9 @@ public class RemoveTreeMojo extends AbstractMojo {
         return graphTokens;
     }
 
+    // following is required because the version handling in maven code
+    // doesn't work properly. I ripped it out of the enforcer rules.
+
     /**
      * Gets the dependency node filter to use when serializing the dependency graph.
      *
@@ -384,35 +408,5 @@ public class RemoveTreeMojo extends AbstractMojo {
         }
 
         return filters.isEmpty() ? null : new AndDependencyNodeFilter(filters);
-    }
-
-    // following is required because the version handling in maven code
-    // doesn't work properly. I ripped it out of the enforcer rules.
-
-    /**
-     * Copied from Artifact.VersionRange. This is tweaked to handle singular ranges properly. Currently the default
-     * containsVersion method assumes a singular version means allow everything. This method assumes that "2.0.4" ==
-     * "[2.0.4,)"
-     *
-     * @param allowedRange range of allowed versions.
-     * @param theVersion   the version to be checked.
-     * @return true if the version is contained by the range.
-     * @deprecated This method is unused in this project and will be removed in the future.
-     */
-    @Deprecated
-    public static boolean containsVersion(VersionRange allowedRange, ArtifactVersion theVersion) {
-        ArtifactVersion recommendedVersion = allowedRange.getRecommendedVersion();
-        if (recommendedVersion == null) {
-            List<Restriction> restrictions = allowedRange.getRestrictions();
-            for (Restriction restriction : restrictions) {
-                if (restriction.containsVersion(theVersion)) {
-                    return true;
-                }
-            }
-            return false;
-        } else {
-            // only singular versions ever have a recommendedVersion
-            return recommendedVersion.compareTo(theVersion) <= 0;
-        }
     }
 }

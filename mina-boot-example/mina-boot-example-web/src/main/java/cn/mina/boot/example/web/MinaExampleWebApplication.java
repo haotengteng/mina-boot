@@ -2,7 +2,6 @@ package cn.mina.boot.example.web;
 
 import cn.mina.boot.web.common.MinaBootApplication;
 import cn.mina.boot.web.common.MinaBootWebApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 
 @MinaBootApplication

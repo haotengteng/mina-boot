@@ -14,19 +14,12 @@ import java.io.IOException;
  * @author Created by haoteng on 2022/7/21.
  */
 @Component
-public  class ExampleTokenInterceptor implements HandlerInterceptor {
+public class ExampleTokenInterceptor implements HandlerInterceptor {
 
-
-    @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        System.out.println("-------------------");
-//        return forward(request, response);
-        return true;
-    }
 
     private static boolean forward(HttpServletRequest request, HttpServletResponse response) {
         try {
-            if (request.getRequestURI().equals("/foo/hello/client")){
+            if (request.getRequestURI().equals("/foo/hello/client")) {
                 return true;
             }
             request.getRequestDispatcher("/foo/hello/client").forward(request, response);
@@ -34,6 +27,13 @@ public  class ExampleTokenInterceptor implements HandlerInterceptor {
         } catch (ServletException | IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+        System.out.println("-------------------");
+//        return forward(request, response);
+        return true;
     }
 
     @Override

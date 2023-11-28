@@ -38,30 +38,6 @@ public class SqlLogInterceptor implements Interceptor {
      */
     private String enable;
 
-    @Override
-    public Object intercept(Invocation invocation) throws Throwable {
-        if ("true".equals(enable)) {
-            long start = System.currentTimeMillis();
-            Object proceed = invocation.proceed();
-            try {
-                StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
-                BoundSql boundSql = statementHandler.getBoundSql();
-                // 获取 MappedStatement
-                MappedStatement mappedStatement = getMappedStatement(statementHandler);
-                String sqlId = mappedStatement.getId();
-                Configuration configuration = mappedStatement.getConfiguration();
-                long time = System.currentTimeMillis() - start;
-                showSql(configuration, boundSql, time, sqlId);
-            } catch (Exception e) {
-                log.warn("SqlLogInterceptor 拦截器打印sql日志异常:", e);
-            }
-            return proceed;
-        } else {
-            //调用原对象的方法，进入责任链的下一级
-            return invocation.proceed();
-        }
-    }
-
     private static MappedStatement getMappedStatement(StatementHandler statementHandler) throws NoSuchFieldException, IllegalAccessException {
         Field delegateField = statementHandler.getClass().getDeclaredField("delegate");
         delegateField.setAccessible(true);
@@ -71,21 +47,6 @@ public class SqlLogInterceptor implements Interceptor {
         mappedStatementField.setAccessible(true);
         MappedStatement mappedStatement = (MappedStatement) ReflectionUtils.getField(mappedStatementField, delegate);
         return mappedStatement;
-    }
-
-    private String formatSql(String sql, Object parameterObject) {
-        if (parameterObject != null) {
-            MetaObject metaObject = SystemMetaObject.forObject(parameterObject);
-            if (metaObject != null) {
-                String[] parameterNames = metaObject.getGetterNames();
-                for (String paramName : parameterNames) {
-                    Object value = metaObject.getValue(paramName);
-                    String parameterString = value != null ? value.toString() : "null";
-                    sql = sql.replaceFirst("\\?", parameterString);
-                }
-            }
-        }
-        return sql;
     }
 
     private static void showSql(Configuration configuration, BoundSql boundSql, long time, String sqlId) {
@@ -117,7 +78,7 @@ public class SqlLogInterceptor implements Interceptor {
     private static String getParameterValue(Object obj) {
         String value;
         if (obj instanceof String) {
-            value = "'" + obj.toString() + "'";
+            value = "'" + obj + "'";
         } else if (obj instanceof Date) {
             DateFormat formatter = DateFormat.getDateTimeInstance(DateFormat.DEFAULT, DateFormat.DEFAULT, Locale.CHINA);
             value = "'" + formatter.format(new Date()) + "'";
@@ -135,6 +96,45 @@ public class SqlLogInterceptor implements Interceptor {
         String sb = " ==>  Method: " + sqlId + ", Time cost:  " + time + "ms";
         log.info(sb);
         log.info(" ==>  Executed Sql: " + sql + ";");
+    }
+
+    @Override
+    public Object intercept(Invocation invocation) throws Throwable {
+        if ("true".equals(enable)) {
+            long start = System.currentTimeMillis();
+            Object proceed = invocation.proceed();
+            try {
+                StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
+                BoundSql boundSql = statementHandler.getBoundSql();
+                // 获取 MappedStatement
+                MappedStatement mappedStatement = getMappedStatement(statementHandler);
+                String sqlId = mappedStatement.getId();
+                Configuration configuration = mappedStatement.getConfiguration();
+                long time = System.currentTimeMillis() - start;
+                showSql(configuration, boundSql, time, sqlId);
+            } catch (Exception e) {
+                log.warn("SqlLogInterceptor 拦截器打印sql日志异常:", e);
+            }
+            return proceed;
+        } else {
+            //调用原对象的方法，进入责任链的下一级
+            return invocation.proceed();
+        }
+    }
+
+    private String formatSql(String sql, Object parameterObject) {
+        if (parameterObject != null) {
+            MetaObject metaObject = SystemMetaObject.forObject(parameterObject);
+            if (metaObject != null) {
+                String[] parameterNames = metaObject.getGetterNames();
+                for (String paramName : parameterNames) {
+                    Object value = metaObject.getValue(paramName);
+                    String parameterString = value != null ? value.toString() : "null";
+                    sql = sql.replaceFirst("\\?", parameterString);
+                }
+            }
+        }
+        return sql;
     }
 
     @Override

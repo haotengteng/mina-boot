@@ -10,6 +10,6 @@ public abstract class MinaHandlerInterceptor implements HandlerInterceptor {
     /**
      * 拦截路径（/**：拦截所有）
      */
-    protected abstract String havePathPattern() ;
+    protected abstract String havePathPattern();
 
 }

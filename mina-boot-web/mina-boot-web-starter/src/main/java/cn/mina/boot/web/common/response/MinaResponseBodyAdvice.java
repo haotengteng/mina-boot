@@ -1,11 +1,8 @@
 package cn.mina.boot.web.common.response;
 
 import cn.mina.boot.common.util.JsonUtils;
-import cn.mina.boot.web.common.exception.MinaGlobalException;
 import cn.mina.boot.web.common.context.MinaWebResult;
 import cn.mina.boot.web.common.context.MinaWebTools;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
@@ -41,12 +38,9 @@ public class MinaResponseBodyAdvice implements ResponseBodyAdvice {
         if (returnType.getNestedParameterType().getName().equals(MinaWebResult.class.getName())) {
             return false;
         } else {
-            if (returnType.getDeclaringClass().getName().contains("springfox")
-                    || returnType.getDeclaringClass().getName().contains("actuator")) {
-                return false;
-            }
+            return !returnType.getDeclaringClass().getName().contains("springfox")
+                    && !returnType.getDeclaringClass().getName().contains("actuator");
         }
-        return true;
     }
 
     @Override

@@ -17,7 +17,7 @@ spring:
       concurrency: 3
     producer:
       # 指定kafka server的地址，集群配多个，中间，逗号隔开
-#      bootstrap-servers:
+      #      bootstrap-servers:
       #消息提交成功后 服务端回复客户端 ：取值 -1=all, 0, 1
       # acks=0 ： 生产者在成功写入消息之前不会等待任何来自服务器的响应。
       # acks=1 ： 只要集群的首领节点收到消息，生产者就会收到一个来自服务器成功响应。

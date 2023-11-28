@@ -68,6 +68,7 @@ public class IOUtils {
 
     // copy from InputStream
     //-----------------------------------------------------------------------
+
     /**
      * Copies bytes from an <code>InputStream</code> to an
      * <code>OutputStream</code>.
@@ -80,7 +81,7 @@ public class IOUtils {
      * number of bytes cannot be returned as an int. For large streams
      * use the <code>copyLarge(InputStream, OutputStream)</code> method.
      *
-     * @param input the <code>InputStream</code> to read from
+     * @param input  the <code>InputStream</code> to read from
      * @param output the <code>OutputStream</code> to write to
      * @return the number of bytes copied, or -1 if &gt; Integer.MAX_VALUE
      * @throws NullPointerException if the input or output is null
@@ -104,7 +105,7 @@ public class IOUtils {
      * <p>
      * The buffer size is given by {@link #DEFAULT_BUFFER_SIZE}.
      *
-     * @param input the <code>InputStream</code> to read from
+     * @param input  the <code>InputStream</code> to read from
      * @param output the <code>OutputStream</code> to write to
      * @return the number of bytes copied
      * @throws NullPointerException if the input or output is null
@@ -130,7 +131,7 @@ public class IOUtils {
      * as possible before giving up; this may not always be the case for
      * subclasses of {@link InputStream}.
      *
-     * @param input where to read input from
+     * @param input  where to read input from
      * @param buffer destination
      * @param offset initial offset into buffer
      * @param length length to read, must be &gt;= 0
@@ -161,11 +162,10 @@ public class IOUtils {
      * This allows for the possibility that {@link InputStream#read(byte[], int, int)} may
      * not read as many bytes as requested (most likely because of reaching EOF).
      *
-     * @param input where to read input from
+     * @param input  where to read input from
      * @param buffer destination
      * @param offset initial offset into buffer
      * @param length length to read, must be &gt;= 0
-     *
      * @throws IOException              if there is a problem reading the file
      * @throws IllegalArgumentException if length is negative
      * @throws EOFException             if the number of bytes read was incorrect
@@ -185,9 +185,8 @@ public class IOUtils {
      * This allows for the possibility that {@link InputStream#read(byte[], int, int)} may
      * not read as many bytes as requested (most likely because of reaching EOF).
      *
-     * @param input where to read input from
+     * @param input  where to read input from
      * @param buffer destination
-     *
      * @throws IOException              if there is a problem reading the file
      * @throws IllegalArgumentException if length is negative
      * @throws EOFException             if the number of bytes read was incorrect

@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Data
 public class LogKafkaTemplate implements Serializable {
 
-    private KafkaTemplate<String,String> kafkaTemplate;
+    private KafkaTemplate<String, String> kafkaTemplate;
 
     private String kafkaLogTopic;
 }

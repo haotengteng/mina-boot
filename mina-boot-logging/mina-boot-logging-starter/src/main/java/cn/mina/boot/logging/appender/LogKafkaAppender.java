@@ -15,16 +15,12 @@ public class LogKafkaAppender extends LogBaseAppender {
 
     private static String kafkaLogTopic;
 
-
-    @Override
-    public void output(String log) {
-        if (kafkaTemplate != null && StringUtils.isNoneBlank(kafkaLogTopic)) {
-            kafkaTemplate.send(kafkaLogTopic, log);
-        }
-    }
-
     public static KafkaTemplate<String, String> getKafkaTemplate() {
         return kafkaTemplate;
+    }
+
+    public static void setKafkaTemplate(KafkaTemplate<String, String> kafkaTemplate) {
+        LogKafkaAppender.kafkaTemplate = kafkaTemplate;
     }
 
     public static String getKafkaLogTopic() {
@@ -35,7 +31,10 @@ public class LogKafkaAppender extends LogBaseAppender {
         LogKafkaAppender.kafkaLogTopic = kafkaLogTopic;
     }
 
-    public static void setKafkaTemplate(KafkaTemplate<String, String> kafkaTemplate) {
-        LogKafkaAppender.kafkaTemplate = kafkaTemplate;
+    @Override
+    public void output(String log) {
+        if (kafkaTemplate != null && StringUtils.isNoneBlank(kafkaLogTopic)) {
+            kafkaTemplate.send(kafkaLogTopic, log);
+        }
     }
 }

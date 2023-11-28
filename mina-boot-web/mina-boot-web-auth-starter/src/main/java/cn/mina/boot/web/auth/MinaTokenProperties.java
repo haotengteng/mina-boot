@@ -11,7 +11,7 @@ public class MinaTokenProperties {
 
     private String enable;
     /**
-     *  jwt 、 redis 、memory
+     * jwt 、 redis 、memory
      */
     private String type;
     /**

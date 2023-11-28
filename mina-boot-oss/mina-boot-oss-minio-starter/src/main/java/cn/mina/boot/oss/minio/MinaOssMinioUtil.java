@@ -87,41 +87,11 @@ public class MinaOssMinioUtil {
             }
 
         }
-        return dataStr + "" + name;
+        return dataStr + name;
     }
 
     public static void main(String[] args) {
         System.out.println(getFileName("name.jpg"));
-    }
-
-    /**
-     * 图片上传
-     *
-     * @param imageBase64
-     * @param imageName
-     * @return
-     */
-    public String uploadImage(String imageBase64, String imageName) {
-        if (!StringUtils.isEmpty(imageBase64)) {
-            InputStream in = base64ToInputStream(imageBase64);
-            return upload(imageName, in, null);
-        }
-        return null;
-    }
-
-    /**
-     * 图片下载
-     *
-     * @param imageName
-     * @return
-     */
-    public String downloadImage( String imageName) {
-        if (!StringUtils.isEmpty(imageName)) {
-            ByteArrayOutputStream out = (ByteArrayOutputStream) downloadStream(imageName);
-            byte[] bytes = out.toByteArray();
-           return Base64.encodeBase64String(bytes);
-        }
-        return null;
     }
 
     public static InputStream base64ToInputStream(String base64) {
@@ -146,11 +116,10 @@ public class MinaOssMinioUtil {
         return out.toByteArray();
     }
 
-
     public static OutputStream downloadStream(String fileName) {
         try (
                 InputStream in = minioClient.getObject(GetObjectArgs.builder().bucket(bucketName).object(fileName).build());
-                ByteArrayOutputStream out = new ByteArrayOutputStream();
+                ByteArrayOutputStream out = new ByteArrayOutputStream()
         ) {
             IOUtils.copy(in, out);
             //封装返回值
@@ -159,7 +128,6 @@ public class MinaOssMinioUtil {
             throw new RuntimeException("mina oss minio download failed", e);
         }
     }
-
 
     /**
      * 删除一个对象
@@ -183,7 +151,6 @@ public class MinaOssMinioUtil {
         return false;
     }
 
-
     /**
      * description: 获取文件临时下载地址，最长7天
      */
@@ -199,7 +166,6 @@ public class MinaOssMinioUtil {
             throw new RuntimeException(e);
         }
     }
-
 
     /**
      * 检查存储桶是否存在
@@ -218,5 +184,35 @@ public class MinaOssMinioUtil {
             throw new RuntimeException("minio 中 桶不存在:" + bucketName);
         }
         return exist;
+    }
+
+    /**
+     * 图片上传
+     *
+     * @param imageBase64
+     * @param imageName
+     * @return
+     */
+    public String uploadImage(String imageBase64, String imageName) {
+        if (!StringUtils.isEmpty(imageBase64)) {
+            InputStream in = base64ToInputStream(imageBase64);
+            return upload(imageName, in, null);
+        }
+        return null;
+    }
+
+    /**
+     * 图片下载
+     *
+     * @param imageName
+     * @return
+     */
+    public String downloadImage(String imageName) {
+        if (!StringUtils.isEmpty(imageName)) {
+            ByteArrayOutputStream out = (ByteArrayOutputStream) downloadStream(imageName);
+            byte[] bytes = out.toByteArray();
+            return Base64.encodeBase64String(bytes);
+        }
+        return null;
     }
 }

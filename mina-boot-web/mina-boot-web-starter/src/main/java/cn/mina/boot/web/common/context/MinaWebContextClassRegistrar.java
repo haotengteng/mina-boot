@@ -5,6 +5,7 @@ import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
 import org.springframework.core.annotation.AnnotationAttributes;
+import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.core.type.AnnotationMetadata;
@@ -13,10 +14,11 @@ import org.springframework.core.type.classreading.MetadataReader;
 import org.springframework.core.type.classreading.MetadataReaderFactory;
 import org.springframework.util.ClassUtils;
 
-import org.springframework.core.io.Resource;
-
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * @author Created by haoteng on 2023/4/19.
@@ -63,7 +65,7 @@ public class MinaWebContextClassRegistrar implements ImportBeanDefinitionRegistr
                     if (MinaWebContext.class.isAssignableFrom(clazz)) {
                         Class<? extends MinaWebContext> contextClass = clazz.asSubclass(MinaWebContext.class);
                         MinaWebContextOperator.initCustomContext(contextClass);
-                        log.info("初始化MinaWebContext上下文类信息成功:{}",clazz.getName());
+                        log.info("初始化MinaWebContext上下文类信息成功:{}", clazz.getName());
                     }
                 }
             }

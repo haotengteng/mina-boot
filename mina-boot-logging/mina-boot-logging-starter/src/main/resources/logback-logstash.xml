@@ -6,10 +6,10 @@
 
     <!-- kafka日志输出 -->
     <appender name="logstash-appender" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-<!--        logstash 地址: logstash:4560-->
+        <!--        logstash 地址: logstash:4560-->
         <destination>${logstash_url}</destination>
         <param name="Encoding" value="UTF-8"/>
-        <encoder  charset="UTF-8"  class="net.logstash.logback.encoder.LogstashEncoder" >
+        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder">
             <pattern>${log_pattern}</pattern>
         </encoder>
     </appender>

@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URLDecoder;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author Created by haoteng on 2023/8/17.
@@ -27,7 +27,7 @@ import java.nio.charset.Charset;
 public class MinaWebLoggingFilter extends MinaOncePerRequestFilter {
 
     private final static Logger log = LoggerFactory.getLogger(MinaWebLoggingFilter.class);
-
+    private final PathMatcher pathMatcher = new AntPathMatcher();
     private String[] excludeUrls;
 
     public String[] getExcludeUrls() {
@@ -37,8 +37,6 @@ public class MinaWebLoggingFilter extends MinaOncePerRequestFilter {
     public void setExcludeUrls(String[] excludeUrls) {
         this.excludeUrls = excludeUrls;
     }
-
-    private PathMatcher pathMatcher = new AntPathMatcher();
 
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
@@ -77,7 +75,7 @@ public class MinaWebLoggingFilter extends MinaOncePerRequestFilter {
     private void logResponse(ServletResponse response, long st, ContentCachingResponseWrapper multiResponse) throws IOException {
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setCharacterEncoding("UTF-8");
-        log.info("响应信息：{}，请求耗时:{}ms", StringUtils.toEncodedString(multiResponse.getContentAsByteArray(), Charset.forName("UTF-8")), System.currentTimeMillis() - st);
+        log.info("响应信息：{}，请求耗时:{}ms", StringUtils.toEncodedString(multiResponse.getContentAsByteArray(), StandardCharsets.UTF_8), System.currentTimeMillis() - st);
     }
 
     private void logRequest(HttpServletRequest httpServletRequest) throws IOException {

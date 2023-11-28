@@ -42,6 +42,7 @@ public class XxlJobAutoRegister implements ApplicationListener<ApplicationReadyE
     }
 
     // todo 待实现功能
+
     /**
      * 新增job后自动 启动job
      * 重启项目的时候，job 删除重新创建
@@ -106,7 +107,8 @@ public class XxlJobAutoRegister implements ApplicationListener<ApplicationReadyE
             }
         }
     }
-// TODO 设置job状态默认开启
+
+    // TODO 设置job状态默认开启
     private XxlJobInfo createXxlJobInfo(XxlJobGroup xxlJobGroup, XxlJob xxlJob, JobAutoRegister xxlRegister) {
         XxlJobInfo xxlJobInfo = new XxlJobInfo();
         xxlJobInfo.setJobGroup(xxlJobGroup.getId());

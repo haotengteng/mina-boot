@@ -51,6 +51,96 @@ public class PageInterceptor implements Interceptor {
     //当前现实的页数
     private int page;
 
+    public static long getRowCount(final String sql, final BoundSql boundSql,
+                                   final MappedStatement mappedStatement, final Object parameterObject) throws SQLException {
+        final String countSql = "select count(1) from (" + sql + ")temp_count";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Connection conn = null;
+        try {
+            if (conn == null) {
+                conn = mappedStatement.getConfiguration().getEnvironment().getDataSource().getConnection();
+            }
+            ps = conn.prepareStatement(countSql);
+            BoundSql countBS = new BoundSql(mappedStatement.getConfiguration(),
+                    countSql,
+                    boundSql.getParameterMappings(),
+                    parameterObject);
+
+            Arrays.asList("additionalParameters", "metaParameters").forEach(s -> {
+                Field field = ReflectionUtils.findField(BoundSql.class, s);
+                ReflectionUtils.makeAccessible(field);
+                ReflectionUtils.setField(field, countBS, ReflectionUtils.getField(field, boundSql));
+            });
+
+            setParameters(ps, mappedStatement, countBS, parameterObject);
+            rs = ps.executeQuery();
+            long count = 0;
+            if (rs.next()) {
+                count = rs.getLong(1);
+            }
+            return count;
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ps != null) {
+                ps.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+    }
+
+    /**
+     * 对SQL参数(?)设值,参考org.apache.ibatis.executor.parameter.DefaultParameterHandler
+     *
+     * @param ps              表示预编译的 SQL 语句的对象。
+     * @param mappedStatement MappedStatement
+     * @param boundSql        SQL
+     * @param parameterObject 参数对象
+     * @throws java.sql.SQLException 数据库异常
+     */
+    public static void setParameters(PreparedStatement ps, MappedStatement mappedStatement, BoundSql boundSql, Object parameterObject) throws SQLException {
+        ErrorContext.instance().activity("setting parameters").object(mappedStatement.getParameterMap().getId());
+        List<ParameterMapping> parameterMappings = boundSql.getParameterMappings();
+        if (parameterMappings != null) {
+            Configuration configuration = mappedStatement.getConfiguration();
+            TypeHandlerRegistry typeHandlerRegistry = configuration.getTypeHandlerRegistry();
+            MetaObject metaObject = parameterObject == null ? null :
+                    configuration.newMetaObject(parameterObject);
+            for (int i = 0; i < parameterMappings.size(); i++) {
+                ParameterMapping parameterMapping = parameterMappings.get(i);
+                if (parameterMapping.getMode() != ParameterMode.OUT) {
+                    Object value;
+                    String propertyName = parameterMapping.getProperty();
+                    PropertyTokenizer prop = new PropertyTokenizer(propertyName);
+                    if (parameterObject == null) {
+                        value = null;
+                    } else if (typeHandlerRegistry.hasTypeHandler(parameterObject.getClass())) {
+                        value = parameterObject;
+                    } else if (boundSql.hasAdditionalParameter(propertyName)) {
+                        value = boundSql.getAdditionalParameter(propertyName);
+                    } else if (propertyName.startsWith(ForEachSqlNode.ITEM_PREFIX) && boundSql.hasAdditionalParameter(prop.getName())) {
+                        value = boundSql.getAdditionalParameter(prop.getName());
+                        if (value != null) {
+                            value = configuration.newMetaObject(value).getValue(propertyName.substring(prop.getName().length()));
+                        }
+                    } else {
+                        value = metaObject == null ? null : metaObject.getValue(propertyName);
+                    }
+                    @SuppressWarnings("rawtypes")
+                    TypeHandler typeHandler = parameterMapping.getTypeHandler();
+                    if (typeHandler == null) {
+                        throw new ExecutorException("There was no TypeHandler found for parameter " + propertyName + " of statement " + mappedStatement.getId());
+                    }
+                    typeHandler.setParameter(ps, i + 1, value, parameterMapping.getJdbcType());
+                }
+            }
+        }
+    }
+
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
         // 分页
@@ -161,7 +251,6 @@ public class PageInterceptor implements Interceptor {
         }
     }
 
-
     //获取代理对象
     @Override
     public Object plugin(Object o) {
@@ -174,95 +263,5 @@ public class PageInterceptor implements Interceptor {
     public void setProperties(Properties properties) {
         //如果项目中分页的pageSize是统一的，也可以在这里统一配置和获取，这样就不用每次请求都传递pageSize参数了。参数是在配置拦截器时配置的。
         this.pageSize = Integer.parseInt(properties.getProperty("pageSize", "10"));
-    }
-
-    public static long getRowCount(final String sql, final BoundSql boundSql,
-                                   final MappedStatement mappedStatement, final Object parameterObject) throws SQLException {
-        final String countSql = "select count(1) from (" + sql + ")temp_count";
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        Connection conn = null;
-        try {
-            if (conn == null) {
-                conn = mappedStatement.getConfiguration().getEnvironment().getDataSource().getConnection();
-            }
-            ps = conn.prepareStatement(countSql);
-            BoundSql countBS = new BoundSql(mappedStatement.getConfiguration(),
-                    countSql,
-                    boundSql.getParameterMappings(),
-                    parameterObject);
-
-            Arrays.asList("additionalParameters", "metaParameters").forEach(s -> {
-                Field field = ReflectionUtils.findField(BoundSql.class, s);
-                ReflectionUtils.makeAccessible(field);
-                ReflectionUtils.setField(field, countBS, ReflectionUtils.getField(field, boundSql));
-            });
-
-            setParameters(ps, mappedStatement, countBS, parameterObject);
-            rs = ps.executeQuery();
-            long count = 0;
-            if (rs.next()) {
-                count = rs.getLong(1);
-            }
-            return count;
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (ps != null) {
-                ps.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
-        }
-    }
-
-    /**
-     * 对SQL参数(?)设值,参考org.apache.ibatis.executor.parameter.DefaultParameterHandler
-     *
-     * @param ps              表示预编译的 SQL 语句的对象。
-     * @param mappedStatement MappedStatement
-     * @param boundSql        SQL
-     * @param parameterObject 参数对象
-     * @throws java.sql.SQLException 数据库异常
-     */
-    public static void setParameters(PreparedStatement ps, MappedStatement mappedStatement, BoundSql boundSql, Object parameterObject) throws SQLException {
-        ErrorContext.instance().activity("setting parameters").object(mappedStatement.getParameterMap().getId());
-        List<ParameterMapping> parameterMappings = boundSql.getParameterMappings();
-        if (parameterMappings != null) {
-            Configuration configuration = mappedStatement.getConfiguration();
-            TypeHandlerRegistry typeHandlerRegistry = configuration.getTypeHandlerRegistry();
-            MetaObject metaObject = parameterObject == null ? null :
-                    configuration.newMetaObject(parameterObject);
-            for (int i = 0; i < parameterMappings.size(); i++) {
-                ParameterMapping parameterMapping = parameterMappings.get(i);
-                if (parameterMapping.getMode() != ParameterMode.OUT) {
-                    Object value;
-                    String propertyName = parameterMapping.getProperty();
-                    PropertyTokenizer prop = new PropertyTokenizer(propertyName);
-                    if (parameterObject == null) {
-                        value = null;
-                    } else if (typeHandlerRegistry.hasTypeHandler(parameterObject.getClass())) {
-                        value = parameterObject;
-                    } else if (boundSql.hasAdditionalParameter(propertyName)) {
-                        value = boundSql.getAdditionalParameter(propertyName);
-                    } else if (propertyName.startsWith(ForEachSqlNode.ITEM_PREFIX) && boundSql.hasAdditionalParameter(prop.getName())) {
-                        value = boundSql.getAdditionalParameter(prop.getName());
-                        if (value != null) {
-                            value = configuration.newMetaObject(value).getValue(propertyName.substring(prop.getName().length()));
-                        }
-                    } else {
-                        value = metaObject == null ? null : metaObject.getValue(propertyName);
-                    }
-                    @SuppressWarnings("rawtypes")
-                    TypeHandler typeHandler = parameterMapping.getTypeHandler();
-                    if (typeHandler == null) {
-                        throw new ExecutorException("There was no TypeHandler found for parameter " + propertyName + " of statement " + mappedStatement.getId());
-                    }
-                    typeHandler.setParameter(ps, i + 1, value, parameterMapping.getJdbcType());
-                }
-            }
-        }
     }
 }

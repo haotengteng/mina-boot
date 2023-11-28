@@ -56,9 +56,9 @@ public class FooController implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        new Thread(()->{
+        new Thread(() -> {
             try {
-                while (true){
+                while (true) {
                     TimeUnit.SECONDS.sleep(3);
                     this.sayHello();
                 }

@@ -1,6 +1,7 @@
 package cn.mina.boot.common.util;
 
-import net.sf.cglib.proxy.*;
+import net.sf.cglib.proxy.Callback;
+import net.sf.cglib.proxy.Enhancer;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
@@ -14,6 +15,7 @@ public class ProxyUtils {
 
     /**
      * jdk 动态代理
+     *
      * @param clazz
      * @param h
      * @return
@@ -26,12 +28,13 @@ public class ProxyUtils {
 
     /**
      * cglib 动态代理
+     *
      * @param clazz
      * @param callback
      * @return
      */
-    public static Object proxy(Class clazz,Callback callback) {
-        return  Enhancer.create(clazz, callback);
+    public static Object proxy(Class clazz, Callback callback) {
+        return Enhancer.create(clazz, callback);
     }
 //
 //    public interface Test {

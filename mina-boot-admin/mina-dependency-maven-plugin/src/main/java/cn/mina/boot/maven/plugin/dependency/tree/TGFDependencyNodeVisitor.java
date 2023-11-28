@@ -35,55 +35,6 @@ import org.apache.maven.shared.dependency.graph.traversal.DependencyNodeVisitor;
 public class TGFDependencyNodeVisitor extends AbstractSerializingVisitor implements DependencyNodeVisitor {
 
     /**
-     * Utiity class to write an Edge.
-     *
-     * @author <a href="mailto:jerome.creignou@gmail.com">Jerome Creignou</a>
-     */
-    static final class EdgeAppender {
-        /**
-         * Edge start.
-         */
-        private final DependencyNode from;
-
-        /**
-         * Edge end.
-         */
-        private final DependencyNode to;
-
-        /**
-         * Edge label. (optional)
-         */
-        private final String label;
-
-        /**
-         * Build a new EdgeAppender.
-         *
-         * @param from edge start.
-         * @param to edge end
-         * @param label optional label.
-         */
-        EdgeAppender(DependencyNode from, DependencyNode to, String label) {
-            super();
-            this.from = from;
-            this.to = to;
-            this.label = label;
-        }
-
-        /**
-         * build a string representing the edge.
-         */
-        @Override
-        public String toString() {
-            StringBuilder result = new StringBuilder(generateId(from));
-            result.append(' ').append(generateId(to));
-            if (label != null) {
-                result.append(' ').append(label);
-            }
-            return result.toString();
-        }
-    }
-
-    /**
      * List of edges.
      */
     private final List<EdgeAppender> edges = new ArrayList<>();
@@ -95,6 +46,19 @@ public class TGFDependencyNodeVisitor extends AbstractSerializingVisitor impleme
      */
     public TGFDependencyNodeVisitor(Writer writer) {
         super(writer);
+    }
+
+    /**
+     * Generate a unique id from a DependencyNode.
+     * <p>
+     * Current implementation is rather simple and uses hashcode.
+     * </p>
+     *
+     * @param node the DependencyNode to use.
+     * @return the unique id.
+     */
+    private static String generateId(DependencyNode node) {
+        return String.valueOf(node.hashCode());
     }
 
     /**
@@ -129,15 +93,51 @@ public class TGFDependencyNodeVisitor extends AbstractSerializingVisitor impleme
     }
 
     /**
-     * Generate a unique id from a DependencyNode.
-     * <p>
-     * Current implementation is rather simple and uses hashcode.
-     * </p>
+     * Utiity class to write an Edge.
      *
-     * @param node the DependencyNode to use.
-     * @return the unique id.
+     * @author <a href="mailto:jerome.creignou@gmail.com">Jerome Creignou</a>
      */
-    private static String generateId(DependencyNode node) {
-        return String.valueOf(node.hashCode());
+    static final class EdgeAppender {
+        /**
+         * Edge start.
+         */
+        private final DependencyNode from;
+
+        /**
+         * Edge end.
+         */
+        private final DependencyNode to;
+
+        /**
+         * Edge label. (optional)
+         */
+        private final String label;
+
+        /**
+         * Build a new EdgeAppender.
+         *
+         * @param from  edge start.
+         * @param to    edge end
+         * @param label optional label.
+         */
+        EdgeAppender(DependencyNode from, DependencyNode to, String label) {
+            super();
+            this.from = from;
+            this.to = to;
+            this.label = label;
+        }
+
+        /**
+         * build a string representing the edge.
+         */
+        @Override
+        public String toString() {
+            StringBuilder result = new StringBuilder(generateId(from));
+            result.append(' ').append(generateId(to));
+            if (label != null) {
+                result.append(' ').append(label);
+            }
+            return result.toString();
+        }
     }
 }

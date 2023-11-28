@@ -23,11 +23,11 @@ public enum DesensitizationEnum {
      */
     PHONE(val -> val.replaceAll("(\\d{3})\\d+(\\d{4})", "$1****$2"));
 
+    private final Function<String, String> function;
+
     DesensitizationEnum(Function<String, String> function) {
         this.function = function;
     }
-
-    private final Function<String, String> function;
 
     public Function<String, String> getFunction() {
         return function;

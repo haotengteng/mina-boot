@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cn.mina.boot</groupId>
         <artifactId>mina-parent</artifactId>
-        <version>${mina.version}</version>
-        <relativePath>../pom.xml</relativePath>
+        <version>${project.version}</version>
+
     </parent>
     <artifactId>mina-boot-example</artifactId>
     <packaging>pom</packaging>
@@ -55,7 +55,7 @@
     </profiles>
 
     <!--    配置文件路径指定 maven可以替换指定路径下的profile环境变量-->
-    <build >
+    <build>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>

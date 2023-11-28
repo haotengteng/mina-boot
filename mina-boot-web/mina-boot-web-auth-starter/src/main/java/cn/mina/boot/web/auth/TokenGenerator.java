@@ -6,5 +6,5 @@ package cn.mina.boot.web.auth;
 @FunctionalInterface
 public interface TokenGenerator<T, V> {
 
-    public V generate(T t);
+    V generate(T t);
 }

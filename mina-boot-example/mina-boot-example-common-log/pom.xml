@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cn.mina.boot</groupId>
         <artifactId>mina-boot-example</artifactId>
-        <version>${mina.version}</version>
+        <version>${project.version}</version>
+
     </parent>
     <artifactId>mina-boot-example-common-log</artifactId>
     <name>mina-boot-example-common-log</name>
     <description>Demo project for Spring Boot</description>
     <dependencies>
-<!--        引入mina-common-log依赖-->
+        <!--        引入mina-common-log依赖-->
         <dependency>
             <groupId>cn.mina.boot</groupId>
             <artifactId>mina-boot-common-logging</artifactId>
@@ -33,16 +34,16 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.1.9.RELEASE</version>
-              <executions>
-                  <execution>
-                      <goals>
-                          <goal>repackage</goal>
-                      </goals>
-                      <configuration>
-                          <mainClass>cn.mina.boot.example.common.log.MinaExampleCommonLogApplication</mainClass>
-                      </configuration>
-                  </execution>
-              </executions>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>cn.mina.boot.example.common.log.MinaExampleCommonLogApplication</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
         </plugins>

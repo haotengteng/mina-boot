@@ -23,14 +23,13 @@ public class MinaBootContext implements EnvironmentAware, ApplicationContextAwar
         return environment;
     }
 
-    public ApplicationContext getApplicationContext() {
-        return applicationContext;
-    }
-
-
     @Override
     public void setEnvironment(Environment environment) {
         this.environment = environment;
+    }
+
+    public ApplicationContext getApplicationContext() {
+        return applicationContext;
     }
 
     @Override

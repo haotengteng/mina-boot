@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>cn.mina.boot</groupId>
     <artifactId>mina-boot-dependencies</artifactId>
-    <version>${mina.version}</version>
+    <version>${project.version}</version>
     <name>mina-boot-dependencies</name>
     <description>POM for Mina Boot</description>
     <packaging>pom</packaging>
 
     <properties>
-        <mina.version>0.0.1-SNAPSHOT</mina.version>
+        <project.version>0.0.1-SNAPSHOT</project.version>
         <spring.boot.version>2.7.1</spring.boot.version>
         <hutool.version>5.7.2</hutool.version>
         <fastjson2.version>2.0.4</fastjson2.version>
@@ -63,123 +63,123 @@
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-docker</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-common</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-common-logging</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-config</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-logging-starter</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-starter</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-common-util</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-common-core</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-common-exception</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-web-auth-starter</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-web-starter</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-web-doc-starter</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-cache-redis-starter</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-message-rocketmq-starter</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-message-kafka-starter</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-config-nacos-starter</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-data-mybatis-starter</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-data-hugegraph-starter</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-data-jpa-starter</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-admin-server-starter</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-admin-client-starter</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-admin-arthas-starter</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-oss-minio-starter</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-job-xxl-starter</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
@@ -310,17 +310,17 @@
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-ratelimit-sentinel-starter</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-job-elastic-starter</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.mina.boot</groupId>
                 <artifactId>mina-boot-config-apollo-starter</artifactId>
-                <version>${mina.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.shardingsphere.elasticjob</groupId>
@@ -378,7 +378,6 @@
 
         </dependencies>
     </dependencyManagement>
-
 
 
     <build>

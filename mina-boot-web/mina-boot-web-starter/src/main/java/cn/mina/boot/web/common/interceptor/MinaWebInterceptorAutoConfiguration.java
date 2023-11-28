@@ -24,7 +24,7 @@ public class MinaWebInterceptorAutoConfiguration {
 
     static class WebConfigurer implements WebMvcConfigurer {
 
-        private List<MinaHandlerInterceptor> handlerInterceptors;
+        private final List<MinaHandlerInterceptor> handlerInterceptors;
 
         public WebConfigurer(List<MinaHandlerInterceptor> handlerInterceptors) {
             this.handlerInterceptors = handlerInterceptors;

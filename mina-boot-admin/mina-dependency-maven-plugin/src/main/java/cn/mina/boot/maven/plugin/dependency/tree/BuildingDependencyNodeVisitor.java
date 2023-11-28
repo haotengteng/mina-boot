@@ -65,7 +65,7 @@ public class BuildingDependencyNodeVisitor implements DependencyNodeVisitor {
      * specified dependency node visitor on the resultant dependency tree.
      *
      * @param visitor the dependency node visitor to apply on the resultant dependency tree, or <code>null</code> for
-     *            none
+     *                none
      */
     public BuildingDependencyNodeVisitor(DependencyNodeVisitor visitor) {
         this.visitor = visitor;
@@ -150,14 +150,10 @@ public class BuildingDependencyNodeVisitor implements DependencyNodeVisitor {
         private final String premanagedScope;
 
         private final String versionConstraint;
-
-        private List<DependencyNode> children;
-
         private final Boolean optional;
-
         private final List<Exclusion> exclusions;
-
         private final String nodeString;
+        private List<DependencyNode> children;
 
         private WrapperNode(
                 DependencyNode parent,
@@ -186,6 +182,10 @@ public class BuildingDependencyNodeVisitor implements DependencyNodeVisitor {
         @Override
         public List<DependencyNode> getChildren() {
             return children;
+        }
+
+        public void setChildren(List<DependencyNode> children) {
+            this.children = children;
         }
 
         @Override
@@ -234,10 +234,6 @@ public class BuildingDependencyNodeVisitor implements DependencyNodeVisitor {
         @Override
         public List<Exclusion> getExclusions() {
             return exclusions;
-        }
-
-        public void setChildren(List<DependencyNode> children) {
-            this.children = children;
         }
     }
 }

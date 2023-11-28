@@ -9,7 +9,7 @@ import org.yaml.snakeyaml.representer.Representer;
  */
 public class YamlUtils {
 
-    private static Yaml yaml;
+    private static final Yaml yaml;
 
     static {
         DumperOptions options = new DumperOptions();

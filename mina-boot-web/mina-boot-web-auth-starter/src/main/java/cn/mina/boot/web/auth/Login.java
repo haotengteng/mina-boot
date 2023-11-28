@@ -7,9 +7,10 @@ import java.lang.annotation.Target;
 
 /**
  * 登录注解
+ *
  * @author Created by haoteng on 2021/6/22.
  */
-@Target({ElementType.METHOD,ElementType.TYPE})
+@Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Login {
 

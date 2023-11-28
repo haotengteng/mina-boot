@@ -10,13 +10,13 @@
 
     <!--    logback-base-file.xml 与logback-skywalking.xml 同时只能引用一个，
     logback-skywalking-file.xml 会额外打印 traceId-->
-        <include resource="logback-base-console.xml"/>
+    <include resource="logback-base-console.xml"/>
 
     <root level="info">
         <appender-ref ref="console-appender"/>
     </root>
 
-<!--rocketmq client使用系统默认日志配置，控制打印等级-->
+    <!--rocketmq client使用系统默认日志配置，控制打印等级-->
     <logger name="RocketmqClient" additivity="false" level="WARN">
         <appender-ref ref="console-appender"/>
     </logger>

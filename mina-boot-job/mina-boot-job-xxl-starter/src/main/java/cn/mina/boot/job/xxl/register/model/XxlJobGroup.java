@@ -29,7 +29,7 @@ public class XxlJobGroup implements Serializable {
     private List<String> registryList;
 
     public List<String> getRegistryList() {
-        if (addressList!=null && addressList.trim().length()>0) {
+        if (addressList != null && addressList.trim().length() > 0) {
             registryList = new ArrayList<String>(Arrays.asList(addressList.split(",")));
         }
         return registryList;

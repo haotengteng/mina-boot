@@ -5,7 +5,6 @@ import cn.mina.boot.example.web.config.controller.ExampleConfig;
 import cn.mina.boot.web.common.MinaBootApplication;
 import cn.mina.boot.web.common.MinaBootWebApplication;
 import com.alibaba.nacos.spring.context.annotation.config.NacosPropertySource;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 

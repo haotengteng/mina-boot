@@ -21,6 +21,7 @@ public class MinaWebTools {
     public static class context {
 
 
+        private static final ThreadLocal<MinaWebContext> contextThreadLocal = new ThreadLocal<>();
         private static Class<? extends MinaWebContext> customContextClazz;
 
         public static Class<? extends MinaWebContext> getCustomContextClass() {
@@ -32,7 +33,6 @@ public class MinaWebTools {
             return getContextByClazz(clazz);
 
         }
-
 
         /**
          * 获取自定义上下文-全局配置方式
@@ -67,9 +67,6 @@ public class MinaWebTools {
                 throw new MinaGlobalException(GlobalErrorCode.ERROR_SYS_ERROR);
             }
         }
-
-
-        private static ThreadLocal<MinaWebContext> contextThreadLocal = new ThreadLocal<>();
 
         protected static void removeContext() {
             contextThreadLocal.remove();

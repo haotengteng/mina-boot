@@ -4,7 +4,6 @@ import cn.mina.boot.ratelimit.sentinel.exception.MinaRatelimitException;
 import cn.mina.boot.ratelimit.sentinel.exception.RatelimitErrorCode;
 import com.alibaba.csp.sentinel.adapter.spring.webmvc.callback.BlockExceptionHandler;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +19,7 @@ public class MinaBootRatelimitSentinelAutoConfiguration {
 
     /**
      * 默认 sentinel 异常处理类（springmvc sentinel 和springcloud alibaba sentinel 共用）
+     *
      * @return
      */
     @Bean

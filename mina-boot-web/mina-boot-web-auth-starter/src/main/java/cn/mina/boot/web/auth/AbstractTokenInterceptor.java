@@ -1,15 +1,13 @@
 package cn.mina.boot.web.auth;
 
-import cn.mina.boot.web.common.exception.GlobalErrorCode;
-import cn.mina.boot.web.common.exception.MinaGlobalException;
-
 import cn.mina.boot.web.common.context.MinaWebContext;
 import cn.mina.boot.web.common.context.MinaWebContextOperator;
 import cn.mina.boot.web.common.context.MinaWebTools;
+import cn.mina.boot.web.common.exception.GlobalErrorCode;
+import cn.mina.boot.web.common.exception.MinaGlobalException;
 import cn.mina.boot.web.common.interceptor.MinaHandlerInterceptor;
 import org.springframework.lang.Nullable;
 import org.springframework.web.method.HandlerMethod;
-import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;

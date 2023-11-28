@@ -1,9 +1,7 @@
 package cn.mina.boot.data.mybatis;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 /**
  * 分页model对象

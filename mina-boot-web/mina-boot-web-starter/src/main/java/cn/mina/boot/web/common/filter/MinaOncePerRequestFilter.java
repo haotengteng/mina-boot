@@ -10,6 +10,7 @@ public abstract class MinaOncePerRequestFilter extends OncePerRequestFilter {
 
     /**
      * 设置过滤路径
+     *
      * @return
      */
     public abstract String urlPatterns();
@@ -17,6 +18,7 @@ public abstract class MinaOncePerRequestFilter extends OncePerRequestFilter {
 
     /**
      * 设置优先级
+     *
      * @return
      */
     public abstract Integer order();

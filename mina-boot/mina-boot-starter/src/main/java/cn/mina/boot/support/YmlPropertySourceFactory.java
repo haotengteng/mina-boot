@@ -12,6 +12,7 @@ import java.util.Properties;
 
 /**
  * 增强PropertySourceFactory 提供yml文件加载能力
+ *
  * @author Created by haoteng on 2022/11/23.
  */
 @Slf4j
@@ -22,7 +23,7 @@ public class YmlPropertySourceFactory extends DefaultPropertySourceFactory {
         String sourceName = name != null ? name : resource.getResource().getFilename();
         if (!resource.getResource().exists()) {
             //不存在就返回一个空
-            log.warn("load config file failed, not found {} config file",name);
+            log.warn("load config file failed, not found {} config file", name);
             return new PropertiesPropertySource(sourceName, new Properties());
         }
         if (sourceName.endsWith(".yml") || sourceName.endsWith(".yaml")) {
