@@ -4,7 +4,7 @@
     <parent>
         <artifactId>mina-parent</artifactId>
         <groupId>cn.mina.boot</groupId>
-        <version>${project.version}</version>
+        <version>0.0.2-SNAPSHOT</version>
     </parent>
     <artifactId>mina-boot-cache</artifactId>
     <name>mina-boot-cache</name>

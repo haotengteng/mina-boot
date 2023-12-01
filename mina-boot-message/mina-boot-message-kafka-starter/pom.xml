@@ -5,7 +5,7 @@
     <parent>
         <groupId>cn.mina.boot</groupId>
         <artifactId>mina-boot-message</artifactId>
-        <version>${project.version}</version>
+        <version>0.0.2-SNAPSHOT</version>
     </parent>
     <artifactId>mina-boot-message-kafka-starter</artifactId>
     <name>mina-boot-message-kafka-starter</name>

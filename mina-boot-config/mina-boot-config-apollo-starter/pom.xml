@@ -6,7 +6,7 @@
     <parent>
         <groupId>cn.mina.boot</groupId>
         <artifactId>mina-boot-config</artifactId>
-        <version>${project.version}</version>
+        <version>0.0.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>mina-boot-config-apollo-starter</artifactId>

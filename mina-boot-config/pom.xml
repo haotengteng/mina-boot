@@ -10,7 +10,7 @@
     <parent>
         <groupId>cn.mina.boot</groupId>
         <artifactId>mina-parent</artifactId>
-        <version>${project.version}</version>  <!-- lookup parent from repository -->
+        <version>0.0.2-SNAPSHOT</version>  <!-- lookup parent from repository -->
     </parent>
     <artifactId>mina-boot-config</artifactId>
     <name>mina-boot-config</name>

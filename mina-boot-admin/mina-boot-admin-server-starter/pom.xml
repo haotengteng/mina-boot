@@ -5,7 +5,7 @@
     <parent>
         <groupId>cn.mina.boot</groupId>
         <artifactId>mina-boot-admin</artifactId>
-        <version>${project.version}</version>
+        <version>0.0.2-SNAPSHOT</version>
     </parent>
     <artifactId>mina-boot-admin-server-starter</artifactId>
     <name>mina-boot-admin-server-starter</name>

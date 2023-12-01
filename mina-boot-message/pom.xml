@@ -10,7 +10,7 @@
     <parent>
         <groupId>cn.mina.boot</groupId>
         <artifactId>mina-parent</artifactId>
-        <version>${project.version}</version>
+        <version>0.0.2-SNAPSHOT</version>
     </parent>
     <artifactId>mina-boot-message</artifactId>
     <name>mina-boot-message</name>
